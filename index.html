@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Nick Newhouse</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="css/namari-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/9bb02615e1.js" crossorigin="anonymous"></script>
+    
+    <style type="text/css">
+        body {
+            font-family: 'nn_mainregular';
+        }
+    </style>
+
+    <!-- Animate CSS-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="playback-banner">
+    <div id="audio-navigation">
+        <div class="time-wrapper">
+            <div id="elapsed-time"></div>  
+        </div>
+        <div id="elapsed-time"></div>
+        <img class="small-audio-button audio-button" src="images/prev_button_2.png" onclick="previousTrack();"/>
+        <img class="skip-button audio-button" src="images/rewind.png" onclick="rewind();"/>
+        <img id="play-pause" class="audio-button" src="images/play_button_2.png" onclick="playPause();"/>
+        <img class="skip-button audio-button" src="images/fast_forward.png" onclick="fastForward();"/>
+        <img class="audio-button small-audio-button" src="images/next_button_2.png" onclick="nextTrack();"/>
+        <div class="time-wrapper">
+            <div id="duration"></div>
+        </div>
+    </div>
+    <div class="track-info-wrapper">
+        <h4 id="track-info" class="fade"></h4>
+    </div>
+    
+</div>
+
+<div class="canvas-wrapper">
+    <canvas id="canvas"></canvas>
+</div>
+
+<div id="wrapper">    
+    <video autoplay muted loop id="nn-video" class="bg-video" onclick="switchVideos();" src="images/NN_logo_CRT_floating.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <video autoplay muted loop id="glitch" class="bg-video" onclick="switchVideos();" src="images/CRT_static.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <video autoplay muted loop id="headshot" class="bg-video" onclick="switchVideos();" src="images/CRT_headshot.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <video autoplay muted loop class="bg-smoke">
+        <source src="images/looping_smoke_gengared.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <audio id="audio-player">
+        <source src="" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <header id="banner">
+        <!--Banner Content-->
+        <div id="banner-content" class="row">
+
+            <div class="col-38">
+
+                <div class="section-heading">
+                    <h1>Production,<br>Songwriting,<br>Mixing and Mastering</h1>
+                    <h2 class="site-subtitle">obsessively making dance and pop music in Brooklyn</h2>
+                </div>
+
+                <div class="divider"></div>
+
+            </div>
+
+        </div><!--End of Row-->
+    </header>
+
+    <!--Main Content Area-->
+    <main id="content">
+
+        <!--Content Section-->
+        <div id="services">
+            <div class="row no-padding-bottom">
+                <div class="col-3 flex-center">
+                    <div class="section-heading">
+                        <h2 class="section-title">10+ years making music professionally</h2>
+                        <h3 class="somehow">(somehow)</h3>
+                        <div class="section-subtitle">
+                            hit play to hear what i do
+                            <br>
+                        </div>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe class="embedded-video" src="https://www.youtube.com/embed/PcdMoJpaNP0"></iframe>
+                        <iframe class="embedded-video" src="https://www.youtube.com/embed/98y17lryUfo"></iframe>
+                        <iframe class="embedded-video" src="https://www.youtube.com/embed/K50OAlmBS60"></iframe>
+                    </div>
+                <div class="divider"></div>
+
+                <p>
+                    collaborating with artists to bring their vision to life is my favorite part
+                    of the process. i love to make a voice shine (literally and figuratively)--but if needed
+                    i can always to bring my own creative voice to a project.
+                </p>
+                <p>
+                    i also have availability for a limited number of students (online or in-person).
+                    <br>
+                    if you're new to writing/recording music or you want to take your demos to the next level,
+                    don't hesitate to reach out to see if we'd be a good fit :)
+                </p>
+                <script>
+                    function sendEmail() 
+                    {
+                        window.location = "mailto:nick.newhouse@gmail.com";
+                    }
+                </script>
+                <a onClick="sendEmail();" class="button contact">get in touch</a>
+                </div>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <!--End of Content Section-->
+
+    </main>
+    <!--End Main Content Area-->
+
+
+    <!--Footer-->
+    <footer id="landing-footer">
+        <div class="row">
+
+            <!--Social Icons in Footer-->
+            <ul class="social-icons">
+                <!-- <li>
+                    <a target="_blank" title="Facebook" href="https://www.facebook.com/username">
+                        <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                    </a>
+                </li> -->
+                <li>
+                    <a target="_blank" title="Twitter" href="http://www.twitter.com/nicknewhouse">
+                        <i class="fa-2xs fa-brands fa-twitter"></i><span>Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="tiktok" href="http://www.tiktok.com/@nicknewhousemusic">
+                        <i class="fa-2xs fa-brands fa-tiktok"></i><span>TikTok</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Instagram" href="http://www.instagram.com/nicknewhousemusic">
+                        <i class="fa-2xs fa-brands fa-instagram"></i><span>Instagram</span>
+                    </a>
+                </li>
+            </ul>
+            <!--End of Social Icons in Footer-->
+        </div>
+    </footer>
+    <!--End of Footer-->
+
+</div>
+
+<script src="js/site.js"></script>
+
+
+</body>
+</html>

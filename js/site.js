@@ -8,7 +8,10 @@ const trackTitles = [
 	"Baircave & Catmosphere - The Siren Song [Radio Edit]",
 	"Baircave & arthur x medic - Alice",
 	"Baircave & Voia - Folds",
-	"Jay Sean - Down [NN Bootleg]"
+	"Jay Sean - Down [NN Bootleg]",
+	"Nick Newhouse - Every Night (In My Dreams)",
+	"Buoy Afuru - Light Up",
+	"Buoy Afuru - Ocean Wave"
 ];
 const trackFilenames = [
 	'Overfalls.mp3', 
@@ -18,7 +21,10 @@ const trackFilenames = [
 	'the_siren_song.mp3',
 	'Alice.mp3',
 	'Folds.mp3',
-	'down.mp3'
+	'down.mp3',
+	'every_night.mp3',
+	'light_up.mp3',
+	'ocean_wave.mp3'
 ];
 const credits = [
 	'written, produced, mixed, & mastered by me', 
@@ -28,7 +34,10 @@ const credits = [
 	'written & mastered by me; produced & mixed by me & Catmosphere',
 	'mixed & mastered by me; produced & written by me & arthur x medic',
 	'mixed & mastered by me; produced & written by me & voia',
-	'remixed by me (w/o permission, so SHH!!!)'
+	'remixed by me (w/o permission, so SHH!!!)',
+	'written, produced, mixed, & mastered by me',
+	'vocal production, mixing, & mastering by me',
+	'vocal production, mixing, & mastering by me'
 ];
 const audio = document.getElementById('audio-player');
 const elapsedTime = document.getElementById('elapsed-time');
@@ -107,18 +116,19 @@ function nextTrack() {
 }
 
 function previousTrack() {
-	audio.pause();
-	audio.currentTime = 0;
-
-	if ((currentTrack - 1) < 0) {
-		currentTrack = trackTitles.length - 1;
+	if (audio.currentTime > 2) {
+		audio.currentTime = 0;
 	} else {
-		currentTrack -= 1;
+		if ((currentTrack - 1) < 0) {
+			currentTrack = trackTitles.length - 1;
+		} else {
+			currentTrack -= 1;
+		}
+	
+		rotateCreditsWithTitle(1);
+		audio.src = `audio/${trackFilenames[currentTrack]}`;
+		play();
 	}
-
-	rotateCreditsWithTitle(1);
-	audio.src = `audio/${trackFilenames[currentTrack]}`;
-	play();
 }
 
 function rotateCreditsWithTitle(setTitle) {

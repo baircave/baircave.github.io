@@ -276,6 +276,10 @@ section {
         right: 10px;
         bottom: 8px;
     }    
+
+    [class*='col-'] {
+        padding: 20px 20px 0 20px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -315,10 +319,6 @@ section {
 }
 
 /* Targets all elements */
-
-[class*='col-'] {
-    padding: 20px 20px 0 20px;
-}
 
 #clients .col-2-3 [class*='col-'] {
     padding: 0;
@@ -680,7 +680,7 @@ h4 {
     }
 
     .row {
-        padding: 15px !important;
+        padding: 15px 15px 0 15px !important;
     }
 
     .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-2-3, .col-3-4, .col-9-10, .col-61, .col-38, .row {

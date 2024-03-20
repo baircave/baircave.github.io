@@ -140,7 +140,7 @@ iframe {
     flex-direction: column;
     z-index: 1;
     position: fixed;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     min-height: 118px;
     background-image: url(../images/torn_paper_tile.png);

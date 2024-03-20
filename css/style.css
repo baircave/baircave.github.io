@@ -588,35 +588,12 @@ h4 {
 ===============================*/
 @media (max-width: 480px) {
 
-    #wrapper {
-        margin:0;
-        padding:0;
-    }
-
-    .page-border, #scrollUp, #scrollUp:before {
-        display:none;
-    }
-
     .row {
         padding: 15px 15px 0 15px !important;
     }
 
-    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-2-3, .col-3-4, .col-9-10, .col-61, .col-38, .row {
-        width: 100%;
-    }
-
-    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-2-3, .col-3-4, .col-9-10, .col-61, .col-38 {
-        padding-right: 0;
-        padding-left: 0;
-    }
-
-    /*-----------------Header Elements-----------------*/
     #header .row {
         padding: 0 15px !important;
-    }
-
-    #header.nav-solid [class*="col-"] {
-        padding: 0;
     }
 
     /*Logo*/
@@ -649,222 +626,9 @@ h4 {
 
 }
 
-/* Mobile to Tablet Portrait
-===============================*/
-@media (min-width: 480px) and (max-width: 767px) {
-
-    #wrapper {
-        margin:0;
-        padding:0;
-    }
-
-    .row {
-        padding: 15px 0 !important;
-    }
-
-    /*-----------------Header Elements-----------------*/
-    #header .row {
-        padding: 0 !important;
-    }
-
-    #header aside {
-        /* display: inline-block; */
-        position: absolute;
-        top: 40px;
-        right: 60px;
-        padding-top:3px;
-        padding-right: 5px;
-    }
-
-    #header.nav-solid aside {
-        top: 20px;
-    }
-
-    #header aside ul {
-        margin-top: 0 !important;
-        padding-top: 6px;
-    }
-}
-
-/* Landscape Tablet to Desktop
-===============================*/
-@media (min-width: 768px) and (max-width: 1024px) {
-
-    #wrapper {
-        margin:0;
-        padding:0;
-    }
-
-    .page-border {
-        display:none;
-    }
-
-    .big-padding-top {
-        padding-top: 45px !important;
-    }
-
-    /*-----------------Header Elements-----------------*/
-    #header aside {
-        /* display: inline-block; */
-        position: absolute;
-        top: 40px;
-        right: 60px;
-        padding-top:3px;
-        padding-right: 5px;
-    }
-
-    #header.nav-solid aside {
-        top: 20px;
-    }
-
-    #header aside ul {
-        margin-top: 0 !important;
-        padding-top: 6px;
-    }
-
-    /*Navigation*/
-    nav#nav-mobile ul {
-        margin-left: -40px;
-        margin-right: -40px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    /*-----------------Sections-----------------*/
-
-    /* Video */
-    .slvj-lightbox iframe, .slvj-lightbox object, .slvj-lightbox embed {
-        height: 432px !important;
-    }
-
-}
-
-/* Namari Landing Page Dynamic Style Index
-
-1. Website Default Styling
-2. Navigation
-3. Primary and Secondary Colors
-4. Banner
-5. Typography
-6. Buttons
-7. Footer
-
-
-/*------------------------------------------------------------------------------------------*/
-/* 1. Website Default Styling */
-/*------------------------------------------------------------------------------------------*/
-
-
-body {
-    background: var(--dark-color);
-}
-
-
-/* Default Link Color */
-
-a, .la-ball-triangle-path {
-    color:var(--primary-color);
-}
-
-#header.nav-solid nav {
-    color:var(--primary-color);
-}
-
-/* Default Icon Color */
-
-.icon i {
-    color:var(--primary-color);
-}
-
-/* Border Color */
-
-#banner .section-heading:before, .testimonial.classic footer:before {
-    background: var(--primary-color);
-}
-
-.pricing-block-content:hover {
-    border-color:var(--primary-color);
-}
-
-
-/*------------------------------------------------------------------------------------------*/
-/* 2. Navigation */
-/*------------------------------------------------------------------------------------------*/
-
-
-/* Transparent Navigation Color on a Banner */
-
-#header nav a, #header i {
-    color:var(--p-color);
-}
-
-
-/* Navigation Colors when the Navigation is sticky and solid */ 
-
-#header.nav-solid, #header.nav-solid a, #header.nav-solid i, #nav-mobile ul li a {
-    color:#333;
-}
-
-
-/* Navigation Active State */
-
-#header.nav-solid .active {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}    
-
-
-
-/*------------------------------------------------------------------------------------------*/
-/* 3. Primary and Secondary Colors */
-/*------------------------------------------------------------------------------------------*/
-
-
-/* Primary Background and Text Colors */
-
-.primary-color, .featured .pricing {
-    background-color:var(--primary-color);
-}
-
-.primary-color, .primary-color .section-title, .primary-color .section-subtitle, .featured .pricing, .featured .pricing p {
-    color:#fff;    
-}
-/* 
-.text-center .section-heading h2:after {
-    margin:30px auto 25px auto;
-} */
-
-/* Primary Icon Colors */
-
-.primary-color .icon i, .primary-color i {
-    color:#fff;
-}
-
-
-/* Secondary Background and Text Colors */
-
-.secondary-color {
-    background-color:#f5f5f5;
-}
-
-
-/*------------------------------------------------------------------------------------------*/
-/* 4. Banner */
-/*------------------------------------------------------------------------------------------*/
-
-
-/* Banner Background and Text Colors */
-
-#banner {
-    /* background: url("../images/banner-images/banner-image-1.jpg") no-repeat center top; */
-    background-size:cover;
-}
-
-
 /*------------------------------------------------------------------------------------------*/
 /* 5. Typography */
 /*------------------------------------------------------------------------------------------*/
-
 
 body {
     font-family: var(--body-font-family);
@@ -881,7 +645,6 @@ body {
     font-size:68px;
     line-height:75px;
     color:var(--p-color);
-    /* text-shadow: 1px 1px 2px #281a64, 0 0 0.2em #6dfae8cf, 0 0 0.5em #6dfae8cf; */
 }
 
 #banner h2 {
@@ -907,19 +670,6 @@ body {
     font-size: 26px;
     font-weight:300;
 }
-
-/* Testimonial */
-
-.testimonial q {
-    font-family: var(--body-font-family);
-    font-size: 37px; 
-    font-weight:300;
-}
-
-.testimonial.classic q, .testimonial.classic footer {
-    color:var(--p-color);
-}
-
 
 /* Standard Headings h1-h6 */
 
@@ -952,21 +702,6 @@ h4 {
     font-weight:600;
     color:var(--dark-color);
 }
-
-h5 {
-    font-family: var(--body-font-family);
-    font-size: 36px; 
-    font-weight:400;
-    color:var(--p-color);
-}
-
-h6 {
-    font-family: var(--body-font-family);
-    font-size: 34px; 
-    font-weight:400;
-    color:var(--p-color);
-}
-
 
 /*------------------------------------------------------------------------------------------*/
 /* 6. Buttons */

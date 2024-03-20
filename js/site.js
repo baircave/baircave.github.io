@@ -212,6 +212,15 @@ trackTitle.innerHTML = trackTitles[currentTrack];
 backgroundNN.onloadeddata = () => videosLoaded += 1;
 headshot.onloadeddata = () => videosLoaded += 1;
 glitch.onloadeddata = () => videosLoaded += 1;
+
+backgroundNN.onended = () => {
+	glitch.currentTime = 0;
+	headshot.currentTime = 0;
+	backgroundNN.play();
+	glitch.play();
+	headshot.play();
+};
+
 audio.onended = () => nextTrack();
 audio.onloadeddata = () => {
 	setElapsedTime();
@@ -235,72 +244,3 @@ navigator.mediaSession.setActionHandler('seekbackward', () => rewind());
 navigator.mediaSession.setActionHandler('seekforward', () => fastForward());
 navigator.mediaSession.setActionHandler('previoustrack', () => previousTrack());
 navigator.mediaSession.setActionHandler('nexttrack', () => nextTrack());
-
-// // canvas stuff!
-
-// // wait for the content of the window element
-// // to load, then performs the operations.
-// // This is considered best practice.
-// window.addEventListener('load', ()=>{
-// 	resize(); // Resizes the canvas once the window loads
-// 	document.addEventListener('mousemove', sketch);
-// 	window.addEventListener('resize', resize);
-// });
-
-// const canvas = document.querySelector('#canvas');
-
-// // Context for the canvas for 2 dimensional operations
-// const ctx = canvas.getContext('2d');
-
-// // Resizes the canvas to the available size of the window.
-// function resize() {
-// 	ctx.canvas.width = window.innerWidth;
-// 	ctx.canvas.height = window.innerHeight;
-// }
-
-// // Stores the initial position of the cursor
-// let coord = {x:500 , y:500};
-
-// let mouseUpdateCounter = 1; 
-
-// // Updates the coordianates of the cursor when
-// // an event e is triggered to the coordinates where
-// // the said event is triggered.
-// function getPosition(event){
-// 	if (mouseUpdateCounter % 50 == 0) {
-// 		mouseUpdateCounter = 1
-
-// 		coord.x = event.clientX - canvas.offsetLeft;
-// 		coord.y = event.clientY - canvas.offsetTop;
-// 	} else {
-// 		mouseUpdateCounter += 1;
-// 	}
-// }
-
-// function startPainting(event){
-// 	getPosition(event);
-// }
-
-// function sketch(event){
-// 	ctx.beginPath();
-
-// 	ctx.lineWidth = 2;
-
-// 	ctx.strokeStyle = 'rgba(40,25,100, 1)';
-	
-// 	// The cursor to start drawing
-// 	// moves to this coordinate
-// 	ctx.moveTo(coord.x, coord.y);
-
-// 	// The position of the cursor
-// 	// gets updated as we move the
-// 	// mouse around.
-// 	getPosition(event);
-
-// 	// A line is traced from start
-// 	// coordinate to this coordinate
-// 	ctx.lineTo(coord.x , coord.y);
-
-// 	// Draws the line.
-// 	ctx.stroke();
-// }

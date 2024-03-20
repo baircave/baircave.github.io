@@ -148,17 +148,25 @@ function rotateCreditsWithTitle(setTitle) {
 }
 
 function switchVideos() {
+	glitch.style.visibility = 'visible';
+
 	if (isHeadshot) {
 		headshot.style.zIndex = -2;
+		headshot.style.visibility = 'hidden';
 		setTimeout(() => {
 			isHeadshot = 0;
 			backgroundNN.style.zIndex = 0;
+			backgroundNN.style.visibility = 'visible';
+			glitch.style.visibility = 'hidden';
 		}, 500);
 	} else {
 		backgroundNN.style.zIndex = -2
+		backgroundNN.style.visibility = 'hidden';
 		setTimeout(() => {
 			isHeadshot = 1;
 			headshot.style.zIndex = 0;
+			headshot.style.visibility = 'visible';
+			glitch.style.visibility = 'hidden';
 		}, 500);
 	}
 }

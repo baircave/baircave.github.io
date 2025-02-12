@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Odd Harmonics</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="Independent DJ and Music Production education based in Southern Brooklyn">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="playback-banner">
+    <div id="audio-navigation">
+        <div class="time-wrapper">
+            <div id="elapsed-time"></div>  
+        </div>
+        <div id="elapsed-time"></div>
+        <div class="playback-button-wrapper" onclick="previousTrack();">
+            <img class="small-audio-button audio-button" src="images/prev_button_2.png"/>
+        </div>
+        <div class="playback-button-wrapper" onclick="rewind();">
+            <img class="skip-button audio-button" src="images/rewind.png"/>
+        </div>
+        <div class="playback-button-wrapper" onclick="playPause();">
+            <img id="play-pause" class="audio-button" src="images/play_button_2.png"/>
+        </div>
+        <div class="playback-button-wrapper" onclick="fastForward();">
+            <img class="skip-button audio-button" src="images/fast_forward.png"/>
+        </div>
+        <div class="playback-button-wrapper" onclick="nextTrack();">
+            <img class="audio-button small-audio-button" src="images/next_button_2.png"/>
+        </div>
+        <div class="time-wrapper">
+            <div id="duration"></div>
+        </div>
+    </div>
+    <div class="track-info-wrapper">
+        <h4 id="track-info" class="fade"></h4>
+    </div>
+    
+</div>
+
+<div class="canvas-wrapper">
+    <canvas id="canvas"></canvas>
+</div>
+
+<div id="wrapper">    
+    <!-- <video playsinline autoplay muted id="nn-video" class="right-column" onclick="switchVideos();" src="images/NN_logo_CRT_floating.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <video playsinline autoplay muted id="glitch" class="right-column" onclick="switchVideos();" src="images/CRT_static.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <video playsinline autoplay muted id="headshot" class="right-column" onclick="switchVideos();" src="images/CRT_headshot_w_text.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video> -->
+
+    <video playsinline autoplay muted loop class="bg-video">
+        <source src="images/looping_smoke_gengared.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <audio id="audio-player">
+        <source src="" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <header id="banner">
+        <!--Banner Content-->
+        <div id="banner-content" class="row">
+
+            <div class="col-38">
+
+                <div class="section-heading">
+                    <h1>Odd Harmonics</h1>
+                    <h2 class="site-subtitle">an alternative music education for Brooklyn's budding soundsmiths</h2>
+                </div>
+            </div>
+
+        </div><!--End of Row-->
+    </header>
+
+    <!--Main Content Area-->
+    <main id="content">
+        <div class="row no-padding-bottom">
+            <div class="col-3 flex-center">
+                <div class="section-heading">
+                    <h3 class="construction">
+                        <img style="width: 20px; height: 20px;" src="images/vlc-logo.png">
+                        [website still under construction]
+                        <img style="width: 20px; height: 20px;" src="images/vlc-logo.png">
+                    </h3>
+                    <div class="divider"></div>
+                    <h2 class="section-title">FREE DJ Workshops</h2>
+                    <h3>RSVP below to view location & dates:</h3>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4ozCiv-a6YV-SS-FDjFHbjxGoqNP45vbS7pWIvYS1i1piPg/viewform?usp=preview" class="button contact">RSVP</a>
+                </div>
+            <div class="divider"></div>
+            <h2 style="text-align: center">Our Ethos</h2>
+            <p>
+                At Odd Harmonics, sound is a sandbox. 
+                <br>
+                <br>
+                We cultivate musicianship by first prioritizing hands-on creative experimentation. 
+                No expertise required. Once we've developed an understanding of the building blocks of sound, 
+                that's when we dive into more traditional musical concepts.
+                <br>
+                <br>
+                Our intention is not to compete with conservatory-style teachings but rather complement them.
+                By focusing on creating sonic worlds, we aim to unlock an underrated and highly accessible axis of expression. 
+                <br>
+            </p>
+            <script>
+                function sendEmail() 
+                {
+                    window.location = "mailto:nick@oddharmonics.studio";
+                }
+            </script>
+            <div class="divider"></div>
+            <h2 style="text-align: center">About Our Founder</h2>
+            <div class="about-nick">
+                <img id="nick-pic" src="./images/nick_photo_2.jpg" alt="">
+                <p class="about-column">
+                    Nick Newhouse began his 10+ year career in music by composing for ads at The Music Playground in Lower Manhattan.
+                    He's since released music with independent record labels such as Tiny Waves, Mad Zoo, New Dawn Collective, & Materia Music, and has DJed events around the country.
+                    <br>
+                    <br>
+                    His music background started with drum, guitar, and piano lessons early in life, 
+                    but his love for music making began in earnest at Brown University where he majored in both Computer Music and Computer Science. 
+                </p>
+                <img id="show-photo" src="./images/nick_show_photo_1.jpg" alt="">
+                <img id="show-photo" src="./images/nick_cg.jpg" alt="">
+            </div>
+            
+            <div class="section-subtitle">
+                press play to hear a selection of Nick's work
+                <br>
+            </div>
+            <div class="video-wrapper">
+                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/98y17lryUfo"></iframe>
+                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TyTszv6MUak"></iframe>
+                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TNQ-8PznXTI"></iframe>
+                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/PcdMoJpaNP0"></iframe>
+            </div>
+            <p>We're happy to answer any questions you may have. Reach out below to schedule a call!</p>
+            <a onClick="sendEmail();" class="button contact">Contact</a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </main>
+
+    <ul class="social-icons">
+        <!-- <a target="_blank" title="Youtube" href="https://www.youtube.com/channel/UCCet7MhEwV9wETY8ygQikTQ">
+            <img class="youtube" src="images/youtube.svg">
+        </a>
+        <a target="_blank" title="tiktok" href="http://www.tiktok.com/@nicknewhousemusic">
+            <img class="tiktok" src="images/tiktok.svg">
+        </a> -->
+        <a target="_blank" title="Instagram" href="http://www.instagram.com/nicknewhousemusic">
+            <img class="instagram" src="images/instagram.svg">
+        </a>
+        <!-- <a target="_blank" title="Bandcamp" href="https://nicknewhouse.bandcamp.com/">
+            <img class="bandcamp" src="images/bandcamp.svg">
+        </a>
+        <a target="_blank" title="Soundcloud" href="https://soundcloud.com/nicknewhouse">
+            <img class="soundcloud" src="images/soundcloud.svg">
+        </a>
+        <a target="_blank" title="Spotify" href="https://open.spotify.com/playlist/17nQS4pO37E7ACwy7BPLPt?si=0bf0c54e71dc4436">
+            <img class="spotify" src="images/spotify.svg">
+        </a> -->
+    </ul>
+</div>
+
+<!-- <script src="js/site.min.js"></script> -->
+<script src="js/site.js"></script>
+
+</body>
+</html>

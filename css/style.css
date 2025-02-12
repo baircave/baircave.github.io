@@ -1,0 +1,809 @@
+@font-face {
+    font-family: 'basier';
+    src: url('basiersquaremono-regular-webfont.woff2') format('woff2'),
+         url('basiersquaremono-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.chakra-petch-light {
+    font-family: "Chakra Petch", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+  
+.chakra-petch-regular {
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.chakra-petch-medium {
+    font-family: "Chakra Petch", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+  
+.chakra-petch-semibold {
+    font-family: "Chakra Petch", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+  
+.chakra-petch-bold {
+    font-family: "Chakra Petch", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+  
+.chakra-petch-light-italic {
+    font-family: "Chakra Petch", serif;
+    font-weight: 300;
+    font-style: italic;
+}
+  
+.chakra-petch-regular-italic {
+    font-family: "Chakra Petch", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+  
+.chakra-petch-medium-italic {
+    font-family: "Chakra Petch", serif;
+    font-weight: 500;
+    font-style: italic;
+}
+  
+.chakra-petch-semibold-italic {
+    font-family: "Chakra Petch", serif;
+    font-weight: 600;
+    font-style: italic;
+}
+  
+.chakra-petch-bold-italic {
+    font-family: "Chakra Petch", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+  
+
+:root {
+    --white-color:                #f2f2f2;
+    --primary-color:              #04e100;
+    --dark-color:                 #23003c;
+    --grey-color:                 #d0d1d1;
+    --p-color:                    #f0f8ff;
+  
+    --headers-font-family:           "Chakra Petch", serif;  
+    --body-font-family:              basier;
+  }
+
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-family: var(--body-font-family);
+    font-size:20px;
+    font-weight:normal;
+    color:var(--p-color);
+}
+
+p {
+    line-height: 21px;
+    max-width: 80%;
+    margin: 0;
+    /* letter-spacing: -1px; */
+    font-family: var(--body-font-family);
+}
+
+/* .row img {
+    height: auto;
+    max-width: 100%;
+} */
+
+iframe {
+    border: 0 !important;
+}
+
+.fade {
+    transition: opacity 0.7s ease-in-out;
+    opacity: 1;
+}
+
+#wrapper {
+    padding: 8px 0;
+    position: relative;
+}
+
+.track-info-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    margin-top: -10px;
+}
+
+#track-info {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -moz-animation: scroll-left 7s linear infinite alternate;
+    -webkit-animation: scroll-left 7s linear infinite alternate;
+    animation: scroll-left 7s linear infinite alternate;
+
+}
+
+.playback-button-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.audio-button {
+    max-height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.audio-button:hover {
+    cursor: pointer;
+}
+
+.small-audio-button {
+    max-height: 29px;
+}
+
+.skip-button {
+    max-height: 35px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.time-wrapper {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#elapsed-time {
+    color: var(--dark-color);
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+    letter-spacing: -1px;
+}
+
+#duration {
+    color: var(--dark-color);
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+    letter-spacing: -1px;
+}
+
+#audio-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    height: 75px;
+}
+
+#playback-banner {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    position: fixed;
+    bottom: -1px;
+    width: 100%;
+    min-height: 118px;
+    background-image: url(../images/torn_paper_tile.png);
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* width:30%; */
+    margin: 5px;
+}
+
+.about-column {
+    max-width: 100%;
+}
+
+.about-nick {
+    max-width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#nick-pic {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+#show-photo {
+    width: 250px;
+    height: auto;
+    padding: 10px;
+}
+
+.embedded-video {
+    margin: 10px;
+    /* min-width: 75%; */
+    min-height: 197px;
+    /* max-width: 100%; */
+    /* max-height: 500px; */
+}
+
+@-moz-keyframes scroll-left {
+    0% {
+        -moz-transform: translateX(20%);
+    }
+    100% {
+        -moz-transform: translateX(-20%);
+    }
+}
+
+@-webkit-keyframes scroll-left {
+    0% {
+        -webkit-transform: translateX(20%);
+    }
+    100% {
+        -webkit-transform: translateX(-20%);
+    }
+}
+
+@keyframes scroll-left {
+    0% {
+        -moz-transform: translateX(20%);
+        -webkit-transform: translateX(20%);
+        transform: translateX(20%);
+    }
+    100% {
+        -moz-transform: translateX(-20%);
+        -webkit-transform: translateX(-20%);
+        transform: translateX(-20%);
+    }
+}
+
+.canvas-wrapper {
+    position: fixed;
+    z-index: -2;
+}
+
+.contact {
+    align-self: center;
+    justify-self: center;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.divider {
+    background: var(--primary-color);
+    align-self: center;
+    opacity: 0.7;
+    max-width: 75%;
+    min-width: 50%;
+    height: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.construction {
+    font-style: italic;
+    align-items: center;
+}
+
+/* Rows and Columns */
+
+@media screen and (min-width: 700px) {
+    .about-column {
+       max-width: 73%;
+    }
+
+    .social-icons {
+        right: 10px;
+        bottom: 0px;
+    }
+
+    [class*='col-'] {
+        padding: 0px 20px 0 20px;
+    }
+
+    h2 {
+        font-size:30px;
+        text-decoration: underline;
+    }
+
+    .section-title {
+        font-size: 39px; 
+    }
+
+    .soundcloud {
+        width: 35px;
+        margin-top: -2px;
+    }
+    
+    .spotify, .bandcamp, .instagram {
+        width: 23px;
+    }
+    
+    .tiktok {
+        width: 20px;
+    }
+    
+    .youtube {
+        width: 27px;
+    }
+
+    #show-photo {
+        width: 45%;
+        height: auto;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .row {
+       max-width: 95%;
+       /* background: rgba(0,0,0,0.4); */
+    }
+
+    .about-nick {
+        max-width: 95%;
+    }
+
+    .social-icons {
+        right: 5px;
+        bottom: 60px;
+    }
+
+    .soundcloud {
+        width: 30px;
+        margin-top: -2px;
+    }
+    
+    .spotify, .bandcamp, .instagram {
+        width: 18px;
+    }
+    
+    .tiktok {
+        width: 15px;
+    }
+    
+    .youtube {
+        width: 22px;
+    }
+
+    p {
+        max-width: 95%;
+        font-size: 16px;
+    }
+}
+
+.row {
+    position: relative;
+}
+
+.no-padding-bottom .row, .no-padding-bottom div, .no-padding-bottom.row {
+    padding-bottom: 0;
+}
+
+.no-padding-top.row, .no-padding-top div {
+    padding-top: 0;
+}
+
+.big-padding-top {
+    padding-top: 75px !important;
+}
+
+.big-padding-bottom {
+    padding-bottom: 85px !important;
+}
+
+.col-38 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------- 2.1 Header --------- */
+
+#header {
+    height: 71px !important;
+    overflow: visible;
+    z-index: 9999;
+    width: 100%;
+    position: absolute !important;
+}
+
+#header .row {
+    padding: 0;
+}
+
+#header aside {
+    text-align: right;
+}
+
+#header ul {
+    text-align: center;
+}
+
+.site-subtitle {
+    align-self: flex-end;
+    text-shadow: #10003c 1px 0 3px;
+    text-decoration: none;
+    line-height: 27px;
+    text-align: end;
+}
+
+.call-to-action {
+    padding: 35px 0 35px 0;
+}
+
+/*Style*/
+
+.button {
+    font-size: 16px;
+    padding: 11px 16px;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    transition: all .3s linear;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+/* --------- 2.5 Social Elements ---------- */
+
+.social-icons {
+    display: flex;
+    position: fixed;
+    height: 30px;
+    z-index: 2;
+    opacity: 0.5;
+}
+
+.social-icons a {
+    height: 100%;
+    padding: 2px;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+#header .social-icons {
+    margin-top: 27px;
+}
+
+/* --------- 2.6 Images ---------- */
+
+/*Alignment*/
+
+.right-column {
+    position: fixed;
+    right: 0;
+    top: 0;
+    max-width: 100%;
+    max-height: 88%;
+    margin-top: 40px;
+}
+
+#glitch {
+    /* visibility: hidden; */
+    z-index: -1;
+}
+
+#headshot {
+    /* visibility: hidden; */
+    z-index: -2;
+}
+
+.bg-video {
+    z-index: -3;
+    position: fixed;
+    top: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    /* filter: brightness(40%); */
+}
+
+/* img {
+    vertical-align: top;
+    touch-action: manipulation;
+} */
+
+.image-center {
+    display: block;
+    margin: 0 auto;
+}
+
+a img {
+    border: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    -webkit-backface-visibility: hidden;
+}
+
+a img:hover {
+    opacity: 0.7;
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 3. Fonts */
+/*------------------------------------------------------------------------------------------*/
+
+h1 {
+    width: fit-content;
+    font-family: var(--headers-font-family);
+    font-size: 60px; 
+    font-weight:300;
+    color:var(--p-color);
+    /* letter-spacing: -4px; */
+}
+
+h3 {
+    width: fit-content;
+    align-self: center;
+    justify-content: center;
+}
+
+h4 {
+    color: var(--dark-color);
+    font-weight: 800;
+}
+
+/* Text Alignment */
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Section Headings */
+
+.section-subtitle {
+    padding-top: 0;
+    align-self: flex-end;
+    /* margin-top: -10px; */
+    text-shadow: #10003c 1px 0 3px;
+}
+
+.section-heading h3 {
+    display: flex;
+    width: fit-content;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ccc;
+    /* letter-spacing: 2px; */
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.section-heading {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-self: flex-start;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ccc;
+    /* letter-spacing: -1px; */
+    padding-bottom: 0;
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 4. Banner */
+/*------------------------------------------------------------------------------------------*/
+
+#banner {
+    background-size: cover;
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 7. Footer */
+/*------------------------------------------------------------------------------------------*/
+
+#landing-footer {
+    clear: both;
+}
+
+#landing-footer .row {
+    padding: 0;
+}
+
+#landing-footer p {
+    margin: 0;
+}
+
+#landing-footer ul {
+    list-style: none;
+    text-align: right;
+}
+
+#status {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    left: 50%; /* centers the loading animation horizontally one the screen */
+    top: 50%; /* centers the loading animation vertically one the screen */
+    background-position: center;
+    margin: -55px 0 0 -55px; /* is width and height divided by two */
+    text-align: center;
+}
+
+/* .col-3 {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+} */
+
+/* Landscape mobile & down
+===============================*/
+@media (max-width: 700px) {
+
+    .row {
+        padding: 15px 15px 0 15px !important;
+    }
+
+    #header .row {
+        padding: 0 15px !important;
+    }
+
+    #header ul.social-icons {
+        margin-top: 0;
+    }
+
+    #banner-content.row {
+        padding-top: 10px !important;
+    }
+
+    /*-----------------Typography-----------------*/
+    h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 30px;
+        text-decoration: underline;
+    }
+
+    #banner h2 {
+        font-size: 23px;
+    }
+
+    #banner h1 {
+        font-size: 48px;
+    }
+
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 5. Typography */
+/*------------------------------------------------------------------------------------------*/
+h2 {
+    font-family: var(--headers-font-family);
+    /* font-size:36px; */
+    font-weight: 500;
+    color:var(--p-color);
+    margin-bottom: 5px;
+}
+
+/* Section Title and Subtitle */
+
+.section-title {
+    align-self: center;
+    font-family: var(--headers-font-family);
+    /* margin-top: -12px; */
+    /* font-weight:500; */
+    color:var(--p-color);
+    /* line-height: 30px; */
+}
+
+.section-subtitle {
+    font-family: var(--headers-font-family);
+    font-size: 26px;
+    font-weight:300;
+}
+
+h3 {
+    font-family: var(--headers-font-family);
+    font-size: 50px; 
+    font-weight:700;
+    color:var(--p-color);
+}
+
+h4 {
+    font-family: var(--headers-font-family);
+    font-size: 20px; 
+    font-weight:600;
+    color:var(--dark-color);
+}
+
+/* Button Text */
+
+.button, input[type="submit"]  {
+    font-family: var(--headers-font-family);
+    font-size:25px;
+    font-weight:bold;
+    color:var(--p-color);
+    background-color: #0000006e;
+}
+
+/* Button Color */
+
+.button, input[type="submit"] {
+    border-color:var(--p-color);
+}
+
+
+/* Button Hover Color */
+
+.button:hover,  input[type="submit"]:hover {
+    border-color:var(--primary-color);
+    color:var(--primary-color);
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 7. Footer */
+/*------------------------------------------------------------------------------------------*/
+
+#landing-footer, #landing-footer p {
+    z-index: 2;
+    font-family: var(--headers-font-family);
+    font-size:30px;
+    font-weight:normal;
+    color:#999;
+}
+
+/* Footer Icon Color */
+
+#landing-footer i {
+    color:#999;
+    transition: color .3s linear;
+}
+
+#landing-footer i:hover {
+    color: var(--primary-color);
+}

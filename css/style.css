@@ -364,7 +364,7 @@ iframe {
         width: 27px;
     }
 
-    #show-photo {
+    .show-photo {
         width: 45%;
         height: auto;
         padding: 10px;

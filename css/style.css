@@ -249,7 +249,7 @@ iframe {
     padding: 20px;
 }
 
-#show-photo {
+.show-photo {
     width: 250px;
     height: auto;
     padding: 10px;

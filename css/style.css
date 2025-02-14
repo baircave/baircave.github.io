@@ -249,12 +249,6 @@ iframe {
     padding: 10px;
 }
 
-.show-photo {
-    width: 250px;
-    height: auto;
-    padding: 10px;
-}
-
 .embedded-video {
     margin: 10px;
     /* min-width: 75%; */
@@ -371,8 +365,8 @@ iframe {
     }
 
     .show-photo {
-        width: 45%;
-        height: auto;
+        width: auto;
+        height: 300px;
         padding: 10px;
     }
 }
@@ -416,6 +410,12 @@ iframe {
 
     .nick-newhouse {
         padding-bottom: 10px;
+    }
+
+    .show-photo {
+        width: 90%;
+        height: auto;
+        padding: 10px;
     }
 }
 

@@ -56,11 +56,6 @@ const elapsedTime = document.getElementById('elapsed-time');
 const duration = document.getElementById('duration');
 const trackTitle = document.getElementById('track-info');
 
-const backgroundNN = document.getElementById('nn-video');
-const headshot = document.getElementById('headshot');
-const glitch = document.getElementById('glitch');
-
-var videosLoaded = 0;
 var isPlaying = 0;
 var isHeadshot = 0;
 var isCredits = 0;
@@ -113,7 +108,6 @@ function rewind() {
 }
 
 function nextTrack() {
-	console.log("Hi");
 	audio.pause();
 	audio.currentTime = 0;
 
@@ -160,55 +154,6 @@ function rotateCreditsWithTitle(setTitle) {
 	}, 700);
 }
 
-function switchVideos() {
-	glitch.style.visibility = 'visible';
-
-	if (isHeadshot) {
-		headshot.style.zIndex = -2;
-		headshot.style.visibility = 'hidden';
-		setTimeout(() => {
-			isHeadshot = 0;
-			backgroundNN.style.zIndex = 0;
-			backgroundNN.style.visibility = 'visible';
-			glitch.style.visibility = 'hidden';
-		}, 500);
-	} else {
-		backgroundNN.style.zIndex = -2
-		backgroundNN.style.visibility = 'hidden';
-		setTimeout(() => {
-			isHeadshot = 1;
-			headshot.style.zIndex = 0;
-			headshot.style.visibility = 'visible';
-			glitch.style.visibility = 'hidden';
-		}, 500);
-	}
-}
-
-function fixVideoSources() {
-	if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
-		backgroundNN.src = "images/NN_logo_CRT_floating.mov";
-		backgroundNN.type = "video/mp4";
-		glitch.src = "images/CRT_static.mov";
-		glitch.type = "video/mp4";
-		headshot.src = "images/CRT_headshot_w_text.mov";
-		headshot.type = "video/mp4";
-	}
-}
-
-function syncVideos() {
-	if (videosLoaded < 3) {
-		setTimeout(() => {
-			syncVideos();
-			
-		}, 200);
-		return;
-	}
-
-	backgroundNN.play();
-	glitch.play();
-	headshot.play();
-}
-
 // spacebar play pause
 document.body.onkeyup = function(e) {
 	if (e.key == " " ||
@@ -230,17 +175,6 @@ document.body.onkeydown = function(e) {
 }
 
 trackTitle.innerHTML = trackTitles[currentTrack];
-// backgroundNN.onloadeddata = () => videosLoaded += 1;
-// headshot.onloadeddata = () => videosLoaded += 1;
-// glitch.onloadeddata = () => videosLoaded += 1;
-
-// backgroundNN.onended = () => {
-// 	glitch.currentTime = 0;
-// 	headshot.currentTime = 0;
-// 	backgroundNN.play();
-// 	glitch.play();
-// 	headshot.play();
-// };
 
 audio.onended = () => nextTrack();
 audio.onloadeddata = () => {
@@ -253,11 +187,6 @@ audio.load();
 setInterval(() => {
 	rotateCreditsWithTitle();
 }, 10000);
-// setInterval(() => {
-// 	switchVideos();
-// }, 60000);
-fixVideoSources();
-syncVideos();
 
 navigator.mediaSession.setActionHandler('play', () => play());
 navigator.mediaSession.setActionHandler('pause', () => pause());

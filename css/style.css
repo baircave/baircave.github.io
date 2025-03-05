@@ -250,6 +250,23 @@ iframe {
     /* max-height: 500px; */
 }
 
+.testimonial-wrapper {
+    display: flex;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted var(--primary-color);
+    border-radius: 15px; 
+    padding: 5px;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+    max-height: fit-content;
+}
+
 @-moz-keyframes scroll-left {
     0% {
         -moz-transform: translateX(20%);
@@ -361,6 +378,16 @@ iframe {
         height: 300px;
         padding: 10px;
     }
+
+    .testimonial-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .testimonial {
+        margin: 15px;
+        max-width: 30%;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -408,14 +435,18 @@ iframe {
         height: auto;
         padding: 10px;
     }
+
+    .testimonial-wrapper {
+        flex-direction: column;
+    }
+
+    .testimonial {
+        margin-bottom: 0px;
+    }
 }
 
 .row {
     position: relative;
-}
-
-.no-padding-bottom .row, .no-padding-bottom div, .no-padding-bottom.row {
-    padding-bottom: 0;
 }
 
 .no-padding-top.row, .no-padding-top div {

@@ -561,11 +561,12 @@ a:hover {
 }
 
 .bg-video {
-    z-index: -3;
     position: fixed;
-    top: 0;
-    min-width: 100vw;
-    min-height: 100vh;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translateX(calc((100% - 100vw) / 2));
 }
 
 .image-center {

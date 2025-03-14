@@ -321,11 +321,6 @@ iframe {
     margin-bottom: 15px;
 }
 
-.construction {
-    font-style: italic;
-    align-items: center;
-}
-
 .nick-newhouse {
     font-style: italic;
     font-size: 20px;
@@ -488,14 +483,6 @@ iframe {
     text-align: center;
 }
 
-.site-subtitle {
-    align-self: flex-end;
-    text-shadow: #10003c 1px 0 3px;
-    text-decoration: none;
-    line-height: 27px;
-    text-align: end;
-}
-
 .call-to-action {
     padding: 35px 0 35px 0;
 }
@@ -567,6 +554,12 @@ a:hover {
     min-width: 100%;
     min-height: 100%;
     transform: translateX(calc((100% - 100vw) / 2));
+}
+
+.oh-graphic {
+    width: 60%;
+    align-self: center;
+    z-index: 1;
 }
 
 .image-center {
@@ -697,7 +690,7 @@ h4 {
 @media (max-width: 700px) {
 
     .row {
-        padding: 15px 15px 0 15px !important;
+        padding: 0px 15px 0 15px !important;
     }
 
     #header .row {
@@ -728,6 +721,10 @@ h4 {
 
     #banner h1 {
         font-size: 48px;
+    }
+
+    .oh-graphic {
+        width: 100%;
     }
 
 }

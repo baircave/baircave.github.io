@@ -78,7 +78,7 @@
     --body-font-family:              basier;
   }
 
-div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, blockquote, th, td {
+div, dl, dt, dd, figure, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, blockquote, th, td {
     margin: 0;
     padding: 0;
 }
@@ -256,6 +256,8 @@ nav a {
 }
 
 .profile {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -624,6 +626,7 @@ a:hover {
 
 .oh-graphic {
     width: 60%;
+    max-width: 800px;
     align-self: center;
     z-index: 1;
     padding-top: 50px;

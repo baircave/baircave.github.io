@@ -671,7 +671,7 @@ h1 {
     font-weight:300;
     max-width: 70%;
     color:var(--p-color);
-    margin: 15px;
+    margin-top: 15px;
 }
 
 h3 {

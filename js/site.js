@@ -154,6 +154,18 @@ function rotateCreditsWithTitle(setTitle) {
 	}, 700);
 }
 
+function toggleMenu() {
+    const menu = document.querySelector(".nav-links");
+	if (window.innerWidth < 700) {
+		if (menu.style.display === "flex") {
+			menu.style.display = "none";
+		} else {
+			menu.style.display = "flex";
+		}
+	}
+    // menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
 // spacebar play pause
 document.body.onkeyup = function(e) {
 	if (e.key == " " ||

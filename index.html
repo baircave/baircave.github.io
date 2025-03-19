@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
 
     <!--Page Title-->
-    <title>Odd Harmonics</title>
+    <title>Odd Harmonics | Music Production & DJ Classes, Lessons, & Camps | Brooklyn</title>
 
     <!--Meta Keywords and Description-->
-    <meta name="keywords" content="">
-    <meta name="description" content="where sound is a sandbox">
+    <meta name="description" content="We teach Brooklyn how to record, produce, and DJ electronic music. From private lessons & classes to screenless camps, we foster creativity in both kids & adults!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 
     <!--Favicon-->
@@ -21,178 +20,197 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-
-<div id="playback-banner">
-    <div id="audio-navigation">
-        <div class="time-wrapper">
-            <div id="elapsed-time"></div>  
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a onclick="toggleMenu();" href="#approach">[Our Approach]</a>
+            <a onclick="toggleMenu();" href="#founder">[Meet Our Founder]</a>
+            <a onclick="toggleMenu();" href="#testimonials">[Testimonials]</a>
+            <a onClick="toggleMenu();" href="#contact">[Contact]</a>
         </div>
-        <div id="elapsed-time"></div>
-        <div class="playback-button-wrapper" onclick="previousTrack();">
-            <img class="small-audio-button audio-button" src="images/prev_button_2.png"/>
-        </div>
-        <div class="playback-button-wrapper" onclick="rewind();">
-            <img class="skip-button audio-button" src="images/rewind.png"/>
-        </div>
-        <div class="playback-button-wrapper" onclick="playPause();">
-            <img id="play-pause" class="audio-button" src="images/play_button_2.png"/>
-        </div>
-        <div class="playback-button-wrapper" onclick="fastForward();">
-            <img class="skip-button audio-button" src="images/fast_forward.png"/>
-        </div>
-        <div class="playback-button-wrapper" onclick="nextTrack();">
-            <img class="audio-button small-audio-button" src="images/next_button_2.png"/>
-        </div>
-        <div class="time-wrapper">
-            <div id="duration"></div>
-        </div>
-    </div>
-    <div class="track-info-wrapper">
-        <h4 id="track-info" class="fade"></h4>
-    </div>
-    
-</div>
+    </nav>    
 
-<div class="canvas-wrapper">
-    <canvas id="canvas"></canvas>
-</div>
-
-<div id="wrapper">    
-    <video playsinline autoplay muted loop class="bg-video">
-        <source src="images/looping_smoke_waveformed.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <audio id="audio-player">
-        <source src="" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
-
-    <header id="banner">
-        <!--Banner Content-->
-        <div id="banner-content" class="row">
-
-            <div class="col-38">
-
+    <div id="wrapper">    
+        <header id="banner">
+            <!--Banner Content-->
+            <div id="banner-content" class="row">
                 <div class="section-heading">
-                    <img class="oh-graphic" src="images/OH_GRAPHIC_1.png">
+                    <img class="oh-graphic" src="images/OH_GRAPHIC_1.png" alt="A graphic displaying the Odd Harmonics fictional piece of complex electronic music hardware">
+                </div>
+            </div><!--End of Row-->
+        </header>
+
+        <!--Main Content Area-->
+        <main id="content">
+            <div class="row">
+                <h1>The only DJ & Music Production school built just for Brooklyn</h1>
+                <div class="divider"></div>
+                <section id="current-promotion">
+                    <h2>Introductory DJ Workshops</h2>
+                    
+                    <div class="section-heading">
+                        <h3>RSVP below to view location & dates:</h3>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4ozCiv-a6YV-SS-FDjFHbjxGoqNP45vbS7pWIvYS1i1piPg/viewform?usp=preview" class="button contact">RSVP</a>
+                    </div>
+                </section>
+                <div class="divider"></div>
+                <section id="approach">
+                    <h2 style="text-align: center">Our Approach to Music Education</h2>
+                    <p>
+                        At Odd Harmonics, sound is a sandbox, which means we cultivate musicianship by first prioritizing hands-on creative experimentation. 
+                        NO EXPERTISE REQUIRED! Once we've developed an understanding of the building blocks of sound, 
+                        that's when we dive into more traditional musical concepts.                
+                        <br>
+                        <br>
+                        Our goal is to provide an alternative, highly accessible music education that differs from conservatory-style institutions.
+                        By focusing on creating sonic worlds, we aim to unlock an often overlooked axis of expression. 
+                        <br>
+                        <br>
+                        From a simple beat to a fully produced song, we guide each student step by step to simplify the process of recording their own music.
+                        For those interested DJing, our coursework culminates in a 30 minute DJ set for parents and kids that incorporates their music with music by other artists.
+                    </p>
+                </section>
+                <div class="divider"></div>
+                <section id="founder">
+                    <h2 style="text-align: center">Meet Our Founder</h2>
+                    <div class="about-nick">
+                        <div class="flex-center profile">
+                            <figure style="text-align: center;">
+                                <img id="nick-pic" src="./images/nick_photo_2.jpg" alt="Headshot of Odd Harmonics founder, Nick Newhouse">
+                                <figcaption>Nick Newhouse<br>Brown University '14</figcaption>
+                            </figure>
+                        </div>
+                        <p class="about-column">
+                            Like many others, Nick's music education began with piano, guitar, and drum lessons. 
+                            But his love for music making began in earnest at Brown University where he majored in both Computer Music and Computer Science. 
+                            After Brown, he began his 10+ year music career by composing for ads at The Music Playground in Lower Manhattan.
+                            He's since released music with independent record labels such as Tiny Waves, Mad Zoo, New Dawn Collective, & Materia Music, and has performed as a DJ all around the country.
+                            <br>
+                            <br>
+                            Nick and his wife have put down roots in Park Slope, Brooklyn where they've very recently started a family together
+                            (their 6-month-old is already the proud owner of the Fisher-Price Mix and Learn DJ Table). 
+                        </p>
+                        <img class="show-photo" src="./images/nick_show_photo_1.jpg" alt="Nick Newhouse DJing at the Big Bubble Rave in Baltimore">
+                        <img class="show-photo" src="./images/nick_cg.JPG" alt="Nick Newhouse's guest DJ mix with Community Garden Brooklyn">
+                    </div>
+                    <div class="section-subtitle">
+                        press play to hear a selection of Nick's work
+                        <br>
+                    </div>
+                    <div id="youtube-embeds" class="video-wrapper">
+                        <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/98y17lryUfo" title="Original animated music video for Nick Newhouse single 'Even Heat', released with the record label Mad Zoo."></iframe>
+                        <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TyTszv6MUak" title="Play through of the custom Beat Saber map for 'The Siren Song' by Baircave & Catmosphere"></iframe>
+                        <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TNQ-8PznXTI" title="A DJ mix by Nick Newhouse performed for an intimate crowd in Green Point, Brooklyn"></iframe>
+                        <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/PcdMoJpaNP0" title="An original song from Buoy Afuru, mixed and mastered by Nick Newhouse"></iframe>
+                    </div>
+                </section>
+                <section id="testimonials">
+                    <h2 style="text-align: center">Student Testimonials</h2>
+                    <div class="testimonial-wrapper">
+                        <article class="testimonial">
+                            "Nick strikes that hard-to-find balance between teaching highly technical skills 
+                            and inspiring creative thinking. By the end of our first lesson, we'd transformed 
+                            my vocals into a voice-synth. Nick knew exactly how to connect my passion for singing 
+                            with a specific technical production skill. It's this knack for uncovering his students' 
+                            "why" that makes Nick’s style of teaching delightful and surprisingly personal. I highly 
+                            recommend Nick to anyone looking to advance their music production skills in order to 
+                            bring a creative vision to life."
+                            <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- Walter</div>
+                        </article>
+                        <article class="testimonial">
+                            "Learning from Nick elevated my music production skills immediately. He’s great at breaking 
+                            down complex concepts and giving you simple tools. Not to mention never loses track of 
+                            the joy and fun in the process. Any aspiring musician/producer would be lucky to have 
+                            Nick helping them get to the next level."
+                            <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- David</div>
+                        </article>
+                        <article class="testimonial">
+                            “Nick is incredibly passionate, goes in depth with just about every topic we cover, and 
+                            persistently accommodates for any gaps in my knowledge. He always ensures that you are 
+                            getting where you need to be YOUR way, in YOUR style. He is also super friendly and fun. 
+                            My experience with Nick so far has been excellent!”
+                            <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- Elijah</div>
+                        </article>
+                        <br>
+                    </div>
+                </section>
+                <section id="contact">
+                    <h2>Contact Information</h2>
+                    <address class="address">
+                        Located In: TI Art Studios <br>
+                        183 Lorraine St. <br>
+                        Brooklyn, NY 11231 <br>
+                        Email: <a href="mailto:nick@oddharmonics.studio">nick@oddharmonics.studio</a><br>
+                        Phone: <a href="tel:+2036446928">(203) 644-6928</a><br>
+                      </address>                    
+                    <p style="margin-top: 15px">We're happy to answer any and all questions you may have! Reach out via e-mail or phone and we'll respond as soon as possible.
+                    </p>
+                    <script>
+                        function sendEmail() 
+                        {
+                            window.location = "mailto:nick@oddharmonics.studio";
+                        }
+                    </script>
+                </section>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </main>
+
+        <video playsinline autoplay muted loop class="bg-video">
+            <source src="images/looping_smoke_waveformed.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <audio id="audio-player">
+            <source src="" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+
+        <div id="playback-banner">
+            <div id="audio-navigation">
+                <div class="time-wrapper">
+                    <div id="elapsed-time"></div>  
+                </div>
+                <div id="elapsed-time"></div>
+                <div class="playback-button-wrapper" onclick="previousTrack();">
+                    <img class="small-audio-button audio-button" src="images/prev_button_2.png" alt="previous song button"/>
+                </div>
+                <div class="playback-button-wrapper" onclick="rewind();">
+                    <img class="skip-button audio-button" src="images/rewind.png" alt="skip 10 seconds backwards button"/>
+                </div>
+                <div class="playback-button-wrapper" onclick="playPause();">
+                    <img id="play-pause" class="audio-button" src="images/play_button_2.png" alt="playback button"/>
+                </div>
+                <div class="playback-button-wrapper" onclick="fastForward();">
+                    <img class="skip-button audio-button" src="images/fast_forward.png" alt="skip 10 seconds forwards button"/>
+                </div>
+                <div class="playback-button-wrapper" onclick="nextTrack();">
+                    <img class="audio-button small-audio-button" src="images/next_button_2.png" alt="next song button"/>
+                </div>
+                <div class="time-wrapper">
+                    <div id="duration"></div>
                 </div>
             </div>
-
-        </div><!--End of Row-->
-    </header>
-
-    <!--Main Content Area-->
-    <main id="content">
-        <div class="row no-padding-bottom">
-            <div class="col-3 flex-center">
-                <div class="section-heading">
-                    <div class="divider"></div>
-                    <h2 class="section-title">FREE DJ Workshops</h2>
-                    <h3>RSVP below to view location & dates:</h3>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4ozCiv-a6YV-SS-FDjFHbjxGoqNP45vbS7pWIvYS1i1piPg/viewform?usp=preview" class="button contact">RSVP</a>
-                </div>
-            <div class="divider"></div>
-            <h2 style="text-align: center">What We Do</h2>
-            <p>
-                At Odd Harmonics, sound is a sandbox, which means we cultivate musicianship by first prioritizing hands-on creative experimentation. 
-                NO EXPERTISE REQUIRED! Once we've developed an understanding of the building blocks of sound, 
-                that's when we dive into more traditional musical concepts.                
-                <br>
-                <br>
-                Our goal is to provide an alternative, highly accessible music education that differs from conservatory-style institutions.
-                By focusing on creating sonic worlds, we aim to unlock an often overlooked axis of expression. 
-                <br>
-                <br>
-                From a simple beat to a fully produced song, we guide each student step by step to simplify the process of recording their own music.
-                For those interested DJing, our coursework culminates in a 30 minute DJ set for parents and kids that incorporates their music with music by other artists.
-            </p>
-            <script>
-                function sendEmail() 
-                {
-                    window.location = "mailto:nick@oddharmonics.studio";
-                }
-            </script>
-            <div class="divider"></div>
-            <h2 style="text-align: center">About Our Founder</h2>
-            <div class="about-nick">
-                <div class="flex-center">
-                    <img id="nick-pic" src="./images/nick_photo_2.jpg" alt="">
-                    <h3 class="nick-newhouse">Nick Newhouse</h3>
-                </div>
-                <p class="about-column">
-                    Like many others, Nick's music education began with piano, guitar, and drum lessons. 
-                    But his love for music making began in earnest at Brown University where he majored in both Computer Music and Computer Science. 
-                    After Brown, he began his 10+ year music career by composing for ads at The Music Playground in Lower Manhattan.
-                    He's since released music with independent record labels such as Tiny Waves, Mad Zoo, New Dawn Collective, & Materia Music, and has DJed events around the country.
-                    <br>
-                    <br>
-                    Nick and his wife have put down roots in Park Slope where they've very recently started a family together
-                    (their 5-month-old is already the proud owner of the Fisher-Price Mix and Learn DJ Table). 
-                </p>
-                <img class="show-photo" src="./images/nick_show_photo_1.jpg" alt="">
-                <img class="show-photo" src="./images/nick_cg.JPG" alt="">
+            <div class="track-info-wrapper">
+                <h4 id="track-info" class="fade"></h4>
             </div>
             
-            <div class="section-subtitle">
-                press play to hear a selection of Nick's work
-                <br>
-            </div>
-            <div id="youtube-embeds" class="video-wrapper">
-                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/98y17lryUfo"></iframe>
-                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TyTszv6MUak"></iframe>
-                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TNQ-8PznXTI"></iframe>
-                <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/PcdMoJpaNP0"></iframe>
-            </div>
-            <h2 style="text-align: center">Testimonials</h2>
-            <div class="testimonial-wrapper">
-                <div class="testimonial">
-                    "Nick strikes that hard-to-find balance between teaching highly technical skills 
-                    and inspiring creative thinking. By the end of our first lesson, we'd transformed 
-                    my vocals into a voice-synth. Nick knew exactly how to connect my passion for singing 
-                    with a specific technical production skill. It's this knack for uncovering his students' 
-                    "why" that makes Nick’s style of teaching delightful and surprisingly personal. I highly 
-                    recommend Nick to anyone looking to advance their music production skills in order to 
-                    bring a creative vision to life."
-                    <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- Walter</div>
-                </div>
-                <div class="testimonial">
-                    "Learning from Nick elevated my production skills immediately. He’s great at breaking 
-                    down complex concepts and giving you simple tools. Not to mention never loses track of 
-                    the joy and fun in the process. Any aspiring musician / producer would be lucky to have 
-                    Nick helping them get to the next level."
-                    <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- David</div>
-                </div>
-                <div class="testimonial">
-                    “Nick is incredibly passionate, goes in depth with just about every topic we cover, and 
-                    persistently accommodates for any gaps in my knowledge. He always ensures that you are 
-                    getting where you need to be YOUR way, in YOUR style. He is also super friendly and fun. 
-                    My experience with Nick so far has been excellent!”
-                    <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- Elijah</div>
-                </div>
-            </div>
-            <p style="margin-top: 15px">We're happy to answer any questions you may have. 
-                <br>
-                Reach out below to schedule a call!
-            </p>
-            <a onClick="sendEmail();" class="button contact">Contact</a>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
         </div>
-    </main>
 
-    <ul class="social-icons">
-        <a target="_blank" title="Instagram" href="http://www.instagram.com/oddharmonicsbk">
-            <img class="instagram" src="images/instagram.svg">
-        </a>
-    </ul>
-</div>
+        <footer class="social-icons">
+            <a target="_blank" title="Instagram" href="http://www.instagram.com/oddharmonicsbk">
+                <img class="instagram" src="images/instagram.svg" alt="instagram logo svg">
+            </a>
+        </footer>
+    </div>
 
-<script src="js/site.js"></script>
+    <script src="js/site.js"></script>
 
 </body>
 </html>

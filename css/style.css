@@ -83,6 +83,11 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, blockquote, th, 
     padding: 0;
 }
 
+html {
+    scroll-padding-top: 50px; /* Adjust based on your nav height */
+    scroll-behavior: smooth;  /* Enables smooth scrolling */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -92,6 +97,12 @@ body {
     font-size:20px;
     font-weight:normal;
     color:var(--p-color);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 p {
@@ -133,6 +144,37 @@ iframe {
     -webkit-animation: scroll-left 7s linear infinite alternate;
     animation: scroll-left 7s linear infinite alternate;
 
+}
+
+nav {  
+    position: fixed; 
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+nav a { 
+    color: var(--white-color); 
+    margin: 10px; 
+    text-decoration: none; 
+    font-size: 18px;
+}
+
+.nav-links {
+    display: flex;
+    align-self: flex-end;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
 }
 
 .playback-button-wrapper {
@@ -211,6 +253,10 @@ iframe {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.profile {
+    margin-bottom: 10px;
 }
 
 .video-wrapper {
@@ -298,11 +344,6 @@ iframe {
     }
 }
 
-.canvas-wrapper {
-    position: fixed;
-    z-index: -2;
-}
-
 .contact {
     align-self: center;
     justify-self: center;
@@ -310,28 +351,37 @@ iframe {
     text-decoration: none;
 }
 
+.address {
+    padding: 10px;
+    font-size: 16px;
+    min-width: fit-content;
+    text-align: center;
+}
+
 .divider {
     background: var(--primary-color);
     align-self: center;
     opacity: 0.7;
     max-width: 75%;
-    min-width: 50%;
+    min-width: 60%;
     height: 2px;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.nick-newhouse {
+figcaption {
+    font-weight: bold;
     font-style: italic;
     font-size: 20px;
+    font-family: var(--headers-font-family);
 }
 
 /* Rows and Columns */
 
 @media screen and (min-width: 700px) {
-    .about-column {
-       max-width: 73%;
-    }
+    /* .about-column {
+       max-width: 80%;
+    } */
 
     .social-icons {
         right: 10px;
@@ -346,26 +396,9 @@ iframe {
         font-size:30px;
         text-decoration: underline;
     }
-
-    .section-title {
-        font-size: 39px; 
-    }
-
-    .soundcloud {
-        width: 35px;
-        margin-top: -2px;
-    }
     
-    .spotify, .bandcamp, .instagram {
+    .instagram {
         width: 23px;
-    }
-    
-    .tiktok {
-        width: 20px;
-    }
-    
-    .youtube {
-        width: 27px;
     }
 
     .show-photo {
@@ -418,7 +451,6 @@ iframe {
 
     p {
         max-width: 95%;
-        font-size: 16px;
     }
 
     .nick-newhouse {
@@ -433,14 +465,43 @@ iframe {
 
     .testimonial-wrapper {
         flex-direction: column;
+        margin-bottom: 5px;
     }
 
     .testimonial {
         margin-bottom: 0px;
     }
+
+    nav {
+        background: none;
+        justify-content: flex-end;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.85);
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+        padding-right: 10px;
+        z-index: 3;
+    }
 }
 
 .row {
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
@@ -513,6 +574,10 @@ iframe {
     opacity: 0.5;
 }
 
+a {
+    color: var(--white-color);
+}
+
 .social-icons a {
     height: 100%;
     padding: 2px;
@@ -554,12 +619,14 @@ a:hover {
     min-width: 100%;
     min-height: 100%;
     transform: translateX(calc((100% - 100vw) / 2));
+    z-index: -1;
 }
 
 .oh-graphic {
     width: 60%;
     align-self: center;
     z-index: 1;
+    padding-top: 50px;
 }
 
 .image-center {
@@ -586,10 +653,14 @@ a img:hover {
 
 h1 {
     width: fit-content;
+    align-self: center;
+    text-align: center;
     font-family: var(--headers-font-family);
-    font-size: 60px; 
+    font-size: 40px; 
     font-weight:300;
+    max-width: 70%;
     color:var(--p-color);
+    margin: 15px;
 }
 
 h3 {
@@ -617,12 +688,6 @@ h4 {
 }
 
 /* Section Headings */
-
-.section-subtitle {
-    padding-top: 0;
-    align-self: flex-end;
-    text-shadow: #10003c 1px 0 3px;
-}
 
 .section-heading h3 {
     display: flex;
@@ -707,7 +772,8 @@ h4 {
 
     /*-----------------Typography-----------------*/
     h1 {
-        font-size: 38px;
+        font-size: 34px;
+        min-width: 95%;
     }
 
     h2 {
@@ -725,6 +791,7 @@ h4 {
 
     .oh-graphic {
         width: 100%;
+        padding-top: 0px;
     }
 
 }
@@ -751,6 +818,10 @@ h2 {
     font-family: var(--headers-font-family);
     font-size: 26px;
     font-weight:300;
+    padding-top: 0;
+    margin-right: 10px;
+    align-self: flex-end;
+    text-shadow: #10003c 1px 0 3px;
 }
 
 h3 {

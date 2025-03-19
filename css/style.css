@@ -459,6 +459,14 @@ figcaption {
         padding-bottom: 10px;
     }
 
+    .profile {
+        flex-direction: column;
+    }
+
+    figure {
+        margin-bottom: 10px;
+    }
+
     .show-photo {
         width: 90%;
         height: auto;

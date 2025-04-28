@@ -76,6 +76,19 @@
   
     --headers-font-family:           "Chakra Petch", serif;  
     --body-font-family:              basier;
+    --error:                      #F44336;
+
+    --primary-light: #04dd00af;
+    --primary-dark: #00BFA5;
+    --bg-dark: rgba(18, 18, 18, 0.8);
+    --bg-darker: rgba(10, 10, 10, 0.9);
+    --text: #E0E0E0;
+    --text-light: #AAAAAA;
+    --error: #FF5252;
+    --success: #69F0AE;
+    --card-bg: rgba(30, 30, 30, 0.7);
+    --input-bg: rgba(45, 45, 45, 0.8);
+    --border: rgba(100, 100, 100, 0.3);
   }
 
 div, dl, dt, dd, figure, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, blockquote, th, td {
@@ -119,11 +132,6 @@ iframe {
 .fade {
     transition: opacity 0.7s ease-in-out;
     opacity: 1;
-}
-
-#wrapper {
-    padding: 8px 0;
-    position: relative;
 }
 
 .track-info-wrapper {
@@ -407,6 +415,7 @@ figcaption {
         width: auto;
         height: 300px;
         padding: 10px;
+        border-radius: 15px;
     }
 
     .testimonial-wrapper {
@@ -418,10 +427,27 @@ figcaption {
         margin: 15px;
         max-width: 30%;
     }
+
+    .carousel-container {
+        width: 40%;
+        max-width: 800px;
+    }
+
+    .nav-prev {
+        left: 0;
+    }
+    
+    .nav-next {
+        right: 0;
+    }
+
+    .registration-form {
+        width: 80%
+    }
 }
 
 @media screen and (max-width: 700px) {
-    .row {
+    #content {
        max-width: 95%;
     }
 
@@ -471,6 +497,7 @@ figcaption {
         width: 90%;
         height: auto;
         padding: 10px;
+        border-radius: 15px;
     }
 
     .testimonial-wrapper {
@@ -507,9 +534,42 @@ figcaption {
         padding-right: 10px;
         z-index: 3;
     }
+
+    .pricing-cards {
+        flex-direction: column;
+    }
+
+    .carousel-container {
+        width: 90%;
+    }
+
+    .registration-container {
+        flex-direction: column;
+    }
+    
+    .form-fields, .dates-cart {
+        width: 100%;
+    }
+    
+    .form-group {
+        max-width: 100%;
+    }
+
+    .registration-form {
+        margin: 0;
+        width: 90%
+    }
+
+    .nav-prev {
+        left: -15px;
+    }
+    
+    .nav-next {
+        right: -15px;
+    }
 }
 
-.row {
+#content {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -542,10 +602,6 @@ figcaption {
     position: absolute !important;
 }
 
-#header .row {
-    padding: 0;
-}
-
 #header aside {
     text-align: right;
 }
@@ -563,6 +619,7 @@ figcaption {
 .button {
     font-size: 16px;
     padding: 11px 16px;
+    border-radius: 10px;
     -webkit-transition: all .3s linear;
     -moz-transition: all .3s linear;
     transition: all .3s linear;
@@ -634,7 +691,7 @@ a:hover {
 
 .oh-graphic {
     width: 60%;
-    max-width: 800px;
+    max-width: 600px;
     align-self: center;
     z-index: 1;
     padding-top: 50px;
@@ -737,10 +794,6 @@ h4 {
     clear: both;
 }
 
-#landing-footer .row {
-    padding: 0;
-}
-
 #landing-footer p {
     margin: 0;
 }
@@ -765,20 +818,12 @@ h4 {
 ===============================*/
 @media (max-width: 700px) {
 
-    .row {
+    #content {
         padding: 0px 15px 0 15px !important;
-    }
-
-    #header .row {
-        padding: 0 15px !important;
     }
 
     #header ul.social-icons {
         margin-top: 0;
-    }
-
-    #banner-content.row {
-        padding-top: 10px !important;
     }
 
     /*-----------------Typography-----------------*/
@@ -801,8 +846,8 @@ h4 {
     }
 
     .oh-graphic {
-        width: 100%;
-        padding-top: 0px;
+        width: 90%;
+        padding-top: 20px;
     }
 
 }
@@ -815,6 +860,7 @@ h2 {
     font-weight: 500;
     color:var(--p-color);
     margin-bottom: 5px;
+    text-align: center;
 }
 
 /* Section Title and Subtitle */
@@ -895,4 +941,517 @@ h4 {
 
 #landing-footer i:hover {
     color: var(--primary-color);
+}
+
+/* IMAGE CAROUSEL */
+
+.carousel-container {
+    margin: 0 auto;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Updated to 4:3 aspect ratio using padding trick */
+.carousel {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* 4:3 Aspect Ratio (height / width = 0.75) */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.carousel-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Optional navigation dots */
+.carousel-dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: var(--primary-color);
+}
+
+.pricing-container {
+    max-width: 800px;
+}
+
+.pricing-cards {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px;
+    min-width: 180px;
+    text-align: center;
+}
+
+.pricing-card.highlight {
+    border: 2px solid var(--primary-color);
+}
+
+.pricing-title {
+    font-size: 1.6rem;
+    font-family: var(--headers-font-family);
+    color: var(--white-color);
+}
+
+.pricing-rate {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--grey-color);
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.pricing-subtext {
+    font-size: 0.9rem;
+    color: var(--white-color);
+    font-weight: bold;
+}
+
+/* Camp Registration */
+
+.calendar-container {
+    border-radius: 8px;
+    width: 100%;
+}
+
+.month-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.month-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white-color);
+}
+
+.nav-btn {
+    background-color: rgba(100, 255, 218, 0.2);
+    color: var(--white-color);
+    border: 1px solid var(--dark-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.calendar-weeks {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 15px;
+    scrollbar-width: thin;
+    transition: opacity 0.3s ease;
+}
+
+.calendar-weeks::-webkit-scrollbar {
+    height: 6px;
+}
+
+.calendar-weeks::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.calendar-weeks::-webkit-scrollbar-thumb {
+    background-color: var(--dark-color);
+    border-radius: 3px;
+}
+
+.week {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    width: 280px;
+    border: 1px solid var(--border);
+}
+
+.week-header {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.day {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: var(--input-bg);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.day-date {
+    font-weight: bold;
+    color: var(--primary-light);
+}
+
+.non-camp-day {
+    background-color: rgba(50, 50, 50, 0.5);
+    color: var(--text-light);
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+}
+
+.option-btn {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--input-bg);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--body-font-family);
+}
+
+.option-btn:hover {
+    background-color: var(--primary-light);
+    border-color: var(--dark-color);
+}
+
+.option-btn.selected {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--dark-color);
+}
+
+#registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form {
+    background-color: var(--bg-dark);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.form-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+    border-color: var(--dark-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.registration-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-fields {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.dates-cart {
+    flex: 1;
+    min-width: 300px;
+}
+
+.children-container {
+    margin-bottom: 15px;
+}
+
+.child-entry {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.child-entry input {
+    flex: 1;
+}
+
+.remove-child {
+    background-color: rgba(255, 82, 82, 0.2);
+    color: var(--error);
+    border: 1px solid var(--error);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.remove-child:hover {
+    background-color: rgba(255, 82, 82, 0.4);
+}
+
+.add-child {
+    background-color: rgba(100, 255, 218, 0.2);
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.2s;
+}
+
+.add-child:hover {
+    background-color: rgba(100, 255, 218, 0.4);
+}
+
+.selected-dates {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.selected-dates ul {
+    list-style-type: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 15px;
+    background-color: var(--input-bg);
+}
+
+.selected-dates li {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.selected-dates li:last-child {
+    border-bottom: none;
+}
+
+.selected-dates li.total-days {
+    margin-top: 10px;
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+.clear-option, .clear-all {
+    background: none;
+    border: none;
+    color: var(--error);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    font-size: 0.9rem;
+}
+
+.form-submit-btn {
+    width: fit-content;
+    align-self: center;
+}
+
+.clear-option:hover, .clear-all:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.alert {
+    margin: 20px;
+    border-radius: 8px;
+    display: none;
+    text-align: center;
+}
+
+.alert-success {
+    color: var(--primary-color);
+}
+
+.alert-error {
+    background-color: rgba(255, 82, 82, 0.1);
+    color: var(--error);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Animation classes */
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fade-in {
+    opacity: 1;
+    animation: fadeIn 0.5s;
+}
+
+.horizontal-scroll-calendar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    scrollbar-width: thin; /* For Firefox */
+}
+
+.calendar-navigation {
+    position: relative;
+    width: 100%;
+}
+
+.nav-chevron {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(30, 30, 30, 0);
+    color: var(--white-color);
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    font-size: 50px;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.nav-chevron:hover {
+    color: var(--primary-color)
+}
+
+.week {
+    flex: 0 0 auto;
+    width: 280px;
+    margin-right: 15px;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Style the scrollbar for webkit browsers */
+.horizontal-scroll-calendar::-webkit-scrollbar {
+    height: 8px;
+}
+
+.horizontal-scroll-calendar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.horizontal-scroll-calendar::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

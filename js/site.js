@@ -451,8 +451,8 @@ function submitToGoogleSheet(data) {
                 })
                 .then(verification => {
                     if (verification.verified) {
-                        console.log("Registration verified with ID:", verification.id);
-                        successAlert.textContent = "Your requested dates have been received! We'll be in touch soon.";
+                        console.log("Request verified with ID:", verification.id);
+                        successAlert.textContent = "Your request has been received! We manually review each request and will confirm via e-mail within 24 hours.";
                         successAlert.style.display = 'block';
                         errorAlert.style.display = 'none';
                         
@@ -468,13 +468,13 @@ function submitToGoogleSheet(data) {
                         
                     } else {
                         console.error("Verification failed:", verification.reason);
-                        errorAlert.textContent = "Your registration may not have been received. Please try again or contact us directly.";
+                        errorAlert.textContent = "Your request may not have been received. Please try again or contact us directly.";
                         errorAlert.style.display = 'block';
                     }
                 })
                 .catch(error => {
                     console.error("Verification error:", error);
-                    errorAlert.textContent = "We couldn't confirm your registration. Please contact us to ensure your spot is reserved.";
+                    errorAlert.textContent = "We couldn't confirm your request. Please contact us to ensure your spot is reserved.";
                     errorAlert.style.display = 'block';
                 })
                 .finally(() => {
@@ -486,7 +486,7 @@ function submitToGoogleSheet(data) {
     })
     .catch(error => {
         console.error("Submission error:", error);
-        errorAlert.textContent = 'There was an error submitting your registration. Please try again or contact us.';
+        errorAlert.textContent = 'There was an error submitting your request. Please try again or contact us.';
         errorAlert.style.display = 'block';
         
         // Reset button

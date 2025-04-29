@@ -291,7 +291,7 @@ nav a {
     justify-content: center;
 }
 
-#nick-pic {
+ .circular-pic {
     max-width: 250px;
     max-height: 250px;
     border-radius: 50%;
@@ -389,9 +389,10 @@ figcaption {
 /* Rows and Columns */
 
 @media screen and (min-width: 700px) {
-    /* .about-column {
+    #workshops {
        max-width: 80%;
-    } */
+       align-self: center;  
+    }
 
     .social-icons {
         right: 10px;
@@ -849,7 +850,6 @@ h4 {
         width: 90%;
         padding-top: 20px;
     }
-
 }
 
 /*------------------------------------------------------------------------------------------*/

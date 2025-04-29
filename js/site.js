@@ -466,7 +466,6 @@ function submitToGoogleSheet(data) {
                             btn.classList.remove('selected');
                         });
                         
-                        registrationForm.scrollIntoView();
                     } else {
                         console.error("Verification failed:", verification.reason);
                         errorAlert.textContent = "Your registration may not have been received. Please try again or contact us directly.";

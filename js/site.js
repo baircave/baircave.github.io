@@ -311,71 +311,29 @@ function updateSelectedDatesDisplay() {
     noDatesMsgElem.classList.add('hidden');
     selectedDatesList.classList.remove('hidden');
     
-    // Count half days and full days
-    let halfDayCount = 0;
-    let fullDayCount = 0;
-    
     dates.forEach(date => {
         const option = selectedDates[date];
-        if (option === 'half') {
-            halfDayCount++;
-        } else {
-            fullDayCount++;
-        }
+        const li = document.createElement('li');
+        const formattedDate = parseAndFormatDate(date);
+        
+        li.innerHTML = `
+            <span><strong>${formattedDate}</strong> - 
+            ${option === 'half' ? 'Half Day' : 'Full Day'}</span>
+            <button type="button" class="remove-date" data-date="${date}">✕</button>
+        `;
+        
+        selectedDatesList.appendChild(li);
     });
     
-    // Create summary entries
-    if (halfDayCount > 0) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <span>Half Day × ${halfDayCount}</span>
-            <button type="button" class="clear-option" data-option="half">Clear</button>
-        `;
-        selectedDatesList.appendChild(li);
-    }
-    
-    if (fullDayCount > 0) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <span>Full Day × ${fullDayCount}</span>
-            <button type="button" class="clear-option" data-option="full">Clear</button>
-        `;
-        selectedDatesList.appendChild(li);
-    }
-    
-    // Add a total days count
-    const totalLi = document.createElement('li');
-    totalLi.className = 'total-days';
-    totalLi.innerHTML = `
-        <span>Total Days: ${dates.length}</span>
-        <button type="button" class="clear-all">Clear all</button>
-    `;
-    selectedDatesList.appendChild(totalLi);
-    
-    // Add event listeners to clear buttons
-    document.querySelector('.clear-all').addEventListener('click', function() {
-        // Clear all selected dates
-        dates.forEach(date => {
-            document.querySelectorAll(`.option-btn[data-date="${date}"]`).forEach(button => {
-                button.classList.remove('selected');
-            });
-        });
-        selectedDates = {};
-        updateSelectedDatesDisplay();
-    });
-    
-    document.querySelectorAll('.clear-option').forEach(btn => {
+    // Add event listeners to remove buttons
+    document.querySelectorAll('.remove-date').forEach(btn => {
         btn.addEventListener('click', function() {
-            const optionToClear = this.getAttribute('data-option');
+            const dateToRemove = this.getAttribute('data-date');
+            delete selectedDates[dateToRemove];
             
-            // Clear all dates with this option
-            dates.forEach(date => {
-                if (selectedDates[date] === optionToClear) {
-                    delete selectedDates[date];
-                    document.querySelectorAll(`.option-btn[data-date="${date}"][data-option="${optionToClear}"]`).forEach(button => {
-                        button.classList.remove('selected');
-                    });
-                }
+            // Find and unselect the corresponding button in the calendar
+            document.querySelectorAll(`.option-btn[data-date="${dateToRemove}"]`).forEach(button => {
+                button.classList.remove('selected');
             });
             
             updateSelectedDatesDisplay();

@@ -1320,12 +1320,12 @@ input[type="number"]:focus {
     list-style-type: none;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 15px;
     background-color: var(--input-bg);
 }
 
 .selected-dates li {
     padding: 12px;
+    font-size: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1340,6 +1340,14 @@ input[type="number"]:focus {
     margin-top: 10px;
     padding-top: 15px;
     font-weight: bold;
+}
+
+.remove-date {
+    background: none;
+    border: none;
+    color: var(--error);
+    font-style: bold;
+    font-size: large;
 }
 
 .clear-option, .clear-all {

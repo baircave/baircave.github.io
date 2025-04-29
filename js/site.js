@@ -163,28 +163,7 @@ function toggleMenu() {
 			menu.style.display = "flex";
 		}
 	}
-    // menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
-
-// spacebar play pause
-// document.body.onkeyup = function(e) {
-// 	if (e.key == " " ||
-// 		e.code == "Space" ||      
-// 		e.keyCode == 32      
-// 	) {
-// 	    e.preventDefault();
-// 	    playPause();
-// 	}
-// }
-
-// document.body.onkeydown = function(e) {
-// 	if (e.key == " " ||
-// 		e.code == "Space" ||      
-// 		e.keyCode == 32      
-// 	) {
-// 	    e.preventDefault();
-// 	}
-// }
 
 trackTitle.innerHTML = trackTitles[currentTrack];
 
@@ -463,6 +442,7 @@ function submitToGoogleSheet(data) {
     
     // Format data for submission
     const formattedData = {
+		referrer: window.location.hostname,
         timestamp: new Date().toISOString(),
         parentInfo: {
             name: data.parentName,
@@ -514,7 +494,7 @@ function submitToGoogleSheet(data) {
                 .then(verification => {
                     if (verification.verified) {
                         console.log("Registration verified with ID:", verification.id);
-                        successAlert.textContent = "Registration confirmed! We'll be in touch soon.";
+                        successAlert.textContent = "Your requested dates have been received! We'll be in touch soon.";
                         successAlert.style.display = 'block';
                         errorAlert.style.display = 'none';
                         

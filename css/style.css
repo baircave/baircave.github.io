@@ -181,6 +181,7 @@ nav a {
 .menu-toggle {
     display: none;
     font-size: 32px;
+    font-weight: 600;
     cursor: pointer;
     color: white;
 }

@@ -571,6 +571,26 @@ figcaption {
     }
 }
 
+@media (hover: none) {
+    .option-btn:hover {
+      background-color: transparent !important;
+      border-color: var(--border) !important;
+      color: var(--text) !important;
+    }
+    
+    .option-btn.selected {
+      background-color: var(--primary-color) !important;
+      color: var(--white-color) !important;
+      border-color: var(--primary) !important;
+    }
+    
+    .option-btn:active,
+    .option-btn:focus {
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+}
+
 #content {
     display: flex;
     flex-direction: column;
@@ -1192,7 +1212,6 @@ h4 {
 .option-btn.selected {
     background-color: var(--primary-color);
     color: var(--white-color);
-    border-color: var(--dark-color);
 }
 
 #registration-form {

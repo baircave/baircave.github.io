@@ -1454,6 +1454,17 @@ input[type="number"]:focus {
     padding: 20px;
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
     scrollbar-width: thin; /* For Firefox */
+
+    ::-webkit-scrollbar {
+        display: none;
+      }
+      
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    
+    /* Ensure the scrolling behavior is preserved */
+    overflow-x: auto;
 }
 
 .calendar-navigation {
@@ -1492,6 +1503,7 @@ input[type="number"]:focus {
 
 /* Style the scrollbar for webkit browsers */
 .horizontal-scroll-calendar::-webkit-scrollbar {
+    display: none;
     height: 8px;
 }
 

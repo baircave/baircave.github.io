@@ -1521,3 +1521,45 @@ input[type="number"]:focus {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+/* Newsletter Form Styles */
+.newsletter-form {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.newsletter-form .form-group {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.newsletter-form .button {
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 700px) {
+    .newsletter-form .form-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-form .button {
+        align-self: center;
+    }
+}

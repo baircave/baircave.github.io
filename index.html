@@ -1019,6 +1019,28 @@
                 </div>
             </section>
 
+            <section id="newsletter">
+                <h2>Stay Updated</h2>
+                <p>Join our newsletter to receive updates about upcoming workshops, camps, and special events.</p>
+                
+                <div class="newsletter-form">
+                    <form id="email-signup-form">
+                        <div class="form-group">
+                            <input type="email" id="signup-email" name="email" placeholder="Your email address" required>
+                            <button type="submit" class="button">Subscribe</button>
+                        </div>
+                    </form>
+                    <div id="newsletter-success" class="alert alert-success" style="display: none;">
+                        Thanks for subscribing! We'll be in touch soon with exciting updates.
+                    </div>
+                    <div id="newsletter-error" class="alert alert-error" style="display: none;">
+                        There was an error with your subscription. Please try again.
+                    </div>
+                </div>
+            </section>
+            
+            <div class="divider"></div>
+
             <section id="contact">
                 <h2>Contact Information</h2>
                 <address class="address">
@@ -1028,8 +1050,6 @@
                     Email: <a href="mailto:nick@oddharmonics.studio">nick@oddharmonics.studio</a><br>
                     Phone: <a href="tel:+12036446928">(203) 644-6928</a><br>
                     </address>                    
-                <p style="margin-top: 15px">We're happy to answer any and all questions you may have! Reach out via e-mail or phone and we'll respond as soon as possible.
-                </p>
                 <script>
                     function sendEmail() 
                     {

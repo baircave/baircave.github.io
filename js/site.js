@@ -580,3 +580,81 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 });
+
+// Newsletter signup functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const emailSignupForm = document.getElementById('email-signup-form');
+    const successAlert = document.getElementById('newsletter-success');
+    const errorAlert = document.getElementById('newsletter-error');
+
+    if(emailSignupForm) {
+        emailSignupForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Hide any existing alerts
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+            
+            // Get the email input value
+            const emailInput = document.getElementById('signup-email');
+            const email = emailInput.value.trim();
+            
+            // Validate the email
+            if (!email || !isValidEmail(email)) {
+                errorAlert.textContent = 'Please enter a valid email address.';
+                errorAlert.style.display = 'block';
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = emailSignupForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Subscribing...';
+            submitBtn.disabled = true;
+            
+            // Format data for submission
+            const formData = {
+                email: email,
+                source: 'website_newsletter',
+                timestamp: new Date().toISOString(),
+                referrer: window.location.hostname
+            };
+            
+            // Replace with your Google Apps Script Web App URL for newsletter
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyl2kZe52iPa1QDbX8Vj7qFQ1p0wuxUcWOJrtxg8jZV_1VCMOIjNdBTQjwNoqJM38guBw/exec';
+            
+            // Submit the form data
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'no-cors'
+            })
+            .then(() => {
+                // Show success message
+                successAlert.style.display = 'block';
+                
+                // Reset form
+                emailSignupForm.reset();
+            })
+            .catch(error => {
+                console.error("Submission error:", error);
+                errorAlert.textContent = 'There was an error processing your subscription. Please try again.';
+                errorAlert.style.display = 'block';
+            })
+            .finally(() => {
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+    
+    // Email validation helper function
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+});

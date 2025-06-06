@@ -966,29 +966,28 @@ h4 {
 
 /* IMAGE CAROUSEL */
 
+/* IMAGE CAROUSEL - Simplified for per-carousel aspect ratios */
+
 .carousel-container {
     margin: 0 auto;
+    margin-top: 15px;
     padding-bottom: 20px;
     box-sizing: border-box;
     position: relative;
 }
 
-/* Updated to 4:3 aspect ratio using padding trick */
+/* Remove fixed aspect ratio - let first image determine height */
 .carousel {
     position: relative;
     width: 100%;
-    padding-bottom: 75%; /* 4:3 Aspect Ratio (height / width = 0.75) */
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .carousel-slides {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
 }
 
 .slide {
@@ -996,19 +995,19 @@ h4 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
 .slide.active {
     opacity: 1;
+    position: relative; /* Active slide determines container height */
 }
 
 .slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* Let images maintain their natural aspect ratio */
+    display: block;
 }
 
 /* Optional navigation dots */
@@ -1525,7 +1524,7 @@ input[type="number"]:focus {
 /* Newsletter Form Styles */
 .newsletter-form {
     max-width: 500px;
-    margin: 20px auto;
+    margin-top: 20px;
 }
 
 .newsletter-form .form-group {

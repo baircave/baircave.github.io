@@ -188,54 +188,194 @@ navigator.mediaSession.setActionHandler('nexttrack', () => nextTrack());
 
 // Image carousel animation
 
+class Carousel {
+    constructor(container, options = {}) {
+        // Store DOM elements
+        this.container = container;
+        this.slides = container.querySelectorAll('.slide');
+        this.dots = container.querySelectorAll('.dot');
+        
+        // Setup options with defaults
+        this.options = Object.assign({
+            interval: options.interval || 5000,
+            autoplay: options.autoplay !== undefined ? options.autoplay : true
+        }, options);
+        
+        // State
+        this.currentSlide = 0;
+        this.slideTimer = null;
+        this.sliding = false;
+        
+        // Initialize
+        this.init();
+    }
+    
+    /**
+     * Initialize the carousel
+     */
+    init() {
+        // Show the first slide
+        this.showSlide(this.currentSlide);
+        
+        // Set up dot navigation
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                if (this.sliding) return;
+                this.currentSlide = index;
+                this.showSlide(this.currentSlide);
+                this.resetTimer();
+            });
+        });
+        
+        // Preload lazy images if any
+        this.preloadLazyImages();
+        
+        // Set up autoplay if enabled
+        if (this.options.autoplay) {
+            this.startTimer();
+        }
+        
+        // Setup swipe events for mobile
+        this.setupSwipeEvents();
+    }
+    
+    /**
+     * Preload lazy images
+     */
+    preloadLazyImages() {
+        this.slides.forEach(slide => {
+            const lazyImage = slide.querySelector('img[data-src]');
+            if (lazyImage) {
+                lazyImage.src = lazyImage.getAttribute('data-src');
+                lazyImage.removeAttribute('data-src');
+            }
+        });
+    }
+    
+    /**
+     * Show a specific slide
+     */
+    showSlide(index) {
+        // Prevent additional clicks during transition
+        this.sliding = true;
+        
+        // Hide all slides
+        this.slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // Remove active state from all dots
+        this.dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        // Show the current slide and dot
+        this.slides[index].classList.add('active');
+        this.dots[index].classList.add('active');
+        
+        // Allow interactions after a brief delay
+        setTimeout(() => {
+            this.sliding = false;
+        }, 200);
+    }
+    
+    /**
+     * Advance to the next slide
+     */
+    nextSlide() {
+        if (this.sliding) return;
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.showSlide(this.currentSlide);
+    }
+    
+    /**
+     * Go to the previous slide
+     */
+    prevSlide() {
+        if (this.sliding) return;
+        this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.showSlide(this.currentSlide);
+    }
+    
+    /**
+     * Start the timer for autoplay
+     */
+    startTimer() {
+        this.slideTimer = setInterval(() => {
+            this.nextSlide();
+        }, this.options.interval);
+    }
+    
+    /**
+     * Reset the timer (used after manual navigation)
+     */
+    resetTimer() {
+        clearInterval(this.slideTimer);
+        if (this.options.autoplay) {
+            this.startTimer();
+        }
+    }
+    
+    /**
+     * Setup touch swipe events for mobile
+     */
+    setupSwipeEvents() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        this.container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        this.container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+    }
+    
+    /**
+     * Handle swipe events
+     */
+    handleSwipe(startX, endX) {
+        const threshold = 50; // Minimum swipe distance
+        
+        // Left swipe (next slide)
+        if (startX - endX > threshold) {
+            this.nextSlide();
+            this.resetTimer();
+        }
+        
+        // Right swipe (previous slide)
+        if (endX - startX > threshold) {
+            this.prevSlide();
+            this.resetTimer();
+        }
+    }
+}
+
+// Initialize all carousels on the page
 document.addEventListener('DOMContentLoaded', function() {
-	const slides = document.querySelectorAll('.slide');
-	const dots = document.querySelectorAll('.dot');
-	let currentSlide = 0;
-	
-	// Function to show a specific slide
-	function showSlide(n) {
-		// Hide all slides
-		slides.forEach(slide => {
-			slide.classList.remove('active');
-		});
-		
-		// Remove active state from all dots
-		dots.forEach(dot => {
-			dot.classList.remove('active');
-		});
-		
-		// Show the current slide and dot
-		slides[n].classList.add('active');
-		dots[n].classList.add('active');
-	}
-	
-	// Function to advance to the next slide
-	function nextSlide() {
-		currentSlide = (currentSlide + 1) % slides.length;
-		showSlide(currentSlide);
-	}
-	
-	// Set up dot navigation
-	dots.forEach((dot, index) => {
-		dot.addEventListener('click', () => {
-			currentSlide = index;
-			showSlide(currentSlide);
-			resetTimer(); // Reset timer when manually changing slides
-		});
-	});
-	
-	// Set up automatic slide advancement
-	let slideTimer = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-	
-	// Reset timer function
-	function resetTimer() {
-		clearInterval(slideTimer);
-		slideTimer = setInterval(nextSlide, 5000);
-	}
-	
-	// Initialize first slide
-	showSlide(currentSlide);
+    const carouselContainers = document.querySelectorAll('.carousel-container');
+    const carouselInstances = [];
+    
+    carouselContainers.forEach((container, index) => {
+        // Customize options per carousel if needed
+        const options = {
+            interval: 5000,  // 5 seconds between slides
+            autoplay: true   // Set to false to disable autoplay
+        };
+        
+        // Specific carousel customizations
+        if (container.classList.contains('studio-carousel')) {
+            options.interval = 6000; // Slightly longer interval for studio carousel
+        }
+        
+        // Create and store the carousel instance
+        const carousel = new Carousel(container, options);
+        carouselInstances.push(carousel);
+        
+        console.log(`Initialized carousel ${index}: ${container.className} with ${carousel.slides.length} slides`);
+    });
 });
 
 // Day Camp RSVP system

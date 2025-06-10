@@ -1562,3 +1562,203 @@ input[type="number"]:focus {
         align-self: center;
     }
 }
+
+.workshop-registration-form {
+    background-color: var(--bg-dark);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.workshop-registration-form h4 {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Desktop layout - two column arrangement */
+@media screen and (min-width: 701px) {
+    .workshop-registration-form .form-section {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+    }
+    
+    .dates-column {
+        flex: 1;
+        min-width: 300px;
+    }
+    
+    .info-column {
+        flex: 1;
+        min-width: 300px;
+    }
+    
+    .workshop-dates {
+        margin-bottom: 0;
+    }
+}
+
+.workshop-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.workshop-date-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workshop-date-info {
+    flex: 1;
+    text-align: left;
+}
+
+.workshop-date-header {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+    font-family: var(--headers-font-family);
+}
+
+.workshop-details {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.workshop-checkbox {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.workshop-checkbox input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.workshop-registration-form .form-section {
+    margin-bottom: 25px;
+}
+
+.workshop-registration-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.workshop-registration-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text);
+    text-align: left;
+}
+
+.workshop-registration-form input[type="text"],
+.workshop-registration-form input[type="email"],
+.workshop-registration-form input[type="number"],
+.workshop-registration-form select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.workshop-registration-form input:focus,
+.workshop-registration-form select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.workshop-registration-form select {
+    cursor: pointer;
+}
+
+.workshop-registration-form select option {
+    background-color: var(--input-bg);
+    color: var(--text);
+}
+
+.workshop-registration-form .form-submit-btn {
+    margin: 20px auto 0;
+    display: block;
+}
+
+/* Secret dates styling */
+.secret-date {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.secret-date.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.secret-date .workshop-date-header {
+    color: #FFD700; /* Gold color for secret dates */
+}
+
+.secret-date .workshop-details {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.secret-message {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.secret-message.revealed {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Mobile layout - keep same horizontal layout */
+@media screen and (max-width: 700px) {
+    .workshop-registration-form {
+        margin: 20px auto;
+        padding: 15px;
+    }
+    
+    .workshop-registration-form input[type="text"],
+    .workshop-registration-form input[type="email"],
+    .workshop-registration-form input[type="number"],
+    .workshop-registration-form select {
+        width: 95%;
+    }
+}

@@ -165,6 +165,33 @@ function toggleMenu() {
 	}
 }
 
+// Animated submitting text function
+function startSubmittingAnimation(button, originalText) {
+    let dotCount = 0;
+    const baseText = 'Submitting';
+    
+    const animationInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4; // Cycle through 0, 1, 2, 3 dots
+        const dots = '.'.repeat(dotCount);
+        button.textContent = baseText + dots;
+    }, 500); // Change every 500ms
+    
+    // Store the interval ID on the button so we can clear it later
+    button.animationInterval = animationInterval;
+}
+
+function stopSubmittingAnimation(button, originalText) {
+    // Clear the animation interval
+    if (button.animationInterval) {
+        clearInterval(button.animationInterval);
+        button.animationInterval = null;
+    }
+    
+    // Reset button text and state
+    button.textContent = originalText;
+    button.disabled = false;
+}
+
 trackTitle.innerHTML = trackTitles[currentTrack];
 
 audio.onended = () => nextTrack();
@@ -528,18 +555,17 @@ function validateForm() {
 
 // Submit data to Google Sheet
 function submitToGoogleSheet(data) {
-    // Replace with your Google Apps Script Web App URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbx7wMdUS7Oevjd1ETUFjyMu_8-fFbmcSQhwnZurq8HcAEq4lsn7vQPpnHKrxyzwR6xgrA/exec';
     
-    // Show loading state
+    // Show animated loading state
     const submitBtn = document.querySelector('.form-submit-btn');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Submitting...';
     submitBtn.disabled = true;
+    startSubmittingAnimation(submitBtn, originalText);
     
     // Format data for submission
     const formattedData = {
-		referrer: window.location.hostname,
+        referrer: "oddharmonics.studio",
         timestamp: new Date().toISOString(),
         parentInfo: {
             name: data.parentName,
@@ -563,7 +589,7 @@ function submitToGoogleSheet(data) {
     });
     
     // Submit the form data with no-cors
-	console.log(formattedData);
+    console.log(formattedData);
     fetch(scriptURL, {
         method: 'POST',
         body: JSON.stringify(formattedData),
@@ -617,9 +643,8 @@ function submitToGoogleSheet(data) {
                     errorAlert.style.display = 'block';
                 })
                 .finally(() => {
-                    // Reset button regardless of outcome
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
+                    // Stop animation and reset button
+                    stopSubmittingAnimation(submitBtn, originalText);
                 });
         }, 2000); // Wait 2 seconds before verification
     })
@@ -628,9 +653,8 @@ function submitToGoogleSheet(data) {
         errorAlert.textContent = 'There was an error submitting your request. Please try again or contact us.';
         errorAlert.style.display = 'block';
         
-        // Reset button
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+        // Stop animation and reset button
+        stopSubmittingAnimation(submitBtn, originalText);
     });
 }
 
@@ -748,15 +772,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show loading state
             const submitBtn = emailSignupForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Subscribing...';
             submitBtn.disabled = true;
+            startSubmittingAnimation(submitBtn, originalText);
             
             // Format data for submission
             const formData = {
                 email: email,
                 source: 'website_newsletter',
                 timestamp: new Date().toISOString(),
-                referrer: window.location.hostname
+                referrer: "oddharmonics.studio"
             };
             
             // Replace with your Google Apps Script Web App URL for newsletter
@@ -785,8 +809,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .finally(() => {
                 // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                stopSubmittingAnimation(submitBtn, originalText);
             });
         });
     }
@@ -899,14 +922,13 @@ function validateDJWorkshopForm() {
 
 // Submit DJ workshop data to Google Sheet
 function submitDJWorkshopToGoogleSheet(data, successAlert, errorAlert) {
-    // Replace with your Google Apps Script Web App URL for DJ workshops
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz4PehhpCJoCoqFsOYZBvR3roPsWiK4CsDyhjgaRQLBzSExzyyPQW3tlTMA2gw3MQ4C/exec';
     
-    // Show loading state
+    // Show animated loading state
     const submitBtn = document.querySelector('#dj-workshop-form .form-submit-btn');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Submitting...';
     submitBtn.disabled = true;
+    startSubmittingAnimation(submitBtn, originalText);
     
     // Get selected workshop dates
     const selectedDates = [];
@@ -919,7 +941,7 @@ function submitDJWorkshopToGoogleSheet(data, successAlert, errorAlert) {
     
     // Format data for submission - match camp form structure
     const formattedData = {
-        referrer: window.location.hostname,
+        referrer: "oddharmonics.studio",
         timestamp: new Date().toISOString(),
         contactEmail: data.contactEmail,
         participantName: data.participantName,
@@ -978,9 +1000,8 @@ function submitDJWorkshopToGoogleSheet(data, successAlert, errorAlert) {
                     errorAlert.style.display = 'block';
                 })
                 .finally(() => {
-                    // Reset button regardless of outcome
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
+                    // Stop animation and reset button
+                    stopSubmittingAnimation(submitBtn, originalText);
                 });
         }, 2000); // Wait 2 seconds before verification
     })
@@ -989,12 +1010,10 @@ function submitDJWorkshopToGoogleSheet(data, successAlert, errorAlert) {
         errorAlert.textContent = 'There was an error submitting your RSVP. Please try again or contact us.';
         errorAlert.style.display = 'block';
         
-        // Reset button
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+        // Stop animation and reset button
+        stopSubmittingAnimation(submitBtn, originalText);
     });
 }
-
 // Format workshop date for display
 function formatWorkshopDate(dateString) {
     const [year, month, day] = dateString.split('-');

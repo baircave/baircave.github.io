@@ -418,8 +418,11 @@ const errorAlert = document.getElementById('error-alert');
 
 // Initialize the form
 function init() {
-    // Add event listeners for date selection
-    document.querySelectorAll('.option-btn').forEach(btn => {
+    // Filter past dates first
+    filterPastDates();
+    
+    // Add event listeners for date selection (only for non-past dates)
+    document.querySelectorAll('.option-btn:not(.past-date)').forEach(btn => {
         btn.addEventListener('click', handleDateSelection);
     });
     
@@ -437,11 +440,52 @@ function parseAndFormatDate(dateString) {
     return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} (${dayNames[date.getDay()]})`;
 }
 
+function isDateInPast(dateString) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of today
+    
+    const [year, month, day] = dateString.split('-');
+    const dateToCheck = new Date(year, parseInt(month) - 1, parseInt(day));
+    
+    return dateToCheck < today;
+}
+
+function filterPastDates() {
+    // Get all option buttons with date attributes
+    const optionButtons = document.querySelectorAll('.option-btn[data-date]');
+    
+    optionButtons.forEach(button => {
+        const dateString = button.getAttribute('data-date');
+        
+        if (isDateInPast(dateString)) {
+            // Find the parent day element
+            const dayElement = button.closest('.day');
+            
+            // Add past-date class to the day
+            if (dayElement) {
+                dayElement.classList.add('past-date');
+            }
+            
+            // Disable the button
+            button.disabled = true;
+            button.classList.add('past-date');
+        }
+    });
+}
+
 // Handle date selection
 function handleDateSelection(event) {
     const button = event.target;
     const date = button.getAttribute('data-date');
     const option = button.getAttribute('data-option');
+    
+    // Check if this is a past date - if so, prevent selection
+    if (isDateInPast(date) || button.disabled) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    }
+    
     const parent = button.parentElement;
     
     // Clear any existing selections for this date

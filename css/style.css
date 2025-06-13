@@ -1762,3 +1762,45 @@ input[type="number"]:focus {
         width: 95%;
     }
 }
+
+.day.past-date {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.day.past-date .option-btn {
+    background-color: #666 !important;
+    color: #999 !important;
+    border-color: #666 !important;
+    cursor: not-allowed !important;
+}
+
+.day.past-date .option-btn:hover {
+    background-color: #666 !important;
+    color: #999 !important;
+    border-color: #666 !important;
+}
+
+.day.past-date .day-date {
+    color: #999 !important;
+}
+
+.day.past-date .day-name {
+    color: #999 !important;
+}
+
+/* Optional: Add a subtle strikethrough effect to past dates */
+.day.past-date .day-header {
+    position: relative;
+}
+
+.day.past-date .day-header::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #999;
+    opacity: 0.7;
+}

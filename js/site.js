@@ -702,6 +702,53 @@ function submitToGoogleSheet(data) {
     });
 }
 
+function scrollToCurrentWeek() {
+    const today = new Date();
+    const currentDateString = today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    
+    // Find a button with today's date or the closest future date
+    let targetWeekElement = null;
+    let closestFutureDate = null;
+    let closestDistance = Infinity;
+    
+    // Look through all option buttons to find the current or next available date
+    document.querySelectorAll('.option-btn[data-date]').forEach(button => {
+        const buttonDate = button.getAttribute('data-date');
+        const buttonDateObj = new Date(buttonDate);
+        
+        // If this is today or a future date, consider it
+        if (buttonDateObj >= today.setHours(0, 0, 0, 0)) {
+            const distance = Math.abs(buttonDateObj - today);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestFutureDate = buttonDate;
+                targetWeekElement = button.closest('.week');
+            }
+        }
+    });
+    
+    // If we found a target week, scroll to it
+    if (targetWeekElement) {
+        const scrollContainer = document.querySelector('.horizontal-scroll-calendar');
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const targetRect = targetWeekElement.getBoundingClientRect();
+        
+        // Calculate the scroll position to show the target week
+        const scrollLeft = scrollContainer.scrollLeft + 
+                          (targetRect.left - containerRect.left) - 
+                          20; // Small offset from the left edge
+        
+        // Scroll to the target week
+        scrollContainer.scrollTo({
+            left: scrollLeft,
+            behavior: 'smooth'
+        });
+        
+        console.log(`Auto-scrolled to week containing ${closestFutureDate}`);
+    }
+}
+
 // Initialize the form when the page loads
 document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('DOMContentLoaded', function() {
@@ -786,6 +833,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		prevButton.click();
 		}
 	});
+
+    setTimeout(() => {
+        scrollToCurrentWeek();
+    }, 100);
 });
 
 // Newsletter signup functionality

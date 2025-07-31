@@ -1342,3 +1342,30 @@ function showTemporaryMessage(message) {
         }, 300);
     }, 3000);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalBox = document.getElementById('fall-modal');
+  const closeBtn = document.getElementById('modal-close');
+
+  // Clicking X closes modal
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    modalOverlay.style.display = 'none';
+  });
+
+  // Clicking anywhere on modal box = scroll
+  modalBox.addEventListener('click', (e) => {
+    e.stopPropagation();
+    modalOverlay.style.display = 'none';
+    const section = document.querySelector('#after-school-programs');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Clicking outside modal box = dismiss
+  modalOverlay.addEventListener('click', () => {
+    modalOverlay.style.display = 'none';
+  });
+});

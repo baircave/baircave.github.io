@@ -609,7 +609,7 @@ function submitToGoogleSheet(data) {
     
     // Format data for submission
     const formattedData = {
-        referrer: "oddharmonics.studio",
+        referrer: window.location.origin,
         timestamp: new Date().toISOString(),
         parentInfo: {
             name: data.parentName,
@@ -875,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: email,
                 source: 'website_newsletter',
                 timestamp: new Date().toISOString(),
-                referrer: "oddharmonics.studio"
+                referrer: window.location.origin
             };
             
             // Replace with your Google Apps Script Web App URL for newsletter
@@ -995,7 +995,7 @@ function submitDJWorkshopToGoogleSheet(data, successAlert, errorAlert) {
     
     // Format data for submission - match camp form structure
     const formattedData = {
-        referrer: "oddharmonics.studio",
+        referrer: window.location.origin,
         timestamp: new Date().toISOString(),
         contactEmail: data.contactEmail,
         participantName: data.participantName,
@@ -1156,7 +1156,7 @@ function submitFallProgramsToGoogleSheet(data, successAlert, errorAlert) {
     
     // Format data for submission
     const formattedData = {
-        referrer: "oddharmonics.studio",
+        referrer: window.location.origin,
         timestamp: new Date().toISOString(),
         parentEmail: data.parentEmail,
         childName: data.childName,

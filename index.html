@@ -25,14 +25,14 @@
     <nav>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-links">
-            <a onclick="toggleMenu();" href="#camps">[Camps]</a>
+            <a onclick="toggleMenu();" href="#camp">[Camp]</a>
             <a onclick="toggleMenu();" href="#approach">[Our Approach]</a>
             <a onclick="toggleMenu();" href="#founder">[Our Founder]</a>
+            <a onclick="toggleMenu();" href="#fall-programs">[After School Programs]</a>
             <a onclick="toggleMenu();" href="#workshops">[Workshops]</a>
-            <a onclick="toggleMenu();" href="#testimonials">[Testimonials]</a>
             <a onClick="toggleMenu();" href="#contact">[Contact]</a>
         </div>
-    </nav>    
+    </nav>  
 
     <div id="wrapper">    
         <header id="banner">
@@ -50,7 +50,7 @@
             
             <div class="divider"></div>
 
-            <section id="camps">
+            <section id="camp">
                 <h2 style="text-align: center">Sound Scavengers Camp</h2>
                 <div class="carousel-container">
                     <div class="carousel camps-carousel">
@@ -921,6 +921,152 @@
                 </div>
             </section>
 
+            <section id="fall-programs">
+                <h2 style="text-align: center">Fall '25 After School Programs</h2>
+
+                <div class="fall-programs-container">
+                    <!-- MixCraft Program Card -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">[MixCraft]</h3>
+                        </div>
+                        <h3 class="program-subtitle">Learn DJ Fundamentals!</h3>                        
+                        <div class="program-content">
+                            <div class="program-description">
+                                <p>
+                                    Students get hands-on right away, practicing song transitions using loops, cue points, echo effects, beat matching, and more. 
+                                    <br>
+                                    We learn how tempo, rhythmic groove, and arrangement differ across various genres. 
+                                    <br>
+                                    <br>
+                                    Once we understand the basics, students hunt for music that really excites them, imagining how each song might fit together. 
+                                    Finally, we prepare a ~15 minute DJ set for our December showcase.
+                                </p>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <strong>Price:</strong> $475 for 10 sessions (75 minutes each)
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Class Size:</strong> Maximum 4 students
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Final Project:</strong> Live DJ performance for family & friends (includes video recording)
+                                    </div>
+                                </div>
+                                <div class="program-actions">
+                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('MixCraft', 'assets/OH_MixCraft_Flyer_Fall_25.jpg')">
+                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                        <polyline points="16,6 12,2 8,6"/>
+                                        <line x1="12" y1="2" x2="12" y2="15"/>
+                                    </svg>
+                                    Share Flyer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SongCraft Program Card -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">[SongCraft]</h3>
+                        </div>
+                        <h3 class="program-subtitle">Create electronic music with friends!</h3>                        
+                        <div class="program-content">
+                            <div class="program-description">
+                                <p>
+                                    By making beats on pocket-sized sequencers, students learn all about different genres of electronic music.
+                                    Everyone gets to record & program drums, bass, robot voices, and more!
+                                    <br>
+                                    <br>
+                                    Once we get acquainted with the hardware, everyone then adds musical ideas to a single, collaborative piece.
+                                    We connect devices, jam together, and arrange music on the fly to finish a song with everybody's contributions!
+                                </p>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <strong>Price:</strong> $475 for 10 sessions (75 minutes each)
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Class Size:</strong> Maximum 4 students
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Final Project:</strong> Original song featuring all students' work
+                                    </div>
+                                </div>
+                                <div class="program-actions">
+                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('SongCraft', 'assets/OH_SongCraft_Flyer_Fall_25.jpg')">
+                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                        <polyline points="16,6 12,2 8,6"/>
+                                        <line x1="12" y1="2" x2="12" y2="15"/>
+                                    </svg>
+                                    Share Flyer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="student-ratio" style="text-align: center; margin: 25px;">
+                    To maintain a 4:1 student-to-teacher ratio, there are only 4 spots available per program! 
+                    <br>
+                    <br>
+                    Our after school programs are best suited for grades 2-5
+                </p>
+                
+
+                <!-- Registration Form -->
+                <div class="registration-form">
+                    <h3 style="text-align: center; margin: auto; margin-bottom: 10px">Reserve Your Spot</h3>
+                    <p style="text-align: center; margin: auto; margin-bottom: 20px;">
+                        To secure a spot, fill out the form below and we'll email you shortly
+                        to confirm enrollment details:
+                    </p>
+                    
+                    <form id="fall-programs-form" class="fall-programs-form">
+                        <div class="fall-form-container">                            
+                            <div class="form-fields">
+                                <div class="form-group">
+                                    <label for="fall-parent-email">Email Address*</label>
+                                    <input type="email" id="fall-parent-email" name="parentEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fall-child-name">Child's Name*</label>
+                                    <input type="text" id="fall-child-name" name="childName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fall-child-age">Child's Age*</label>
+                                    <input type="number" id="fall-child-age" name="childAge" min="6" max="12" required>
+                                </div>
+                                <div class="program-selection">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="mixcraft-interest" name="programInterest" value="MixCraft">
+                                    <label for="mixcraft-interest">[MixCraft]</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="songcraft-interest" name="programInterest" value="SongCraft">
+                                    <label for="songcraft-interest">[SongCraft]</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="button form-submit-btn">Submit Request</button>
+                    </form>
+                    
+                    <div id="fall-programs-success" class="alert alert-success" style="display: none;">
+                        Your request has been received! We'll contact you within 24 hours to discuss enrollment details.
+                    </div>
+                    <div id="fall-programs-error" class="alert alert-error" style="display: none;">
+                        There was an error submitting your request. Please try again or contact us directly.
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
             <section id="workshops">
                 <h2>DJ Workshops</h2>
                 <div class="profile">
@@ -943,125 +1089,14 @@
                             <div class="dates-column">
                                 <div class="form-group">
                                     <h4>Select Your Available Dates:</h4>
-                                    <div class="workshop-dates">
-                                        <!-- Secret/Hidden Workshop Dates -->
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Monday, June 16</div>
-                                                <div class="workshop-details">~4:00 PM - 6:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-10-04" name="workshopDates" value="2025-10-04">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Tuesday, June 17</div>
-                                                <div class="workshop-details">~4:00 PM - 6:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-10-20" name="workshopDates" value="2025-10-20">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Saturday, June 21</div>
-                                                <div class="workshop-details">~2:00 PM - 4:00 PM • Outside (if nice)</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-11-06" name="workshopDates" value="2025-11-06">
-                                            </div>
-                                        </div>
-
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Sunday, June 22</div>
-                                                <div class="workshop-details">~2:00 PM - 4:00 PM • Outside (if nice)</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-11-06" name="workshopDates" value="2025-11-06">
-                                            </div>
-                                        </div>
-
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Monday, June 23</div>
-                                                <div class="workshop-details">~4:00 PM - 6:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-10-04" name="workshopDates" value="2025-10-04">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Tuesday, June 24</div>
-                                                <div class="workshop-details">~4:00 PM - 6:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-10-20" name="workshopDates" value="2025-10-20">
-                                            </div>
-                                        </div>
-
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Wednesday, June 25</div>
-                                                <div class="workshop-details">~4:00 PM - 6:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-10-20" name="workshopDates" value="2025-10-20">
-                                            </div>
-                                        </div>
-
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Thursday, June 26</div>
-                                                <div class="workshop-details">~4:00 PM - 6:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-10-20" name="workshopDates" value="2025-10-20">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Saturday, June 28</div>
-                                                <div class="workshop-details">~2:00 PM - 4:00 PM • Outside (if nice)</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-11-06" name="workshopDates" value="2025-11-06">
-                                            </div>
-                                        </div>
-
-                                        <div class="workshop-date-card secret-date hidden">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Sunday, June 29</div>
-                                                <div class="workshop-details">~2:00 PM - 4:00 PM • Outside (if nice)</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-11-06" name="workshopDates" value="2025-11-06">
-                                            </div>
-                                        </div>
-
+                                    <div class="workshop-dates">                                        
                                         <div class="workshop-date-card">
                                             <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Sunday, July 20</div>
+                                                <div class="workshop-date-header">Sunday, August 17</div>
                                                 <div class="workshop-details">~2:00 PM - 4:00 PM</div>
                                             </div>
                                             <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-07-20" name="workshopDates" value="2025-07-20">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="workshop-date-card">
-                                            <div class="workshop-date-info">
-                                                <div class="workshop-date-header">Saturday, August 9</div>
-                                                <div class="workshop-details">~2:00 PM - 4:00 PM</div>
-                                            </div>
-                                            <div class="workshop-checkbox">
-                                                <input type="checkbox" id="date-2025-08-09" name="workshopDates" value="2025-08-09">
+                                                <input type="checkbox" id="date-2025-08-17" name="workshopDates" value="2025-08-17">
                                             </div>
                                         </div>
                                         
@@ -1123,37 +1158,6 @@
             </section>
 
             <div class="divider"></div>
-
-            <section id="testimonials">
-                <h2 style="text-align: center">Student Testimonials</h2>
-                <div class="testimonial-wrapper">
-                    <article class="testimonial">
-                        "Nick strikes that hard-to-find balance between teaching highly technical skills 
-                        and inspiring creative thinking. By the end of our first lesson, we'd transformed 
-                        my vocals into a voice-synth. Nick knew exactly how to connect my passion for singing 
-                        with a specific technical production skill. It's this knack for uncovering his students' 
-                        "why" that makes Nick’s style of teaching delightful and surprisingly personal. I highly 
-                        recommend Nick to anyone looking to advance their music production skills in order to 
-                        bring a creative vision to life."
-                        <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- Walter</div>
-                    </article>
-                    <article class="testimonial">
-                        "Learning from Nick elevated my music production skills immediately. He’s great at breaking 
-                        down complex concepts and giving you simple tools. Not to mention never loses track of 
-                        the joy and fun in the process. Any aspiring musician/producer would be lucky to have 
-                        Nick helping them get to the next level."
-                        <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- David</div>
-                    </article>
-                    <article class="testimonial">
-                        “Nick is incredibly passionate, goes in depth with just about every topic we cover, and 
-                        persistently accommodates for any gaps in my knowledge. He always ensures that you are 
-                        getting where you need to be YOUR way, in YOUR style. He is also super friendly and fun. 
-                        My experience with Nick so far has been excellent!”
-                        <div style="align-self: flex-end; margin-top: 5px;" class="testimonial-signature">- Elijah</div>
-                    </article>
-                    <br>
-                </div>
-            </section>
 
             <section id="newsletter">
                 <h2>Stay Updated</h2>

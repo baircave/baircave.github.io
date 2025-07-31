@@ -920,47 +920,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const djWorkshopForm = document.getElementById('dj-workshop-form');
     const formContainer = document.getElementById('workshop-form-container');
-    
-    // Triple-click detection for secret dates
-    let clickCount = 0;
-    let clickTimer = null;
-    
-    if (formContainer) {
-        formContainer.addEventListener('click', function() {
-            clickCount++;
-            
-            if (clickCount === 1) {
-                clickTimer = setTimeout(() => {
-                    clickCount = 0;
-                }, 600); // Reset after 600ms
-            } else if (clickCount === 3) {
-                clearTimeout(clickTimer);
-                clickCount = 0;
-                revealSecretDates();
-            }
-        });
-    }
-    
-    function revealSecretDates() {
-        const secretDates = document.querySelectorAll('.secret-date');
-        const secretMessage = document.getElementById('secret-dates-message');
-        
-        // Remove hidden class and add revealed class
-        secretDates.forEach((date, index) => {
-            setTimeout(() => {
-                date.classList.remove('hidden');
-                date.classList.add('revealed');
-            }, index * 200); // Stagger the reveals
-        });
-        
-        // Show the secret message
-        setTimeout(() => {
-            secretMessage.classList.remove('hidden');
-            secretMessage.classList.add('revealed');
-        }, secretDates.length * 200);
-        
-        console.log('🎧 Secret workshop dates revealed!');
-    }
 
     if (djWorkshopForm) {
         djWorkshopForm.addEventListener('submit', function(event) {
@@ -1117,4 +1076,269 @@ function formatWorkshopDate(dateString) {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     
     return `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+// Fall Programs form functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const fallProgramsForm = document.getElementById('fall-programs-form');
+    
+    if (fallProgramsForm) {
+        fallProgramsForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get alert elements
+            const successAlert = document.getElementById('fall-programs-success');
+            const errorAlert = document.getElementById('fall-programs-error');
+            
+            // Hide any existing alerts
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+            
+            // Validate the form
+            if (!validateFallProgramsForm()) {
+                errorAlert.textContent = 'Please fill in all required fields and select at least one program.';
+                errorAlert.style.display = 'block';
+                return;
+            }
+            
+            // Collect form data
+            const formData = new FormData(fallProgramsForm);
+            
+            // Convert FormData to an object
+            const fallProgramsData = {};
+            formData.forEach((value, key) => {
+                if (key === 'programInterest') {
+                    // Handle multiple checkboxes
+                    if (!fallProgramsData[key]) {
+                        fallProgramsData[key] = [];
+                    }
+                    fallProgramsData[key].push(value);
+                } else {
+                    fallProgramsData[key] = value;
+                }
+            });
+            
+            // Submit to Google Sheet
+            submitFallProgramsToGoogleSheet(fallProgramsData, successAlert, errorAlert);
+        });
+    }
+});
+
+// Validate the Fall Programs form
+function validateFallProgramsForm() {
+    // Check required fields
+    const requiredFields = document.querySelectorAll('#fall-programs-form [required]');
+    for (const field of requiredFields) {
+        if (!field.value.trim()) {
+            return false;
+        }
+    }
+    
+    // Check if at least one program is selected
+    const selectedPrograms = document.querySelectorAll('input[name="programInterest"]:checked');
+    if (selectedPrograms.length === 0) {
+        return false;
+    }
+    
+    return true;
+}
+
+// Submit Fall Programs data to Google Sheet
+function submitFallProgramsToGoogleSheet(data, successAlert, errorAlert) {
+    // Google Apps Script Web App URL for Fall Programs
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyZi4PeouyUIbl2Ia4TizRS-EF95o8s7vDkVVYeSxcLb6MOoaObkzRoltjzMEPLx19K/exec';
+    
+    // Show animated loading state
+    const submitBtn = document.querySelector('#fall-programs-form .form-submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    startSubmittingAnimation(submitBtn, originalText);
+    
+    // Format data for submission
+    const formattedData = {
+        referrer: "oddharmonics.studio",
+        timestamp: new Date().toISOString(),
+        parentEmail: data.parentEmail,
+        childName: data.childName,
+        childAge: data.childAge,
+        programsInterested: data.programInterest || [],
+        formType: 'fall_programs_request'
+    };
+    
+    console.log('Fall Programs Request Data:', formattedData);
+    
+    // Submit the form data with no-cors
+    fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(formattedData),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'no-cors'
+    })
+    .then(() => {
+        console.log("Fall Programs request submission complete, verifying...");
+        
+        // Wait a moment for the data to be processed by the server
+        setTimeout(() => {
+            // Create verification URL with the email and timestamp
+            const verifyUrl = `${scriptURL}?verify=true&email=${encodeURIComponent(formattedData.parentEmail)}&timestamp=${encodeURIComponent(formattedData.timestamp)}&type=fall_programs`;
+            
+            // Make a verification request
+            fetch(verifyUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Verification failed');
+                    }
+                    return response.json();
+                })
+                .then(verification => {
+                    if (verification.verified) {
+                        console.log("Fall Programs request verified with ID:", verification.id);
+                        successAlert.textContent = "Your request has been received! We'll contact you within 24 hours to discuss enrollment details.";
+                        successAlert.style.display = 'block';
+                        errorAlert.style.display = 'none';
+                        
+                        // Reset form
+                        document.getElementById('fall-programs-form').reset();
+                        
+                    } else {
+                        console.error("Fall Programs request verification failed:", verification.reason);
+                        errorAlert.textContent = "Your request may not have been received. Please try again or contact us directly.";
+                        errorAlert.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error("Fall Programs request verification error:", error);
+                    errorAlert.textContent = "We couldn't confirm your request. Please contact us to ensure we received it.";
+                    errorAlert.style.display = 'block';
+                })
+                .finally(() => {
+                    // Stop animation and reset button
+                    stopSubmittingAnimation(submitBtn, originalText);
+                });
+        }, 2000); // Wait 2 seconds before verification
+    })
+    .catch(error => {
+        console.error("Fall Programs request submission error:", error);
+        errorAlert.textContent = 'There was an error submitting your request. Please try again or contact us directly.';
+        errorAlert.style.display = 'block';
+        
+        // Stop animation and reset button
+        stopSubmittingAnimation(submitBtn, originalText);
+    });
+}
+
+// Share flyer functionality
+async function shareFlyer(programName, flyerPath) {
+    const flyerUrl = `${window.location.origin}/${flyerPath}`;
+    
+    // Check if Web Share API is supported and can share files
+    if (navigator.share && navigator.canShare) {
+        try {
+            // Try to fetch the file and share it directly
+            const response = await fetch(flyerPath);
+            if (response.ok) {
+                const blob = await response.blob();
+                const file = new File([blob], `OH_${programName}_Flyer_Fall_25.jpg`, { type: 'image/jpeg' });
+                
+                const shareData = {
+                    title: `[${programName}] - Odd Harmonics Fall Program`,
+                    text: `Check out this ${programName} program from Odd Harmonics!`,
+                    files: [file]
+                };
+                
+                // Check if we can share files
+                if (navigator.canShare(shareData)) {
+                    await navigator.share(shareData);
+                    console.log('file shared successfully');
+                    return;
+                }
+            }
+        } catch (error) {
+            console.log('File sharing failed, falling back to URL share:', error);
+        }
+        
+        // Fallback to URL sharing if file sharing fails
+        try {
+            const urlShareData = {
+                title: `[${programName}] - Odd Harmonics Fall Program`,
+                text: `Check out this [${programName}] after program from Odd Harmonics!`,
+                url: flyerUrl
+            };
+            
+            await navigator.share(urlShareData);
+            console.log('URL shared successfully');
+            return;
+        } catch (error) {
+            console.log('URL sharing failed:', error);
+        }
+    }
+    
+    // Final fallback for browsers without Web Share API
+    fallbackShare(flyerUrl, programName);
+}
+
+// Fallback share function for browsers without Web Share API
+function fallbackShare(url, programName) {
+    // Create a temporary input element to copy URL to clipboard
+    const tempInput = document.createElement('input');
+    tempInput.value = url;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    
+    try {
+        document.execCommand('copy');
+        // Show a temporary success message
+        showTemporaryMessage(`${programName} flyer link copied to clipboard!`);
+    } catch (err) {
+        console.error('Failed to copy to clipboard:', err);
+        // Fallback: open in new tab
+        window.open(url, '_blank');
+        showTemporaryMessage(`${programName} flyer opened in new tab`);
+    }
+    
+    document.body.removeChild(tempInput);
+}
+
+// Show temporary success message
+function showTemporaryMessage(message) {
+    // Create temporary message element
+    const messageEl = document.createElement('div');
+    messageEl.textContent = message;
+    messageEl.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: var(--success);
+        color: var(--white-color);
+        padding: 12px 20px;
+        border-radius: 6px;
+        z-index: 10000;
+        font-family: var(--body-font-family);
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+    `;
+    
+    document.body.appendChild(messageEl);
+    
+    // Animate in
+    setTimeout(() => {
+        messageEl.style.opacity = '1';
+        messageEl.style.transform = 'translateX(0)';
+    }, 10);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        messageEl.style.opacity = '0';
+        messageEl.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (document.body.contains(messageEl)) {
+                document.body.removeChild(messageEl);
+            }
+        }, 300);
+    }, 3000);
 }

@@ -431,7 +431,7 @@ figcaption {
     }
 
     .carousel-container {
-        width: 40%;
+        width: 60%;
         max-width: 800px;
     }
 
@@ -445,6 +445,11 @@ figcaption {
 
     .registration-form {
         width: 80%
+    }
+
+    .checkbox-group {
+        margin-left: 25px;
+        margin-right: 25px;
     }
 }
 
@@ -568,6 +573,49 @@ figcaption {
     
     .nav-next {
         right: -15px;
+    }
+
+    .fall-programs-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .program-card {
+        min-width: auto;
+        max-width: 100%;
+    }
+    
+    .program-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .fall-form-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .fall-programs-registration {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .program-actions {
+        flex-direction: column;
+    }
+    
+    .flyer-button {
+        min-width: auto;
+    }
+
+    .program-selection {
+        width: 95%;
+    }
+
+    .checkbox-group {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
 
@@ -1248,7 +1296,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="number"] {
-    width: 90%;
+    width: 95%;
     padding: 10px;
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -1703,51 +1751,6 @@ input[type="number"]:focus {
     display: block;
 }
 
-/* Secret dates styling */
-.secret-date {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.5s ease;
-    max-height: 0;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-
-.secret-date.revealed {
-    opacity: 1;
-    transform: translateY(0);
-    max-height: 100px;
-    margin-bottom: 10px;
-    padding: 15px;
-}
-
-.secret-date .workshop-date-header {
-    color: #FFD700; /* Gold color for secret dates */
-}
-
-.secret-date .workshop-details {
-    color: var(--primary-color);
-    font-style: italic;
-}
-
-.secret-message {
-    text-align: center;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-top: 10px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.secret-message.revealed {
-    opacity: 1;
-}
-
-.hidden {
-    display: none;
-}
-
 /* Mobile layout - keep same horizontal layout */
 @media screen and (max-width: 700px) {
     .workshop-registration-form {
@@ -1803,4 +1806,216 @@ input[type="number"]:focus {
     height: 1px;
     background-color: #999;
     opacity: 0.7;
+}
+
+/* Fall Programs Styling */
+.fall-programs-container {
+    display: flex;
+    gap: 30px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.program-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+}
+
+.program-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+.program-title {
+    font-family: var(--headers-font-family);
+    font-size: 34px;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.student-ratio {
+    font-size: 24px;
+    line-height: 1.1;
+    color: var(--primary-color);
+    margin: 0;
+    max-width: 800px;
+}
+
+.program-subtitle {
+    font-family: var(--headers-font-family);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.program-price {
+    font-family: var(--headers-font-family);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.program-description p {
+    color: var(--text);
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+
+.program-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-item {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.detail-item strong {
+    color: var(--primary-color);
+}
+
+/* Fall Programs Registration Form */
+.fall-programs-registration {
+    background-color: var(--bg-dark);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    margin-top: 10px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form h3 {
+    font-size: 36px;
+}
+
+.fall-programs-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fall-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 30px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.fall-form-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.fall-form-section h4 {
+    color: var(--text);
+    font-family: var(--headers-font-family);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.program-selection {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    /* margin-top: 15px; */
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    color: var(--text);
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.checkbox-group {
+    display: flex;
+}
+
+.program-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.flyer-button {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text);
+    text-decoration: none;
+    font-family: var(--body-font-family);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+    max-width: 50%;
+}
+
+.flyer-button:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-1px);
+}
+
+.button-icon {
+    font-size: 16px;
+}
+
+.download-btn:hover .share-btn:hover {
+    background-color: var(--primary-color);
+}
+
+@keyframes downloadPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(2px); }
+}
+
+@keyframes shareBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }

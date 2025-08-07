@@ -107,7 +107,6 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     font-family: var(--body-font-family);
-    font-size:20px;
     font-weight:normal;
     color:var(--p-color);
 }
@@ -451,6 +450,14 @@ figcaption {
         margin-left: 25px;
         margin-right: 25px;
     }
+    
+    .program-subtitle {
+        align-self: flex-end;
+    }
+
+    .program-image {
+        height: 200px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -590,7 +597,15 @@ figcaption {
         gap: 10px;
         text-align: center;
     }
-    
+
+    .program-subtitle {
+        align-self: flex-start;
+    }
+
+    .program-image {
+        height: 150px;
+    }
+
     .fall-form-container {
         flex-direction: column;
         gap: 20px;
@@ -1812,16 +1827,19 @@ input[type="number"]:focus {
 .fall-programs-container {
     display: flex;
     gap: 30px;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 25px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .program-card {
+    display: flex;
+    flex-direction: column;
     background-color: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 25px;
+    padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     flex: 1;
     min-width: 300px;
@@ -1832,20 +1850,20 @@ input[type="number"]:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 15px;
+    /* margin-bottom: 10px; */
+    /* border-bottom: 2px solid var(--primary-color); */
+    padding-bottom: 10px;
 }
 
 .program-title {
     font-family: var(--headers-font-family);
-    font-size: 34px;
+    font-size: 30px;
     color: var(--primary-color);
     margin: 0;
 }
 
 .student-ratio {
-    font-size: 24px;
+    /* font-size: 18px; */
     line-height: 1.1;
     color: var(--primary-color);
     margin: 0;
@@ -1854,12 +1872,11 @@ input[type="number"]:focus {
 
 .program-subtitle {
     font-family: var(--headers-font-family);
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 19px;
+    font-weight: 800;
     color: var(--primary-color);
     margin: 0;
-    align-self: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .program-price {
@@ -1873,16 +1890,39 @@ input[type="number"]:focus {
     background-color: transparent;
 }
 
+.program-description {
+    display: flex;
+    flex-direction: column;
+}
+
 .program-description p {
     color: var(--text);
     margin-bottom: 20px;
     max-width: 100%;
 }
 
+.program-image {
+    width: 90%;
+    border-radius: 10px;
+    object-fit: cover;
+    align-self: center;
+}
+
+.program-list {
+    padding-left: 20px;
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+}
+
+.program-list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .program-details {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
 .detail-item {
@@ -1959,6 +1999,7 @@ input[type="number"]:focus {
     color: var(--text);
     cursor: pointer;
     margin-bottom: 0;
+    align-self: center;
 }
 
 .checkbox-group {
@@ -2039,7 +2080,7 @@ input[type="number"]:focus {
 #fall-modal {
   background-color: var(--bg-dark, #222);
   padding: 30px 20px;
-  width: 90%;
+  width: 80%;
   max-width: 500px;
   text-align: center;
   border-radius: 12px;

@@ -167,9 +167,8 @@ nav {
 
 nav a { 
     color: var(--white-color); 
-    margin: 10px; 
+    margin: 6px; 
     text-decoration: none; 
-    font-size: 18px;
 }
 
 .nav-links {
@@ -179,8 +178,7 @@ nav a {
 
 .menu-toggle {
     display: none;
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 40px;
     cursor: pointer;
     color: white;
 }
@@ -280,6 +278,7 @@ nav a {
 
 .about-column {
     max-width: 100%;
+    text-align: center;
 }
 
 .about-nick {
@@ -451,8 +450,12 @@ figcaption {
         margin-right: 25px;
     }
     
-    .program-subtitle {
+    /* .program-subtitle {
         align-self: flex-end;
+    } */
+
+    .get-in-touch {
+        margin: 15px;
     }
 }
 
@@ -594,9 +597,9 @@ figcaption {
         text-align: center;
     }
 
-    .program-subtitle {
+    /* .program-subtitle {
         align-self: flex-start;
-    }
+    } */
 
     .program-image {
         height: 200px;
@@ -627,6 +630,11 @@ figcaption {
     .checkbox-group {
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    .get-in-touch {
+        margin-top: 15px;
+        margin-bottom: 0px;
     }
 }
 
@@ -706,6 +714,11 @@ figcaption {
     transition: all .3s linear;
     border-width: 2px;
     border-style: solid;
+}
+
+.get-in-touch {
+    text-decoration: none;
+    max-width: fit-content;
 }
 
 .button:hover {
@@ -810,6 +823,7 @@ h1 {
     max-width: 70%;
     color:var(--p-color);
     margin-top: 15px;
+    line-height: 1;
 }
 
 h3 {
@@ -914,7 +928,7 @@ h4 {
     }
 
     h2 {
-        font-size: 30px;
+        /* font-size: 30px; */
         text-decoration: underline;
     }
 
@@ -937,7 +951,7 @@ h4 {
 /*------------------------------------------------------------------------------------------*/
 h2 {
     font-family: var(--headers-font-family);
-    font-weight: 500;
+    /* font-weight: 500; */
     color:var(--p-color);
     margin-bottom: 5px;
     text-align: center;
@@ -979,7 +993,7 @@ h4 {
 
 .button, input[type="submit"]  {
     font-family: var(--headers-font-family);
-    font-size:25px;
+    /* font-size:25px; */
     font-weight:bold;
     color:var(--p-color);
     background-color: #0000006e;
@@ -1868,7 +1882,7 @@ input[type="number"]:focus {
 
 .program-subtitle {
     font-family: var(--headers-font-family);
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 800;
     color: var(--primary-color);
     margin: 0;
@@ -1944,7 +1958,7 @@ input[type="number"]:focus {
 }
 
 .registration-form h3 {
-    font-size: 36px;
+    font-size: 30px;
 }
 
 .fall-programs-form {

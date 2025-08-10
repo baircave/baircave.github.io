@@ -599,7 +599,7 @@ figcaption {
     }
 
     .program-image {
-        height: 180px;
+        height: 200px;
     }
 
     .fall-form-container {
@@ -1898,7 +1898,7 @@ input[type="number"]:focus {
 }
 
 .program-image {
-    width: 95%;
+    width: 100%;
     border-radius: 10px;
     object-fit: cover;
     align-self: center;

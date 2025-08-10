@@ -1343,29 +1343,30 @@ function showTemporaryMessage(message) {
     }, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const modalOverlay = document.getElementById('modal-overlay');
-  const modalBox = document.getElementById('fall-modal');
-  const closeBtn = document.getElementById('modal-close');
-
-  // Clicking X closes modal
-  closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    modalOverlay.style.display = 'none';
-  });
-
-  // Clicking anywhere on modal box = scroll
-  modalBox.addEventListener('click', (e) => {
-    e.stopPropagation();
-    modalOverlay.style.display = 'none';
-    const section = document.querySelector('#after-school-programs');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-
-  // Clicking outside modal box = dismiss
-  modalOverlay.addEventListener('click', () => {
-    modalOverlay.style.display = 'none';
-  });
-});
+function signUpForProgram(programName) {
+    // Scroll to the registration form
+    const registrationForm = document.querySelector('.registration-form');
+    registrationForm.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+    });
+    
+    // Wait a moment for the scroll to complete, then check the appropriate box
+    setTimeout(() => {
+        if (programName === 'MixCraft') {
+            const mixcraftCheckbox = document.getElementById('mixcraft-interest');
+            if (mixcraftCheckbox) {
+                mixcraftCheckbox.checked = true;
+                // Add a subtle visual feedback
+                mixcraftCheckbox.parentElement.style.animation = 'highlight 1s ease-in-out';
+            }
+        } else if (programName === 'SongCraft') {
+            const songcraftCheckbox = document.getElementById('songcraft-interest');
+            if (songcraftCheckbox) {
+                songcraftCheckbox.checked = true;
+                // Add a subtle visual feedback
+                songcraftCheckbox.parentElement.style.animation = 'highlight 1s ease-in-out';
+            }
+        }
+    }, 800);
+}

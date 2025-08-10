@@ -43,18 +43,7 @@
             <a onclick="toggleMenu();" href="#workshops">[Workshops]</a>
             <a onClick="toggleMenu();" href="#contact">[Contact]</a>
         </div>
-    </nav>  
-
-    <div id="modal-overlay">
-        <div id="fall-modal">
-            <button id="modal-close">&times;</button>
-            <div class="modal-content">
-            <h2>˓🔊˒ Limited Spots Left! ˓‍🎧˒</h2>
-            <p>Our <strong>[MixCraft]</strong> and <strong>[SongCraft]</strong> programs are capped at 4 students each. Join before they fill up!</p>
-            <p><em>Click/tap to learn more.</em></p>
-            </div>
-        </div>
-    </div>
+    </nav> 
 
     <div id="wrapper">    
         <header id="banner">
@@ -71,6 +60,243 @@
             <h1>The electronic music school for Brooklyn's budding DJs</h1>
             
             <div class="divider"></div>
+
+            <section id="after-school-programs">
+                <h2 style="text-align: center">After School Programs</h2>
+
+                <div class="fall-programs-container">
+                    <!-- MixCraft Program Card -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">[MixCraft]</h3>
+                        </div>
+                        <h3 class="program-subtitle">Learn how to be a great DJ!</h3>                        
+                        <img class="program-image" src="./images/rose_DJs.jpeg" alt="Hands on DJ decks with the Rose brothers ">
+                        <div class="program-content">
+                            <div class="program-description">
+                                <ul class="program-list">
+                                    <li>Master how to mix between songs</li>
+                                    <li>Learn all about different musical genres</li>
+                                    <li>DJ a dance party for family & friends!</li>
+                                </ul>
+                                <div class="divider"></div>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <strong>Price:</strong> $475 for 10 sessions
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Class Size:</strong> Max. 4 students
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Ages:</strong> Best for grades 2 - 5
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Final Project:</strong> Dec. DJ showcase for family & friends
+                                    </div>
+                                </div>
+                                <div class="program-actions">
+                                    <button type="button" class="flyer-button share-btn" onclick="signUpForProgram('MixCraft')">
+                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 11l3 3l8-8"/>
+                                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.83 0 3.55.55 4.96 1.5"/>
+                                        </svg>
+                                    Sign Up
+                                    </button>
+                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('MixCraft', 'assets/OH_MixCraft_Flyer_Fall_25_web.webp')">
+                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                        <polyline points="16,6 12,2 8,6"/>
+                                        <line x1="12" y1="2" x2="12" y2="15"/>
+                                    </svg>
+                                    Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SongCraft Program Card -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">[SongCraft]</h3>
+                        </div>
+                        <h3 class="program-subtitle">Create electronic music with friends!</h3>                        
+                        <img class="program-image" src="./images/group_photo_under_bridge.jpeg" alt="featuring the Pocket Operators">
+                        <div class="program-content">
+                            <div class="program-description">
+                                <ul class="program-list">
+                                    <li>Make electronic beats, starting Day 1!</li>
+                                    <li>Record drums, basses, robot voices, & more</li>
+                                    <li>Program simple, <strong style="color: var(--primary-color)">offline</strong> devices</li>
+                                </ul>
+                                <div class="divider"></div>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <strong>Price:</strong> $475 for 10 sessions
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Class Size:</strong> Max. 4 students
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Ages:</strong> Best for grades 2 - 5
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Final Project:</strong> Original song featuring all students' work
+                                    </div>
+                                </div>
+                                <div class="program-actions">
+                                    <button type="button" class="flyer-button share-btn" onclick="signUpForProgram('SongCraft')">
+                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 11l3 3l8-8"/>
+                                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.83 0 3.55.55 4.96 1.5"/>
+                                        </svg>
+                                    Sign Up
+                                    </button>
+                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('SongCraft', 'assets/OH_SongCraft_Flyer_Fall_25_web.webp')">
+                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                        <polyline points="16,6 12,2 8,6"/>
+                                        <line x1="12" y1="2" x2="12" y2="15"/>
+                                    </svg>
+                                    Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+
+                <!-- Registration Form -->
+                <div class="registration-form">
+                    <h3 style="text-align: center; margin: auto; margin-bottom: 10px">Reserve Your Spot</h3>
+                    <p style="text-align: center; margin: auto; margin-bottom: 20px;">
+                        Fill out the form below and we'll email you within 24 hours
+                        to confirm enrollment details:
+                    </p>
+                    
+                    <form id="fall-programs-form" class="fall-programs-form">
+                        <div class="fall-form-container">                            
+                            <div class="form-fields">
+                                <div class="form-group">
+                                    <label for="fall-parent-email">Email Address*</label>
+                                    <input type="email" id="fall-parent-email" name="parentEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fall-child-name">Child's Name*</label>
+                                    <input type="text" id="fall-child-name" name="childName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fall-child-age">Child's Age*</label>
+                                    <input type="number" id="fall-child-age" name="childAge" min="6" max="12" required>
+                                </div>
+                                <div class="program-selection">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="mixcraft-interest" name="programInterest" value="MixCraft">
+                                    <label for="mixcraft-interest">[MixCraft]</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="songcraft-interest" name="programInterest" value="SongCraft">
+                                    <label for="songcraft-interest">[SongCraft]</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="button form-submit-btn">Submit Request</button>
+                    </form>
+                    
+                    <div id="fall-programs-success" class="alert alert-success" style="display: none;">
+                        Your request has been received! We'll contact you within 24 hours to discuss enrollment details.
+                    </div>
+                    <div id="fall-programs-error" class="alert alert-error" style="display: none;">
+                        There was an error submitting your request. Please try again or contact us directly.
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section id="approach">
+                <h2 style="text-align: center">Our Approach to Music Education</h2>
+                <p>
+                    At Odd Harmonics, sound is a sandbox, which means we cultivate musicianship by first prioritizing hands-on creative experimentation. 
+                    NO EXPERTISE REQUIRED! Once we've developed an understanding of the building blocks of sound, 
+                    that's when we dive into more traditional musical concepts.                
+                    <br>
+                    <br>
+                    Our goal is to provide an alternative, highly accessible music education that differs from conservatory-style institutions.
+                    By focusing on creating sonic worlds, we aim to unlock an often overlooked axis of expression. 
+                    <br>
+                    <br>
+                    From a simple beat to a fully produced song, we guide each student step by step to simplify the process of recording their own music.
+                    For those interested in learning to DJ, our coursework culminates in a 30 minute DJ set for parents and kids that incorporates their music with music by other artists.
+                </p>
+            </section>
+
+            <section id="studio">                                
+                <div class="carousel-container">
+                    <div class="carousel studio-carousel">
+                        <div class="carousel-slides">
+                            <div class="slide active">
+                                <img data-src="./images/odd_harmonics_studio_1.webp" alt="Main view of the Odd Harmonics studio">
+                            </div>
+                            <div class="slide">
+                                <img data-src="./images/odd_harmonics_studio_5.webp" alt="DJ corner in our Brooklyn studio">
+                            </div>
+                            <div class="slide">
+                                <img data-src="./images/odd_harmonics_studio_4.webp" alt="Production workstation at Odd Harmonics studio">
+                            </div>
+                            <div class="slide">
+                                <img data-src="./images/odd_harmonics_studio_2.webp" alt="Entrance view of the Odd Harmonics studio">
+                            </div>
+                            <div class="slide">
+                                <img data-src="./images/odd_harmonics_studio_3.webp" alt="More technology available to Odd Harmonics students">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots studio-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>       
+            </section>
+
+            <section id="founder">
+                <h2 style="text-align: center">Meet Our Founder</h2>
+                <div class="about-nick">
+                    <div class="profile">
+                        <figure style="text-align: center;">
+                            <img class="circular-pic" src="./images/nick_photo_2.jpg" alt="Headshot of Odd Harmonics founder, Nick Newhouse">
+                            <figcaption>Nick Newhouse<br>Brown University '14</figcaption>
+                        </figure>
+                        <p class="about-column">
+                            Like many others, Nick's music education began with piano, guitar, and drum lessons. 
+                            But his love for music making began in earnest at Brown University where he majored in both Computer Music and Computer Science. 
+                            After Brown, he began his 10+ year music career by composing for ads at The Music Playground in Lower Manhattan.
+                            He's since released music with independent record labels such as Tiny Waves, Mad Zoo, New Dawn Collective, & Materia Music, and has performed as a DJ all around the country.
+                            <br>
+                            <br>
+                            Nick and his wife have put down roots in Park Slope, Brooklyn where they've very recently started a family together
+                            (their 8-month-old is already the proud owner of the Fisher-Price Mix and Learn DJ Table). 
+                        </p>
+                    </div>
+                    <img class="show-photo" src="./images/nick_show_photo_1.webp" alt="Nick Newhouse DJing at the Big Bubble Rave in Baltimore">
+                    <img class="show-photo" src="./images/nick_rome_dj_mixer.webp" alt="Nick Newhouse's guest DJ mix with Community Garden Brooklyn">
+                </div>
+                <div class="section-subtitle">
+                    press play to hear a selection of Nick's work
+                    <br>
+                </div>
+                <div id="youtube-embeds" class="video-wrapper">
+                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/98y17lryUfo" title="Original animated music video for Nick Newhouse single 'Even Heat', released with the record label Mad Zoo."></iframe>
+                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TyTszv6MUak" title="Play through of the custom Beat Saber map for 'The Siren Song' by Baircave & Catmosphere"></iframe>
+                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TNQ-8PznXTI" title="A DJ mix by Nick Newhouse performed for an intimate crowd in Green Point, Brooklyn"></iframe>
+                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/PcdMoJpaNP0" title="An original song from Buoy Afuru, mixed and mastered by Nick Newhouse"></iframe>
+                </div>
+            </section>
 
             <section id="camp">
                 <h2 style="text-align: center">Sound Scavengers Camp</h2>
@@ -855,229 +1081,6 @@
                     </div>
                     <div id="error-alert" class="alert alert-error">
                         There was an error submitting your request. Please try again.
-                    </div>
-                </div>
-            </section>
-
-            <div class="divider"></div>
-
-            <section id="approach">
-                <h2 style="text-align: center">Our Approach to Music Education</h2>
-                <p>
-                    At Odd Harmonics, sound is a sandbox, which means we cultivate musicianship by first prioritizing hands-on creative experimentation. 
-                    NO EXPERTISE REQUIRED! Once we've developed an understanding of the building blocks of sound, 
-                    that's when we dive into more traditional musical concepts.                
-                    <br>
-                    <br>
-                    Our goal is to provide an alternative, highly accessible music education that differs from conservatory-style institutions.
-                    By focusing on creating sonic worlds, we aim to unlock an often overlooked axis of expression. 
-                    <br>
-                    <br>
-                    From a simple beat to a fully produced song, we guide each student step by step to simplify the process of recording their own music.
-                    For those interested in learning to DJ, our coursework culminates in a 30 minute DJ set for parents and kids that incorporates their music with music by other artists.
-                </p>
-            </section>
-
-            <section id="studio">                                
-                <div class="carousel-container">
-                    <div class="carousel studio-carousel">
-                        <div class="carousel-slides">
-                            <div class="slide active">
-                                <img data-src="./images/odd_harmonics_studio_1.webp" alt="Main view of the Odd Harmonics studio">
-                            </div>
-                            <div class="slide">
-                                <img data-src="./images/odd_harmonics_studio_5.webp" alt="DJ corner in our Brooklyn studio">
-                            </div>
-                            <div class="slide">
-                                <img data-src="./images/odd_harmonics_studio_4.webp" alt="Production workstation at Odd Harmonics studio">
-                            </div>
-                            <div class="slide">
-                                <img data-src="./images/odd_harmonics_studio_2.webp" alt="Entrance view of the Odd Harmonics studio">
-                            </div>
-                            <div class="slide">
-                                <img data-src="./images/odd_harmonics_studio_3.webp" alt="More technology available to Odd Harmonics students">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-dots studio-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>       
-            </section>
-
-            <section id="founder">
-                <h2 style="text-align: center">Meet Our Founder</h2>
-                <div class="about-nick">
-                    <div class="profile">
-                        <figure style="text-align: center;">
-                            <img class="circular-pic" src="./images/nick_photo_2.jpg" alt="Headshot of Odd Harmonics founder, Nick Newhouse">
-                            <figcaption>Nick Newhouse<br>Brown University '14</figcaption>
-                        </figure>
-                        <p class="about-column">
-                            Like many others, Nick's music education began with piano, guitar, and drum lessons. 
-                            But his love for music making began in earnest at Brown University where he majored in both Computer Music and Computer Science. 
-                            After Brown, he began his 10+ year music career by composing for ads at The Music Playground in Lower Manhattan.
-                            He's since released music with independent record labels such as Tiny Waves, Mad Zoo, New Dawn Collective, & Materia Music, and has performed as a DJ all around the country.
-                            <br>
-                            <br>
-                            Nick and his wife have put down roots in Park Slope, Brooklyn where they've very recently started a family together
-                            (their 8-month-old is already the proud owner of the Fisher-Price Mix and Learn DJ Table). 
-                        </p>
-                    </div>
-                    <img class="show-photo" src="./images/nick_show_photo_1.webp" alt="Nick Newhouse DJing at the Big Bubble Rave in Baltimore">
-                    <img class="show-photo" src="./images/nick_rome_dj_mixer.webp" alt="Nick Newhouse's guest DJ mix with Community Garden Brooklyn">
-                </div>
-                <div class="section-subtitle">
-                    press play to hear a selection of Nick's work
-                    <br>
-                </div>
-                <div id="youtube-embeds" class="video-wrapper">
-                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/98y17lryUfo" title="Original animated music video for Nick Newhouse single 'Even Heat', released with the record label Mad Zoo."></iframe>
-                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TyTszv6MUak" title="Play through of the custom Beat Saber map for 'The Siren Song' by Baircave & Catmosphere"></iframe>
-                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/TNQ-8PznXTI" title="A DJ mix by Nick Newhouse performed for an intimate crowd in Green Point, Brooklyn"></iframe>
-                    <iframe allowfullscreen class="embedded-video" src="https://www.youtube.com/embed/PcdMoJpaNP0" title="An original song from Buoy Afuru, mixed and mastered by Nick Newhouse"></iframe>
-                </div>
-            </section>
-
-            <section id="after-school-programs">
-                <h2 style="text-align: center">After School Programs</h2>
-
-                <div class="fall-programs-container">
-                    <!-- MixCraft Program Card -->
-                    <div class="program-card">
-                        <div class="program-header">
-                            <h3 class="program-title">[MixCraft]</h3>
-                        </div>
-                        <h3 class="program-subtitle">Learn how to be a great DJ!</h3>                        
-                        <img class="program-image" src="./images/rose_DJs.jpeg" alt="Hands on DJ decks with the Rose brothers ">
-                        <div class="program-content">
-                            <div class="program-description">
-                                <ul class="program-list">
-                                    <li>Master how to mix between songs</li>
-                                    <li>Learn all about different musical genres</li>
-                                    <li>DJ a dance party for family & friends!</li>
-                                </ul>
-                                <div class="divider"></div>
-                                <div class="program-details">
-                                    <div class="detail-item">
-                                        <strong>Price:</strong> $475 for 10 sessions
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Class Size:</strong> Max. 4 students
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Ages:</strong> Best for grades 2 - 5
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Final Project:</strong> Dec. DJ showcase for family & friends
-                                    </div>
-                                </div>
-                                <div class="program-actions">
-                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('MixCraft', 'assets/OH_MixCraft_Flyer_Fall_25.jpg')">
-                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                        <polyline points="16,6 12,2 8,6"/>
-                                        <line x1="12" y1="2" x2="12" y2="15"/>
-                                    </svg>
-                                    Share Flyer
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SongCraft Program Card -->
-                    <div class="program-card">
-                        <div class="program-header">
-                            <h3 class="program-title">[SongCraft]</h3>
-                        </div>
-                        <h3 class="program-subtitle">Create electronic music with friends!</h3>                        
-                        <img class="program-image" src="./images/group_photo_under_bridge.jpeg" alt="featuring the Pocket Operators">
-                        <div class="program-content">
-                            <div class="program-description">
-                                <ul class="program-list">
-                                    <li>Make electronic beats, starting Day 1!</li>
-                                    <li>Record drums, basses, robot voices, & more</li>
-                                    <li>Program simple, <strong style="color: var(--primary-color)">offline</strong> devices</li>
-                                </ul>
-                                <div class="divider"></div>
-                                <div class="program-details">
-                                    <div class="detail-item">
-                                        <strong>Price:</strong> $475 for 10 sessions
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Class Size:</strong> Max. 4 students
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Ages:</strong> Best for grades 2 - 5
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Final Project:</strong> Original song featuring all students' work
-                                    </div>
-                                </div>
-                                <div class="program-actions">
-                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('SongCraft', 'assets/OH_SongCraft_Flyer_Fall_25.jpg')">
-                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                        <polyline points="16,6 12,2 8,6"/>
-                                        <line x1="12" y1="2" x2="12" y2="15"/>
-                                    </svg>
-                                    Share Flyer
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <!-- Registration Form -->
-                <div class="registration-form">
-                    <h3 style="text-align: center; margin: auto; margin-bottom: 10px">Reserve Your Spot</h3>
-                    <p style="text-align: center; margin: auto; margin-bottom: 20px;">
-                        Fill out the form below and we'll email you within 24 hours
-                        to confirm enrollment details:
-                    </p>
-                    
-                    <form id="fall-programs-form" class="fall-programs-form">
-                        <div class="fall-form-container">                            
-                            <div class="form-fields">
-                                <div class="form-group">
-                                    <label for="fall-parent-email">Email Address*</label>
-                                    <input type="email" id="fall-parent-email" name="parentEmail" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fall-child-name">Child's Name*</label>
-                                    <input type="text" id="fall-child-name" name="childName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fall-child-age">Child's Age*</label>
-                                    <input type="number" id="fall-child-age" name="childAge" min="6" max="12" required>
-                                </div>
-                                <div class="program-selection">
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="mixcraft-interest" name="programInterest" value="MixCraft">
-                                    <label for="mixcraft-interest">[MixCraft]</label>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="songcraft-interest" name="programInterest" value="SongCraft">
-                                    <label for="songcraft-interest">[SongCraft]</label>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="button form-submit-btn">Submit Request</button>
-                    </form>
-                    
-                    <div id="fall-programs-success" class="alert alert-success" style="display: none;">
-                        Your request has been received! We'll contact you within 24 hours to discuss enrollment details.
-                    </div>
-                    <div id="fall-programs-error" class="alert alert-error" style="display: none;">
-                        There was an error submitting your request. Please try again or contact us directly.
                     </div>
                 </div>
             </section>

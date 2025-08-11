@@ -479,7 +479,7 @@ figcaption {
 
     .social-icons {
         right: 5px;
-        bottom: 60px;
+        bottom: 0px;
     }
 
     .soundcloud {
@@ -932,8 +932,8 @@ h4 {
 
     /*-----------------Typography-----------------*/
     h1 {
-        font-size: 34px;
-        min-width: 95%;
+        /* font-size: 34px; */
+        min-width: 100%;
     }
 
     h2 {

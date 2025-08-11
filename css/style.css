@@ -932,7 +932,7 @@ h4 {
 
     /*-----------------Typography-----------------*/
     h1 {
-        /* font-size: 34px; */
+        font-size: 28px;
         min-width: 100%;
     }
 
@@ -1877,7 +1877,7 @@ input[type="number"]:focus {
 
 .program-title {
     font-family: var(--headers-font-family);
-    font-size: 30px;
+    font-size: 28px;
     color: var(--primary-color);
     margin: 0;
 }

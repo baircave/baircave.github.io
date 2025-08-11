@@ -1309,8 +1309,8 @@ function showTemporaryMessage(message) {
     messageEl.style.cssText = `
         position: fixed;
         top: 20px;
-        right: 20px;
-        background-color: var(--success);
+        left: 20px;
+        background-color: var(--primary-color);
         color: var(--white-color);
         padding: 12px 20px;
         border-radius: 6px;
@@ -1321,6 +1321,7 @@ function showTemporaryMessage(message) {
         opacity: 0;
         transform: translateX(100%);
         transition: all 0.3s ease;
+        max-width: 80%;
     `;
     
     document.body.appendChild(messageEl);

@@ -73,46 +73,66 @@
                         <div class="program-header">
                             <h3 class="program-title">[SongCraft]</h3>
                         </div>
-                        <h3 class="program-subtitle">Create electronic music with friends!</h3>                        
+                        <h3 class="program-subtitle">Create electronic music with friends!</h3>
+                        
                         <img class="program-image" src="./images/group_photo_under_bridge.jpeg" alt="featuring the Pocket Operators">
-                        <div class="program-content">
-                            <div class="program-description">
-                                <ul class="program-list">
-                                    <li>Make electronic beats, starting Day 1!</li>
-                                    <li>Record drums, basses, robot voices, & more</li>
-                                    <li>Program simple, <strong style="color: var(--primary-color)">offline</strong> devices</li>
-                                </ul>
-                                <div class="divider"></div>
-                                <div class="program-details">
-                                    <div class="detail-item">
-                                        <strong>Price:</strong> $475 for 10 sessions
+                        
+                        <!-- Condensed action buttons -->
+                        <div class="program-actions-condensed">
+                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('songcraft')">
+                                <span>Learn More</span>
+                                <svg class="chevron-icon" id="songcraft-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6,9 12,15 18,9"></polyline>
+                                </svg>
+                            </button>
+                            <button type="button" class="sign-up-btn" onclick="signUpForProgram('SongCraft')">
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 11l3 3l8-8"/>
+                                    <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.83 0 3.55.55 4.96 1.5"/>
+                                </svg>
+                                Sign Up
+                            </button>
+                        </div>
+                        
+                        <!-- Expandable details content -->
+                        <div class="program-details-content" id="songcraft-details">
+                            <div class="program-content">
+                                <div class="program-description">
+                                    <ul class="program-list">
+                                        <li>Make electronic beats, starting Day 1!</li>
+                                        <li>Record drums, basses, robot voices, & more</li>
+                                        <li>Program simple, <strong style="color: var(--primary-color)">offline</strong> devices</li>
+                                    </ul>
+                                    <!-- Quick info circles -->
+                                    <div class="program-quick-info">
+                                        <div class="info-circle">
+                                            <div class="info-label">Price</div>
+                                            <div class="info-value">$475</div>
+                                        </div>
+                                        <div class="info-circle">
+                                            <div class="info-label">Ages</div>
+                                            <div class="info-value">Grades 2-5</div>
+                                        </div>
+                                        <div class="info-circle">
+                                            <div class="info-label">Class Size</div>
+                                            <div class="info-value">Max. 4</div>
+                                        </div>
                                     </div>
-                                    <div class="detail-item">
-                                        <strong>Class Size:</strong> Max. 4 students
+                                    <div class="program-details">
+                                        <div class="detail-item">
+                                            <strong>Final Project:</strong> Original song featuring all students' work
+                                        </div>
                                     </div>
-                                    <div class="detail-item">
-                                        <strong>Ages:</strong> Best for grades 2 - 5
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Final Project:</strong> Original song featuring all students' work
-                                    </div>
-                                </div>
-                                <div class="program-actions">
-                                    <button type="button" class="flyer-button share-btn" onclick="signUpForProgram('SongCraft')">
-                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M9 11l3 3l8-8"/>
-                                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.83 0 3.55.55 4.96 1.5"/>
+                                    <div class="program-actions">
+                                        <button type="button" class="flyer-button share-btn" onclick="shareFlyer('SongCraft', 'assets/OH_SongCraft_Flyer_Fall_25_web.webp')">
+                                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                            <polyline points="16,6 12,2 8,6"/>
+                                            <line x1="12" y1="2" x2="12" y2="15"/>
                                         </svg>
-                                    Sign Up
-                                    </button>
-                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('SongCraft', 'assets/OH_SongCraft_Flyer_Fall_25_web.webp')">
-                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                        <polyline points="16,6 12,2 8,6"/>
-                                        <line x1="12" y1="2" x2="12" y2="15"/>
-                                    </svg>
-                                    Share
-                                    </button>
+                                        Share
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -123,46 +143,66 @@
                         <div class="program-header">
                             <h3 class="program-title">[MixCraft]</h3>
                         </div>
-                        <h3 class="program-subtitle">Learn how to be a great DJ!</h3>                        
+                        <h3 class="program-subtitle">Learn how to be a great DJ!</h3>
+                        
                         <img class="program-image" src="./images/rose_DJs.jpeg" alt="Hands on DJ decks with the Rose brothers ">
-                        <div class="program-content">
-                            <div class="program-description">
-                                <ul class="program-list">
-                                    <li>Master how to mix between songs</li>
-                                    <li>Learn all about different musical genres</li>
-                                    <li>DJ a dance party for family & friends!</li>
-                                </ul>
-                                <div class="divider"></div>
-                                <div class="program-details">
-                                    <div class="detail-item">
-                                        <strong>Price:</strong> $475 for 10 sessions
+                        
+                        <!-- Condensed action buttons -->
+                        <div class="program-actions-condensed">
+                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('mixcraft')">
+                                <span>Learn More</span>
+                                <svg class="chevron-icon" id="mixcraft-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6,9 12,15 18,9"></polyline>
+                                </svg>
+                            </button>
+                            <button type="button" class="sign-up-btn" onclick="signUpForProgram('MixCraft')">
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 11l3 3l8-8"/>
+                                    <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.83 0 3.55.55 4.96 1.5"/>
+                                </svg>
+                                Sign Up
+                            </button>
+                        </div>
+                        
+                        <!-- Expandable details content -->
+                        <div class="program-details-content" id="mixcraft-details">
+                            <div class="program-content">
+                                <div class="program-description">
+                                    <ul class="program-list">
+                                        <li>Master how to mix between songs</li>
+                                        <li>Learn all about different genres of music</li>
+                                        <li>DJ a dance party for family & friends!</li>
+                                    </ul>
+                                    <!-- Quick info circles -->
+                                    <div class="program-quick-info">
+                                        <div class="info-circle">
+                                            <div class="info-label">Price</div>
+                                            <div class="info-value">$475</div>
+                                        </div>
+                                        <div class="info-circle">
+                                            <div class="info-label">Ages</div>
+                                            <div class="info-value">Grades 2-5</div>
+                                        </div>
+                                        <div class="info-circle">
+                                            <div class="info-label">Class Size</div>
+                                            <div class="info-value">Max. 4</div>
+                                        </div>
                                     </div>
-                                    <div class="detail-item">
-                                        <strong>Class Size:</strong> Max. 4 students
+                                    <div class="program-details">
+                                        <div class="detail-item">
+                                            <strong>Final Project:</strong> Dec. DJ showcase for family & friends
+                                        </div>
                                     </div>
-                                    <div class="detail-item">
-                                        <strong>Ages:</strong> Best for grades 2 - 5
-                                    </div>
-                                    <div class="detail-item">
-                                        <strong>Final Project:</strong> Dec. DJ showcase for family & friends
-                                    </div>
-                                </div>
-                                <div class="program-actions">
-                                    <button type="button" class="flyer-button share-btn" onclick="signUpForProgram('MixCraft')">
-                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M9 11l3 3l8-8"/>
-                                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.83 0 3.55.55 4.96 1.5"/>
+                                    <div class="program-actions">
+                                        <button type="button" class="flyer-button share-btn" onclick="shareFlyer('MixCraft', 'assets/OH_MixCraft_Flyer_Fall_25_web.webp')">
+                                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                            <polyline points="16,6 12,2 8,6"/>
+                                            <line x1="12" y1="2" x2="12" y2="15"/>
                                         </svg>
-                                    Sign Up
-                                    </button>
-                                    <button type="button" class="flyer-button share-btn" onclick="shareFlyer('MixCraft', 'assets/OH_MixCraft_Flyer_Fall_25_web.webp')">
-                                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                        <polyline points="16,6 12,2 8,6"/>
-                                        <line x1="12" y1="2" x2="12" y2="15"/>
-                                    </svg>
-                                    Share
-                                    </button>
+                                        Share
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

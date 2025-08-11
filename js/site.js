@@ -1370,3 +1370,74 @@ function signUpForProgram(programName) {
         }
     }, 800);
 }
+
+// Toggle program details expansion - expand/collapse both panels together
+function toggleProgramDetails(programId) {
+    const songcraftDetails = document.getElementById('songcraft-details');
+    const mixcraftDetails = document.getElementById('mixcraft-details');
+    const songcraftChevron = document.getElementById('songcraft-chevron');
+    const mixcraftChevron = document.getElementById('mixcraft-chevron');
+    
+    // Check if any panel is currently expanded
+    const isAnyExpanded = songcraftDetails.classList.contains('expanded') || 
+                            mixcraftDetails.classList.contains('expanded');
+    
+    if (isAnyExpanded) {
+        // Collapse both
+        songcraftDetails.classList.remove('expanded');
+        mixcraftDetails.classList.remove('expanded');
+        songcraftChevron.classList.remove('rotated');
+        mixcraftChevron.classList.remove('rotated');
+    } else {
+        // Expand both
+        songcraftDetails.classList.add('expanded');
+        mixcraftDetails.classList.add('expanded');
+        songcraftChevron.classList.add('rotated');
+        mixcraftChevron.classList.add('rotated');
+    }
+}
+
+// Existing signUpForProgram function
+function signUpForProgram(programName) {
+    // Scroll to the registration form
+    const registrationForm = document.querySelector('.registration-form');
+    registrationForm.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+    });
+    
+    // Wait a moment for the scroll to complete, then check the appropriate box
+    setTimeout(() => {
+        if (programName === 'MixCraft') {
+            const mixcraftCheckbox = document.getElementById('mixcraft-interest');
+            if (mixcraftCheckbox) {
+                mixcraftCheckbox.checked = true;
+                mixcraftCheckbox.parentElement.style.animation = 'highlight 1s ease-in-out';
+            }
+        } else if (programName === 'SongCraft') {
+            const songcraftCheckbox = document.getElementById('songcraft-interest');
+            if (songcraftCheckbox) {
+                songcraftCheckbox.checked = true;
+                songcraftCheckbox.parentElement.style.animation = 'highlight 1s ease-in-out';
+            }
+        }
+    }, 800);
+}
+
+// Placeholder for shareFlyer function (you'll need to implement this)
+function shareFlyer(programName, flyerPath) {
+    // This would be implemented based on your existing share functionality
+    console.log('Sharing flyer for:', programName, flyerPath);
+}
+
+// Mobile menu toggle function
+function toggleMenu() {
+    const menu = document.querySelector(".nav-links");
+    if (window.innerWidth < 700) {
+        if (menu.style.display === "flex") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "flex";
+        }
+    }
+}

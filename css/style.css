@@ -2262,3 +2262,40 @@ input[type="number"]:focus {
         font-size: 9px;
     }
 }
+
+#playback-banner {
+    /* Your existing styles remain the same, just add transition */
+    transition: bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.social-icons {
+    /* Your existing styles remain the same, just add transition */
+    transition: bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Optional: Add a subtle visual hint that it's clickable */
+#playback-banner::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+#playback-banner:hover::before {
+    opacity: 1;
+}
+
+/* Optional: Prevent text selection on the player when clicking */
+#playback-banner {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

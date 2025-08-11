@@ -1379,21 +1379,100 @@ function toggleProgramDetails(programId) {
     const songcraftChevron = document.getElementById('songcraft-chevron');
     const mixcraftChevron = document.getElementById('mixcraft-chevron');
     
-    // Check if any panel is currently expanded
-    const isAnyExpanded = songcraftDetails.classList.contains('expanded') || 
-                            mixcraftDetails.classList.contains('expanded');
+    const isMobile = window.innerWidth <= 700;
     
-    if (isAnyExpanded) {
-        // Collapse both
-        songcraftDetails.classList.remove('expanded');
-        mixcraftDetails.classList.remove('expanded');
-        songcraftChevron.classList.remove('rotated');
-        mixcraftChevron.classList.remove('rotated');
+    if (isMobile) {
+        // Mobile: Only expand/collapse the clicked panel
+        const clickedDetails = document.getElementById(programId + '-details');
+        const clickedChevron = document.getElementById(programId + '-chevron');
+        
+        if (clickedDetails.classList.contains('expanded')) {
+            // Collapse the clicked panel
+            clickedDetails.classList.remove('expanded');
+            clickedChevron.classList.remove('rotated');
+        } else {
+            // Collapse any other expanded panel first
+            songcraftDetails.classList.remove('expanded');
+            mixcraftDetails.classList.remove('expanded');
+            songcraftChevron.classList.remove('rotated');
+            mixcraftChevron.classList.remove('rotated');
+            
+            // Then expand the clicked panel
+            clickedDetails.classList.add('expanded');
+            clickedChevron.classList.add('rotated');
+        }
     } else {
-        // Expand both
-        songcraftDetails.classList.add('expanded');
-        mixcraftDetails.classList.add('expanded');
-        songcraftChevron.classList.add('rotated');
-        mixcraftChevron.classList.add('rotated');
+        // Desktop: Expand/collapse both panels together
+        const isAnyExpanded = songcraftDetails.classList.contains('expanded') || 
+                                mixcraftDetails.classList.contains('expanded');
+        
+        if (isAnyExpanded) {
+            // Collapse both
+            songcraftDetails.classList.remove('expanded');
+            mixcraftDetails.classList.remove('expanded');
+            songcraftChevron.classList.remove('rotated');
+            mixcraftChevron.classList.remove('rotated');
+        } else {
+            // Expand both
+            songcraftDetails.classList.add('expanded');
+            mixcraftDetails.classList.add('expanded');
+            songcraftChevron.classList.add('rotated');
+            mixcraftChevron.classList.add('rotated');
+        }
     }
 }
+
+// Music player toggle functionality
+let isPlayerExpanded = false;
+
+function toggleMusicPlayer() {
+    const playbackBanner = document.getElementById('playback-banner');
+    const socialIcons = document.querySelector('.social-icons');
+    
+    if (!isPlayerExpanded) {
+        // Expand the player
+        playbackBanner.style.bottom = '0px';
+        socialIcons.style.bottom = '65px'; // Height of the player
+        isPlayerExpanded = true;
+    } else {
+        // Hide the player
+        playbackBanner.style.bottom = '-65px';
+        socialIcons.style.bottom = '0px';
+        isPlayerExpanded = false;
+    }
+}
+
+// Add click event listener to the playback banner when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const playbackBanner = document.getElementById('playback-banner');
+    
+    if (playbackBanner) {
+        // Add cursor pointer to indicate it's clickable
+        playbackBanner.style.cursor = 'pointer';
+        
+        // Add click event listener
+        playbackBanner.addEventListener('click', function(event) {
+            // Prevent the toggle if clicking on control buttons
+            if (event.target.closest('.playback-button-wrapper') || 
+                event.target.classList.contains('audio-button') ||
+                event.target.classList.contains('skip-button')) {
+                return;
+            }
+            
+            toggleMusicPlayer();
+        });
+        
+        // Optional: Add a subtle visual hint
+        playbackBanner.addEventListener('mouseenter', function() {
+            if (!isPlayerExpanded) {
+                playbackBanner.style.bottom = '-55px'; // Peek up slightly on hover
+            }
+        });
+        
+        playbackBanner.addEventListener('mouseleave', function() {
+            if (!isPlayerExpanded) {
+                playbackBanner.style.bottom = '-65px'; // Return to hidden position
+            }
+        });
+    }
+});

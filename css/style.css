@@ -457,6 +457,10 @@ figcaption {
     .get-in-touch {
         margin: 15px;
     }
+
+    .after-school-form {
+        max-width: 600px;
+    }
 }
 
 @media screen and (max-width: 700px) {

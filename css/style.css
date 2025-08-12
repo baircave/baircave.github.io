@@ -108,7 +108,8 @@ body {
     overflow-x: hidden;
     font-family: var(--body-font-family);
     font-weight:normal;
-    color:var(--p-color);
+    color:var(--bg-dark);
+    background-color: var(--bg-dark);
 }
 
 section {

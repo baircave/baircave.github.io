@@ -108,7 +108,7 @@ body {
     overflow-x: hidden;
     font-family: var(--body-font-family);
     font-weight:normal;
-    color:var(--bg-dark);
+    color:var(--p-color);
     background-color: var(--bg-dark);
 }
 

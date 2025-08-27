@@ -405,11 +405,9 @@
                                 </div>
                             </div>
 
-                            <!-- Newsletter Signup - moved here from earlier in form -->
-
                             <!-- Interest Selection -->
                             <div class="interest-section">
-                                <h3>I'm interested in:</h3>
+                                <h3>I'm interested in: *</h3>
                                 <div class="interest-options">
                                     <div class="interest-option">
                                         <input type="checkbox" id="intLessons" name="interests" value="lessons">
@@ -430,8 +428,8 @@
                             <div class="conditional-section" id="lessonsSection">
                                 <h4 style="color: var(--primary-color); margin: 0 0 15px 0;">Private Lessons</h4>
                                 <div class="form-group">
-                                    <label for="lessonsFor">Lessons are for:</label>
-                                    <select id="lessonsFor" name="lessonsFor">
+                                    <label for="lessonsFor">Lessons are for: *</label>
+                                    <select id="lessonsFor" name="lessonsFor" data-required>
                                         <option value="">Select an option</option>
                                         <option value="self">Myself</option>
                                         <option value="child">My Child</option>
@@ -476,11 +474,11 @@
                                 <div class="form-row" style="margin-top: 20px;">
                                     <div class="form-group">
                                         <label for="childName">Student's Name *</label>
-                                        <input type="text" id="childName" name="childName">
+                                        <input type="text" id="childName" name="childName" data-required>
                                     </div>
                                     <div class="form-group">
                                         <label for="childAge">Student's Age *</label>
-                                        <input type="number" id="childAge" name="childAge" min="6" max="12">
+                                        <input type="number" id="childAge" name="childAge" min="6" max="12" data-required>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-top: 15px;">
@@ -495,8 +493,8 @@
                             <div class="conditional-section" id="workshopsSection">
                                 <h4 style="color: var(--primary-color); margin: 0 0 15px 0;">DJ Workshops</h4>
                                 <div class="form-group">
-                                    <label for="workshopFor">Workshop is for:</label>
-                                    <select id="workshopFor" name="workshopFor">
+                                    <label for="workshopFor">Workshop is for: *</label>
+                                    <select id="workshopFor" name="workshopFor" data-required>
                                         <option value="">Select an option</option>
                                         <option value="self">Myself</option>
                                         <option value="child">My Child</option>

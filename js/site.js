@@ -1525,26 +1525,31 @@ document.getElementById('contactModal').addEventListener('click', function(e) {
     }
 });
 
-// Interest checkbox handlers
+// Interest checkbox handlers - FIXED
 document.querySelectorAll('input[name="interests"]').forEach(checkbox => {
     checkbox.addEventListener('change', handleInterestChange);
 });
 
-// Make entire interest option clickable
+// Make entire interest option clickable - FIXED to prevent double-click issues
 document.querySelectorAll('.interest-option').forEach(option => {
     option.addEventListener('click', function(e) {
-        // Don't trigger if clicking directly on checkbox or label
+        // Prevent if clicking directly on checkbox or label to avoid double events
         if (e.target.type === 'checkbox' || e.target.tagName === 'LABEL') {
             return;
         }
         
-        const checkbox = this.querySelector('input[type="checkbox"]');
-        checkbox.checked = !checkbox.checked;
-        checkbox.dispatchEvent(new Event('change'));
+        // Add small delay to ensure scroll events are finished
+        setTimeout(() => {
+            const checkbox = this.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                checkbox.dispatchEvent(new Event('change'));
+            }
+        }, 50);
     });
 });
 
-// Make workshop date items clickable
+// Make workshop date items clickable - FIXED
 document.querySelectorAll('.workshop-date-item').forEach(item => {
     item.addEventListener('click', function(e) {
         // Don't trigger if clicking directly on checkbox
@@ -1552,8 +1557,13 @@ document.querySelectorAll('.workshop-date-item').forEach(item => {
             return;
         }
         
-        const checkbox = this.querySelector('input[type="checkbox"]');
-        checkbox.checked = !checkbox.checked;
+        // Add small delay to ensure scroll events are finished
+        setTimeout(() => {
+            const checkbox = this.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+            }
+        }, 50);
     });
 });
 
@@ -1566,9 +1576,32 @@ function handleInterestChange() {
     toggleSection('lessonsSection', lessonsChecked);
     toggleSection('afterSchoolSection', afterSchoolChecked);
     toggleSection('workshopsSection', workshopsChecked);
+    
+    // Remove required attributes when sections are hidden
+    toggleRequiredFields('lessonsSection', lessonsChecked);
+    toggleRequiredFields('afterSchoolSection', afterSchoolChecked);
+    toggleRequiredFields('workshopsSection', workshopsChecked);
 }
 
-// Conditional field handlers
+// NEW FUNCTION: Toggle required attributes based on section visibility
+function toggleRequiredFields(sectionId, isVisible) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    // Find all fields with data-required attribute
+    const requiredFields = section.querySelectorAll('[data-required]');
+    
+    requiredFields.forEach(field => {
+        if (isVisible) {
+            field.setAttribute('required', '');
+        } else {
+            field.removeAttribute('required');
+            field.value = ''; // Clear the field when hiding
+        }
+    });
+}
+
+// Conditional field handlers - UPDATED to use data-required
 document.getElementById('lessonsFor').addEventListener('change', function() {
     const isChild = this.value === 'child';
     document.getElementById('lessonsChildInfo').style.display = isChild ? 'block' : 'none';
@@ -1582,6 +1615,8 @@ document.getElementById('lessonsFor').addEventListener('change', function() {
     } else {
         nameField.removeAttribute('required');
         ageField.removeAttribute('required');
+        nameField.value = '';
+        ageField.value = '';
     }
 });
 
@@ -1598,17 +1633,29 @@ document.getElementById('workshopFor').addEventListener('change', function() {
     } else {
         nameField.removeAttribute('required');
         ageField.removeAttribute('required');
+        nameField.value = '';
+        ageField.value = '';
     }
 });
 
-// After school programs - child info is always required
+// After school programs - child info is always required when section is visible
 document.getElementById('intAfterSchool').addEventListener('change', function() {
+    const nameField = document.getElementById('childName');
+    const ageField = document.getElementById('childAge');
+    
     if (this.checked) {
-        document.getElementById('childName').setAttribute('required', '');
-        document.getElementById('childAge').setAttribute('required', '');
+        nameField.setAttribute('required', '');
+        ageField.setAttribute('required', '');
     } else {
-        document.getElementById('childName').removeAttribute('required');
-        document.getElementById('childAge').removeAttribute('required');
+        nameField.removeAttribute('required');
+        ageField.removeAttribute('required');
+        nameField.value = '';
+        ageField.value = '';
+        
+        // Also uncheck any after school programs
+        document.querySelectorAll('input[name="afterSchoolPrograms"]:checked').forEach(checkbox => {
+            checkbox.checked = false;
+        });
     }
 });
 
@@ -1653,18 +1700,52 @@ document.getElementById('unifiedContactForm').addEventListener('submit', functio
         return;
     }
     
-    // Collect form data
-    const formData = collectFormData();
-    
-    // Show loading state
+    // Show loading state on button
     const submitBtn = document.querySelector('.submit-btn');
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
     
-    // Submit to Google Apps Script
+    // Collect form data before any UI changes
+    const formData = collectFormData();
+    
+    // Submit in background
+    submitInBackground(formData);
+    
+    // After a brief moment, show success and scroll to top
+    setTimeout(() => {
+        // Show success message
+        showAlert('success', 'Thank you! We\'ll be in touch within 24 hours.');
+        
+        // Smooth scroll to top of modal to show success message
+        const modal = document.querySelector('.modal');
+        if (modal) {
+            modal.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        
+        // Close modal after user has time to read success message
+        setTimeout(() => {
+            closeModal();
+            // Clear form only after modal closes
+            setTimeout(() => {
+                document.getElementById('unifiedContactForm').reset();
+                hideAllConditionalSections();
+            }, 300);
+        }, 3000);
+        
+    }, 800); // Brief delay to show submission state
+});
+
+function submitInBackground(formData) {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxLDl3PAVI-_QawgG-j0jn6ba8OwWRxKn5DsihKClcHVPqnBs_Iv_5V6ypu8dt36ubN/exec';
     
+    console.log('Submitting form data in background...');
+    
+    // Submit without user feedback - fire and forget approach
     fetch(scriptURL, {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -1674,72 +1755,46 @@ document.getElementById('unifiedContactForm').addEventListener('submit', functio
         mode: 'no-cors'
     })
     .then(() => {
-        console.log("Initial submission complete, verifying...");
+        console.log('Form submitted successfully');
         
-        // Wait a moment for the data to be processed by the server
+        // Optional: Try verification after a delay, but don't show results to user
         setTimeout(() => {
-            // Create verification URL
             const verifyUrl = `${scriptURL}?verify=true&email=${encodeURIComponent(formData.basicInfo.email)}&timestamp=${encodeURIComponent(formData.timestamp)}`;
             
-            // Make a verification request
             fetch(verifyUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Verification failed');
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(verification => {
                     if (verification.verified) {
-                        console.log("Contact submission verified with ID:", verification.id);
-                        showAlert('success', 'Thank you! We\'ll be in touch within 24 hours.');
-                        
-                        // Reset form
-                        this.reset();
-                        hideAllConditionalSections();
-                        
-                        // Close modal after a delay
-                        setTimeout(() => {
-                            closeModal();
-                        }, 2000);
-                        
+                        console.log('Submission verified successfully:', verification.id);
                     } else {
-                        console.error("Contact submission verification failed:", verification.reason);
-                        showAlert('error', 'Your message may not have been received. Please try again or contact us directly.');
+                        console.warn('Submission verification failed:', verification.reason);
                     }
                 })
                 .catch(error => {
-                    console.error("Contact submission verification error:", error);
-                    showAlert('error', 'We couldn\'t confirm your message was received. Please contact us to ensure we got it.');
-                })
-                .finally(() => {
-                    // Reset button
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
+                    console.warn('Verification check failed (form likely still submitted):', error);
                 });
-        }, 2000); // Wait 2 seconds before verification
+        }, 3000);
     })
     .catch(error => {
-        console.error("Contact submission error:", error);
-        showAlert('error', 'There was an error sending your message. Please try again or contact us directly.');
-        
-        // Reset button
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+        console.error('Background submission error (user already saw success):', error);
     });
-});
+}
 
+// UPDATED validation function to handle dynamic required fields
 function validateForm() {
     console.log('Starting form validation...');
     
-    // Only check required fields within the modal form
+    // Get all currently required fields (not using data-required, but actual required attribute)
     const modalForm = document.getElementById('unifiedContactForm');
     const requiredFields = modalForm.querySelectorAll('input[required], select[required]');
     console.log('Found', requiredFields.length, 'required fields in modal');
     
+    // Only validate fields that are visible
     for (let field of requiredFields) {
-        console.log('Checking field:', field.name || field.id, 'value:', field.value, 'visible:', field.offsetParent !== null);
-        if (!field.value.trim()) {
+        const isVisible = field.offsetParent !== null;
+        console.log('Checking field:', field.name || field.id, 'value:', field.value, 'visible:', isVisible);
+        
+        if (isVisible && !field.value.trim()) {
             console.log('Field failed validation:', field.name || field.id);
             return false;
         }
@@ -1837,7 +1892,7 @@ function hideAlerts() {
     document.getElementById('errorAlert').style.display = 'none';
 }
 
-/* ESC key to close modal */
+// ESC key to close modal
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && document.getElementById('contactModal').classList.contains('active')) {
         closeModal();

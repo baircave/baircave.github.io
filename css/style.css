@@ -116,11 +116,19 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 30px;
 }
 
+/* section:nth-child(even) {
+    background: rgba(4, 225, 0, 0.212);
+    margin: 0 -5%;
+    padding: 50px 5%;
+    border-radius: 8px;
+} */
+
 p {
-    line-height: 21px;
-    max-width: 80%;
+    line-height: 24px;
+    max-width: 60%;
     margin: 0;
     font-family: var(--body-font-family);
 }
@@ -265,25 +273,30 @@ nav a {
 .profile {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: center;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    /* width:  */
 }
 
 .video-wrapper {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-direction: column;
+    flex-wrap: wrap; */
     justify-content: center;
-    margin: 5px;
+    margin: 15px;
 }
 
 .about-column {
-    max-width: 100%;
-    text-align: center;
+    /* max-width: 100%;
+    min-width: 50%; */
+    display: flex;
+    flex-direction: column;
 }
 
 .about-nick {
-    max-width: 80%;
+    max-width: 64%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -292,16 +305,16 @@ nav a {
 }
 
  .circular-pic {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 300px;
+    max-height: 300px;
     border-radius: 50%;
-    padding: 10px;
+    padding: 5px;
 }
 
 .embedded-video {
     margin: 10px;
     /* min-width: 75%; */
-    min-height: 197px;
+    /* min-height: 197px; */
     /* max-width: 100%; */
     /* max-height: 500px; */
 }
@@ -372,11 +385,12 @@ nav a {
     background: var(--primary-color);
     align-self: center;
     opacity: 0.7;
-    max-width: 75%;
-    min-width: 60%;
-    height: 2px;
+    max-width: 60%;
+    min-width: 50%;
+    height: 4px;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 figcaption {
@@ -389,11 +403,6 @@ figcaption {
 /* Rows and Columns */
 
 @media screen and (min-width: 700px) {
-    #workshops {
-       max-width: 80%;
-       align-self: center;  
-    }
-
     .social-icons {
         right: 10px;
         bottom: 0px;
@@ -402,19 +411,16 @@ figcaption {
     [class*='col-'] {
         padding: 0px 20px 0 20px;
     }
-
-    h2 {
-        /* font-size:30px; */
-        text-decoration: underline;
-    }
     
     .instagram {
         width: 23px;
     }
 
     .show-photo {
-        width: auto;
-        height: 300px;
+        max-width: 50%;
+        height: auto;
+        max-height: 250px;
+        object-fit: cover;
         padding: 10px;
         border-radius: 15px;
     }
@@ -431,7 +437,7 @@ figcaption {
 
     .carousel-container {
         width: 60%;
-        max-width: 800px;
+        max-width: 600px;
     }
 
     .nav-prev {
@@ -466,6 +472,10 @@ figcaption {
 
     .after-school-form {
         max-width: 600px;
+    }
+
+    .form-row {
+        gap: 15px;
     }
 }
 
@@ -518,9 +528,10 @@ figcaption {
 
     .show-photo {
         width: 90%;
-        height: auto;
+        height: 250px;
         padding: 10px;
         border-radius: 15px;
+        object-fit: cover;
     }
 
     .testimonial-wrapper {
@@ -563,7 +574,7 @@ figcaption {
     }
 
     .carousel-container {
-        width: 90%;
+        width: 95%;
     }
 
     .registration-container {
@@ -646,6 +657,10 @@ figcaption {
     .get-in-touch {
         margin-top: 15px;
         margin-bottom: 0px;
+    }
+
+    .video-wrapper {
+        flex-direction: column;
     }
 }
 
@@ -828,11 +843,11 @@ h1 {
     align-self: center;
     text-align: center;
     font-family: var(--headers-font-family);
-    /* font-size: 40px;  */
-    font-weight:300;
+    font-size: 34px; 
+    font-weight:400;
     max-width: 70%;
     color:var(--p-color);
-    margin-top: 15px;
+    margin-top: 20px;
     line-height: 1;
 }
 
@@ -937,11 +952,6 @@ h4 {
         min-width: 100%;
     }
 
-    h2 {
-        /* font-size: 30px; */
-        text-decoration: underline;
-    }
-
     #banner h2 {
         font-size: 23px;
     }
@@ -961,11 +971,27 @@ h4 {
 /*------------------------------------------------------------------------------------------*/
 h2 {
     font-family: var(--headers-font-family);
-    /* font-weight: 500; */
-    color:var(--p-color);
-    margin-bottom: 5px;
     text-align: center;
+    font-family: var(--headers-font-family);
+    font-size: 30px;
+    color: var(--p-color);
+    margin-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+    position: relative;
 }
+
+Add subtle underline to section headings
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
 
 /* Section Title and Subtitle */
 
@@ -1053,7 +1079,7 @@ h4 {
 
 .carousel-container {
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 30px;
     padding-bottom: 20px;
     box-sizing: border-box;
     position: relative;
@@ -1691,7 +1717,7 @@ input[type="number"]:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .workshop-date-card {
@@ -1741,7 +1767,7 @@ input[type="number"]:focus {
 }
 
 .workshop-registration-form .form-group {
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     text-align: left;
 }
 
@@ -1848,7 +1874,7 @@ input[type="number"]:focus {
     display: flex;
     gap: 30px;
     margin-top: 10px;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -2300,4 +2326,384 @@ input[type="number"]:focus {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--card-bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s ease;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+/* .modal.select-open {
+    transform: none;
+} */
+
+.modal:hover {
+    scrollbar-color: rgba(4, 225, 0, 0.6) rgba(4, 225, 0, 0.1);
+}
+
+.modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+    margin: 12px 0;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.modal:hover::-webkit-scrollbar-thumb {
+    background: rgba(4, 225, 0, 0.6);
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    padding: 20px 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-family: var(--headers-font-family);
+    font-size: 24px;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--primary-color);
+}
+
+.modal-content {
+    padding: 0 20px 20px;
+}
+
+.form-group {
+    /* margin-bottom: 20px; */
+}
+
+.form-row {
+    display: flex;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text);
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+select {
+    cursor: pointer;
+    /* position: relative; */
+    z-index: 1;
+}
+
+select option {
+    background-color: var(--input-bg);
+    color: var(--text);
+    position: inherit;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.interest-option input[type="checkbox"] {
+    accent-color: var(--primary-color);
+}
+
+.workshop-date-item input[type="checkbox"] {
+    accent-color: var(--primary-color);
+}
+
+.checkbox-group label {
+    margin: 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.interest-section {
+    padding: 15px;
+    background: var(--input-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.interest-section h3 {
+    margin: 0 0 15px 0;
+    color: var(--primary-color);
+    font-family: var(--headers-font-family);
+    font-size: 18px;
+}
+
+.interest-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.interest-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.interest-option label {
+    margin: 0;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.interest-option:hover {
+    border-color: var(--primary-color);
+    background: rgba(4, 225, 0, 0.1);
+}
+
+.interest-option input[type="checkbox"] {
+    margin: 0;
+}
+
+.conditional-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(4, 225, 0, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    display: none;
+}
+
+.conditional-section.show {
+    display: block;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.program-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.workshop-dates {
+    margin-top: 15px;
+}
+
+.workshop-date-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.workshop-date-info {
+    flex: 1;
+}
+
+.workshop-date-header {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.workshop-date-time {
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--headers-font-family);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    display: none;
+}
+
+.alert.success {
+    background-color: rgba(105, 240, 174, 0.1);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+.alert.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .modal {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .interest-options {
+        flex-direction: column;
+    }
+
+    .interest-option {
+        min-width: auto;
+    }
+    
+    /* Fix select dropdown on mobile - REMOVED, using defaults */
+    
+    /* Ensure form fields are properly sized on mobile */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        min-height: 44px;
+        font-size: 16px;
+    }
 }

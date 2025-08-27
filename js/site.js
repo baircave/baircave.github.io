@@ -1476,3 +1476,370 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Modal functionality
+function openModal(preselect = null) {
+    const modal = document.getElementById('contactModal');
+    const title = document.getElementById('modalTitle');
+    
+    // Reset form
+    document.getElementById('unifiedContactForm').reset();
+    hideAllConditionalSections();
+    
+    // Set title and preselect options
+    switch(preselect) {
+        case 'lessons':
+            title.textContent = 'Get in Touch';
+            document.getElementById('intLessons').checked = true;
+            showSection('lessonsSection');
+            break;
+        case 'afterschool':
+            title.textContent = 'Get in Touch';
+            document.getElementById('intAfterSchool').checked = true;
+            showSection('afterSchoolSection');
+            break;
+        case 'workshop':
+            title.textContent = 'Get in Touch';
+            document.getElementById('intWorkshops').checked = true;
+            showSection('workshopsSection');
+            break;
+        default:
+            title.textContent = 'Get in Touch';
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('contactModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    hideAlerts();
+}
+
+// Close modal when clicking outside
+document.getElementById('contactModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// Interest checkbox handlers
+document.querySelectorAll('input[name="interests"]').forEach(checkbox => {
+    checkbox.addEventListener('change', handleInterestChange);
+});
+
+// Make entire interest option clickable
+document.querySelectorAll('.interest-option').forEach(option => {
+    option.addEventListener('click', function(e) {
+        // Don't trigger if clicking directly on checkbox or label
+        if (e.target.type === 'checkbox' || e.target.tagName === 'LABEL') {
+            return;
+        }
+        
+        const checkbox = this.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+        checkbox.dispatchEvent(new Event('change'));
+    });
+});
+
+// Make workshop date items clickable
+document.querySelectorAll('.workshop-date-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        // Don't trigger if clicking directly on checkbox
+        if (e.target.type === 'checkbox') {
+            return;
+        }
+        
+        const checkbox = this.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+    });
+});
+
+function handleInterestChange() {
+    const lessonsChecked = document.getElementById('intLessons').checked;
+    const afterSchoolChecked = document.getElementById('intAfterSchool').checked;
+    const workshopsChecked = document.getElementById('intWorkshops').checked;
+    
+    // Show/hide relevant sections
+    toggleSection('lessonsSection', lessonsChecked);
+    toggleSection('afterSchoolSection', afterSchoolChecked);
+    toggleSection('workshopsSection', workshopsChecked);
+}
+
+// Conditional field handlers
+document.getElementById('lessonsFor').addEventListener('change', function() {
+    const isChild = this.value === 'child';
+    document.getElementById('lessonsChildInfo').style.display = isChild ? 'block' : 'none';
+    
+    // Set required attributes
+    const nameField = document.getElementById('lessonsStudentName');
+    const ageField = document.getElementById('lessonsStudentAge');
+    if (isChild) {
+        nameField.setAttribute('required', '');
+        ageField.setAttribute('required', '');
+    } else {
+        nameField.removeAttribute('required');
+        ageField.removeAttribute('required');
+    }
+});
+
+document.getElementById('workshopFor').addEventListener('change', function() {
+    const isChild = this.value === 'child';
+    document.getElementById('workshopChildInfo').style.display = isChild ? 'block' : 'none';
+    
+    // Set required attributes
+    const nameField = document.getElementById('workshopStudentName');
+    const ageField = document.getElementById('workshopStudentAge');
+    if (isChild) {
+        nameField.setAttribute('required', '');
+        ageField.setAttribute('required', '');
+    } else {
+        nameField.removeAttribute('required');
+        ageField.removeAttribute('required');
+    }
+});
+
+// After school programs - child info is always required
+document.getElementById('intAfterSchool').addEventListener('change', function() {
+    if (this.checked) {
+        document.getElementById('childName').setAttribute('required', '');
+        document.getElementById('childAge').setAttribute('required', '');
+    } else {
+        document.getElementById('childName').removeAttribute('required');
+        document.getElementById('childAge').removeAttribute('required');
+    }
+});
+
+function toggleSection(sectionId, show) {
+    const section = document.getElementById(sectionId);
+    if (show) {
+        showSection(sectionId);
+    } else {
+        section.classList.remove('show');
+        setTimeout(() => {
+            section.style.display = 'none';
+        }, 300);
+    }
+}
+
+function showSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.style.display = 'block';
+    setTimeout(() => {
+        section.classList.add('show');
+    }, 10);
+}
+
+function hideAllConditionalSections() {
+    const sections = ['lessonsSection', 'afterSchoolSection', 'workshopsSection'];
+    sections.forEach(id => {
+        const section = document.getElementById(id);
+        section.classList.remove('show');
+        section.style.display = 'none';
+    });
+}
+
+// Form submission
+document.getElementById('unifiedContactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    hideAlerts();
+    
+    // Validate required fields based on selections
+    if (!validateForm()) {
+        showAlert('error', 'Please fill in all required fields.');
+        return;
+    }
+    
+    // Collect form data
+    const formData = collectFormData();
+    
+    // Show loading state
+    const submitBtn = document.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    // Submit to Google Apps Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxLDl3PAVI-_QawgG-j0jn6ba8OwWRxKn5DsihKClcHVPqnBs_Iv_5V6ypu8dt36ubN/exec';
+    
+    fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'no-cors'
+    })
+    .then(() => {
+        console.log("Initial submission complete, verifying...");
+        
+        // Wait a moment for the data to be processed by the server
+        setTimeout(() => {
+            // Create verification URL
+            const verifyUrl = `${scriptURL}?verify=true&email=${encodeURIComponent(formData.basicInfo.email)}&timestamp=${encodeURIComponent(formData.timestamp)}`;
+            
+            // Make a verification request
+            fetch(verifyUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Verification failed');
+                    }
+                    return response.json();
+                })
+                .then(verification => {
+                    if (verification.verified) {
+                        console.log("Contact submission verified with ID:", verification.id);
+                        showAlert('success', 'Thank you! We\'ll be in touch within 24 hours.');
+                        
+                        // Reset form
+                        this.reset();
+                        hideAllConditionalSections();
+                        
+                        // Close modal after a delay
+                        setTimeout(() => {
+                            closeModal();
+                        }, 2000);
+                        
+                    } else {
+                        console.error("Contact submission verification failed:", verification.reason);
+                        showAlert('error', 'Your message may not have been received. Please try again or contact us directly.');
+                    }
+                })
+                .catch(error => {
+                    console.error("Contact submission verification error:", error);
+                    showAlert('error', 'We couldn\'t confirm your message was received. Please contact us to ensure we got it.');
+                })
+                .finally(() => {
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                });
+        }, 2000); // Wait 2 seconds before verification
+    })
+    .catch(error => {
+        console.error("Contact submission error:", error);
+        showAlert('error', 'There was an error sending your message. Please try again or contact us directly.');
+        
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+    });
+});
+
+function validateForm() {
+    console.log('Starting form validation...');
+    
+    // Only check required fields within the modal form
+    const modalForm = document.getElementById('unifiedContactForm');
+    const requiredFields = modalForm.querySelectorAll('input[required], select[required]');
+    console.log('Found', requiredFields.length, 'required fields in modal');
+    
+    for (let field of requiredFields) {
+        console.log('Checking field:', field.name || field.id, 'value:', field.value, 'visible:', field.offsetParent !== null);
+        if (!field.value.trim()) {
+            console.log('Field failed validation:', field.name || field.id);
+            return false;
+        }
+    }
+    
+    // Check that at least one interest is selected
+    const interests = modalForm.querySelectorAll('input[name="interests"]:checked');
+    console.log('Selected interests:', interests.length);
+    
+    if (interests.length === 0) {
+        showAlert('error', 'Please select at least one area of interest.');
+        return false;
+    }
+    
+    console.log('Form validation passed!');
+    return true;
+}
+
+function collectFormData() {
+    const formData = {
+        timestamp: new Date().toISOString(),
+        referrer: window.location.origin,
+        basicInfo: {
+            fullName: document.getElementById('fullName').value,
+            email: document.getElementById('email').value,
+            zipCode: document.getElementById('zipCode').value,
+            hearAbout: document.getElementById('hearAbout').value,
+            newsletter: document.getElementById('newsletter').checked
+        },
+        interests: [],
+        details: {}
+    };
+    
+    // Collect interests
+    document.querySelectorAll('input[name="interests"]:checked').forEach(checkbox => {
+        formData.interests.push(checkbox.value);
+    });
+    
+    // Collect specific details based on interests
+    if (formData.interests.includes('lessons')) {
+        formData.details.lessons = {
+            forWhom: document.getElementById('lessonsFor').value,
+            studentName: document.getElementById('lessonsStudentName').value,
+            studentAge: document.getElementById('lessonsStudentAge').value,
+            schedule: document.getElementById('lessonsSchedule').value
+        };
+    }
+    
+    if (formData.interests.includes('afterschool')) {
+        const programs = [];
+        document.querySelectorAll('input[name="afterSchoolPrograms"]:checked').forEach(checkbox => {
+            programs.push(checkbox.value);
+        });
+        
+        formData.details.afterSchool = {
+            programs: programs,
+            childName: document.getElementById('childName').value,
+            childAge: document.getElementById('childAge').value,
+            schedule: document.getElementById('afterSchoolSchedule').value
+        };
+    }
+    
+    if (formData.interests.includes('workshops')) {
+        const selectedDates = [];
+        document.querySelectorAll('input[name="workshopDates"]:checked').forEach(checkbox => {
+            selectedDates.push(checkbox.value);
+        });
+        
+        formData.details.workshops = {
+            forWhom: document.getElementById('workshopFor').value,
+            studentName: document.getElementById('workshopStudentName').value,
+            studentAge: document.getElementById('workshopStudentAge').value,
+            selectedDates: selectedDates
+        };
+    }
+    
+    return formData;
+}
+
+function showAlert(type, message) {
+    hideAlerts();
+    const alert = document.getElementById(type + 'Alert');
+    alert.textContent = message;
+    alert.style.display = 'block';
+    
+    // Scroll modal to top to ensure alert is visible
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+function hideAlerts() {
+    document.getElementById('successAlert').style.display = 'none';
+    document.getElementById('errorAlert').style.display = 'none';
+}
+
+/* ESC key to close modal */
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('contactModal').classList.contains('active')) {
+        closeModal();
+    }
+});

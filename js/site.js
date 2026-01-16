@@ -1379,45 +1379,82 @@ function toggleProgramDetails(programId) {
     const songcraftChevron = document.getElementById('songcraft-chevron');
     const mixcraftChevron = document.getElementById('mixcraft-chevron');
     
+    // Get camp elements (may not exist on all pages)
+    const soundscavengersDetails = document.getElementById('soundscavengers-details');
+    const beatbuildersDetails = document.getElementById('beatbuilders-details');
+    const soundscavengersChevron = document.getElementById('soundscavengers-chevron');
+    const beatbuildersChevron = document.getElementById('beatbuilders-chevron');
+    
     const isMobile = window.innerWidth <= 700;
+    
+    // Determine if this is an after-school program or camp
+    const isAfterSchool = programId === 'songcraft' || programId === 'mixcraft';
+    const isCamp = programId === 'soundscavengers' || programId === 'beatbuilders';
     
     if (isMobile) {
         // Mobile: Only expand/collapse the clicked panel
         const clickedDetails = document.getElementById(programId + '-details');
         const clickedChevron = document.getElementById(programId + '-chevron');
         
-        if (clickedDetails.classList.contains('expanded')) {
-            // Collapse the clicked panel
-            clickedDetails.classList.remove('expanded');
-            clickedChevron.classList.remove('rotated');
-        } else {
-            // Collapse any other expanded panel first
-            songcraftDetails.classList.remove('expanded');
-            mixcraftDetails.classList.remove('expanded');
-            songcraftChevron.classList.remove('rotated');
-            mixcraftChevron.classList.remove('rotated');
-            
-            // Then expand the clicked panel
-            clickedDetails.classList.add('expanded');
-            clickedChevron.classList.add('rotated');
+        if (clickedDetails && clickedChevron) {
+            if (clickedDetails.classList.contains('expanded')) {
+                // Collapse the clicked panel
+                clickedDetails.classList.remove('expanded');
+                clickedChevron.classList.remove('rotated');
+            } else {
+                // Collapse all panels first
+                if (songcraftDetails) songcraftDetails.classList.remove('expanded');
+                if (mixcraftDetails) mixcraftDetails.classList.remove('expanded');
+                if (songcraftChevron) songcraftChevron.classList.remove('rotated');
+                if (mixcraftChevron) mixcraftChevron.classList.remove('rotated');
+                if (soundscavengersDetails) soundscavengersDetails.classList.remove('expanded');
+                if (beatbuildersDetails) beatbuildersDetails.classList.remove('expanded');
+                if (soundscavengersChevron) soundscavengersChevron.classList.remove('rotated');
+                if (beatbuildersChevron) beatbuildersChevron.classList.remove('rotated');
+                
+                // Then expand the clicked panel
+                clickedDetails.classList.add('expanded');
+                clickedChevron.classList.add('rotated');
+            }
         }
     } else {
-        // Desktop: Expand/collapse both panels together
-        const isAnyExpanded = songcraftDetails.classList.contains('expanded') || 
-                                mixcraftDetails.classList.contains('expanded');
-        
-        if (isAnyExpanded) {
-            // Collapse both
-            songcraftDetails.classList.remove('expanded');
-            mixcraftDetails.classList.remove('expanded');
-            songcraftChevron.classList.remove('rotated');
-            mixcraftChevron.classList.remove('rotated');
-        } else {
-            // Expand both
-            songcraftDetails.classList.add('expanded');
-            mixcraftDetails.classList.add('expanded');
-            songcraftChevron.classList.add('rotated');
-            mixcraftChevron.classList.add('rotated');
+        // Desktop: Expand/collapse related panels together
+        if (isAfterSchool) {
+            // Handle after-school programs together
+            const isAnyExpanded = songcraftDetails.classList.contains('expanded') || 
+                                    mixcraftDetails.classList.contains('expanded');
+            
+            if (isAnyExpanded) {
+                // Collapse both after-school programs
+                songcraftDetails.classList.remove('expanded');
+                mixcraftDetails.classList.remove('expanded');
+                songcraftChevron.classList.remove('rotated');
+                mixcraftChevron.classList.remove('rotated');
+            } else {
+                // Expand both after-school programs
+                songcraftDetails.classList.add('expanded');
+                mixcraftDetails.classList.add('expanded');
+                songcraftChevron.classList.add('rotated');
+                mixcraftChevron.classList.add('rotated');
+            }
+        } else if (isCamp && soundscavengersDetails && beatbuildersDetails) {
+            // Handle camp programs together
+            const isAnyExpanded = soundscavengersDetails.classList.contains('expanded') || 
+                                    beatbuildersDetails.classList.contains('expanded');
+            
+            if (isAnyExpanded) {
+                // Collapse both camp programs
+                soundscavengersDetails.classList.remove('expanded');
+                beatbuildersDetails.classList.remove('expanded');
+                soundscavengersChevron.classList.remove('rotated');
+                beatbuildersChevron.classList.remove('rotated');
+            } else {
+                // Expand both camp programs
+                soundscavengersDetails.classList.add('expanded');
+                beatbuildersDetails.classList.add('expanded');
+                soundscavengersChevron.classList.add('rotated');
+                beatbuildersChevron.classList.add('rotated');
+            }
         }
     }
 }

@@ -1392,7 +1392,7 @@ function toggleProgramDetails(programId) {
     const isCamp = programId === 'soundscavengers' || programId === 'beatbuilders';
     
     if (isMobile) {
-        // Mobile: Only expand/collapse the clicked panel
+        // Mobile: Only expand/collapse the clicked panel (don't collapse others)
         const clickedDetails = document.getElementById(programId + '-details');
         const clickedChevron = document.getElementById(programId + '-chevron');
         
@@ -1402,17 +1402,7 @@ function toggleProgramDetails(programId) {
                 clickedDetails.classList.remove('expanded');
                 clickedChevron.classList.remove('rotated');
             } else {
-                // Collapse all panels first
-                if (songcraftDetails) songcraftDetails.classList.remove('expanded');
-                if (mixcraftDetails) mixcraftDetails.classList.remove('expanded');
-                if (songcraftChevron) songcraftChevron.classList.remove('rotated');
-                if (mixcraftChevron) mixcraftChevron.classList.remove('rotated');
-                if (soundscavengersDetails) soundscavengersDetails.classList.remove('expanded');
-                if (beatbuildersDetails) beatbuildersDetails.classList.remove('expanded');
-                if (soundscavengersChevron) soundscavengersChevron.classList.remove('rotated');
-                if (beatbuildersChevron) beatbuildersChevron.classList.remove('rotated');
-                
-                // Then expand the clicked panel
+                // Expand the clicked panel (don't touch others)
                 clickedDetails.classList.add('expanded');
                 clickedChevron.classList.add('rotated');
             }

@@ -1525,11 +1525,7 @@ function openModal(preselect = null) {
             document.getElementById('intAfterSchool').checked = true;
             showSection('afterSchoolSection');
             break;
-        case 'workshop':
-            title.textContent = 'Get in Touch';
-            document.getElementById('intWorkshops').checked = true;
-            showSection('workshopsSection');
-            break;
+
         default:
             title.textContent = 'Get in Touch';
     }
@@ -1576,33 +1572,15 @@ document.querySelectorAll('.interest-option').forEach(option => {
     });
 });
 
-// Make workshop date items clickable - FIXED
-document.querySelectorAll('.workshop-date-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-        // Don't trigger if clicking directly on checkbox
-        if (e.target.type === 'checkbox') {
-            return;
-        }
-        
-        // Add small delay to ensure scroll events are finished
-        setTimeout(() => {
-            const checkbox = this.querySelector('input[type="checkbox"]');
-            if (checkbox) {
-                checkbox.checked = !checkbox.checked;
-            }
-        }, 50);
-    });
-});
-
 function handleInterestChange() {
     const lessonsChecked = document.getElementById('intLessons').checked;
     const afterSchoolChecked = document.getElementById('intAfterSchool').checked;
-    const workshopsChecked = document.getElementById('intWorkshops').checked;
+
     
     // Show/hide relevant sections
     toggleSection('lessonsSection', lessonsChecked);
     toggleSection('afterSchoolSection', afterSchoolChecked);
-    toggleSection('workshopsSection', workshopsChecked);
+
     
     // Remove required attributes when sections are hidden
     toggleRequiredFields('lessonsSection', lessonsChecked);
@@ -1707,7 +1685,7 @@ function showSection(sectionId) {
 }
 
 function hideAllConditionalSections() {
-    const sections = ['lessonsSection', 'afterSchoolSection', 'workshopsSection'];
+    const sections = ['lessonsSection', 'afterSchoolSection'];
     sections.forEach(id => {
         const section = document.getElementById(id);
         section.classList.remove('show');

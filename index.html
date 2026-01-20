@@ -332,14 +332,31 @@
                         <img class="circular-pic" style="margin-right: 10px;" src="./images/dj_workshop.jpeg" alt="DJ Workshop with Nick and two new students">
                         <p>
                             Our low-pressure DJ workshops allow students to learn the basics of DJing without having to invest
-                            anything other than their time.
+                            anything other than their time. We host workshops for both adults and kids ages 8+.
                             <br>
                             <br>
                             Each workshop is capped at 4 students so as to give everyone 
-                            plenty of time to get their hands on the decks. 
+                            plenty of time to get their hands on the decks. We take a small deposit to confirm your reservation, which we refund in full with your Google review.
                         </p>
                     </div>
-                    <button class="button get-in-touch" onclick="openModal('workshop')">Check Available Dates</button>
+                    <p style="margin-top: 10px; margin-bottom: 10px; font-weight: bold; font-size: 20px; color: var(--primary-color); text-align: center; font-family: var(--headers-font-family);">RSVP today:</p>
+                    <div class="workshop-date-buttons">
+                        <button class="workshop-date-btn full" disabled>
+                            <div class="workshop-date-main">Saturday, January 24</div>
+                            <div class="workshop-time">2:00 PM - 3:15 PM</div>
+                            <div class="workshop-status">FULL</div>
+                        </button>
+                        <a href="https://app.noto.nyc/forms/a1739a30-5a48-4fac-9d1c-874da859a947" target="_blank" class="workshop-date-btn">
+                            <div class="workshop-date-main">Saturday, February 7</div>
+                            <div class="workshop-time">2:00 PM - 3:15 PM</div>
+                            <div class="workshop-audience">for kids</div>
+                        </a>
+                        <a href="https://app.noto.nyc/forms/6a617f23-2a20-4b87-a991-ab9df71b7c66" target="_blank" class="workshop-date-btn">
+                            <div class="workshop-date-main">Saturday, March 14</div>
+                            <div class="workshop-time">2:00 PM - 3:15 PM</div>
+                            <div class="workshop-audience">for adults</div>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -534,10 +551,7 @@
                                         <input type="checkbox" id="intAfterSchool" name="interests" value="afterschool">
                                         <label for="intAfterSchool">After School Programs</label>
                                     </div>
-                                    <div class="interest-option">
-                                        <input type="checkbox" id="intWorkshops" name="interests" value="workshops">
-                                        <label for="intWorkshops">DJ Workshops</label>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -605,49 +619,6 @@
                                         style="width: 100%; height: 80px; padding: 12px; border: 1px solid var(--border); border-radius: 6px; background-color: var(--input-bg); color: var(--text); font-size: 16px; box-sizing: border-box; resize: vertical; font-family: inherit;"></textarea>
                                 </div>
                             </div>
-
-                            <!-- Workshops Section -->
-                            <div class="conditional-section" id="workshopsSection">
-                                <h4 style="color: var(--primary-color); margin: 0 0 15px 0;">DJ Workshops</h4>
-                                <div class="form-group">
-                                    <label for="workshopFor">Workshop is for: *</label>
-                                    <select id="workshopFor" name="workshopFor" data-required>
-                                        <option value="">Select an option</option>
-                                        <option value="self">Myself</option>
-                                        <option value="child">My Child</option>
-                                    </select>
-                                </div>
-                                <div id="workshopChildInfo" style="display: none;">
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="workshopStudentName">Student Name *</label>
-                                            <input type="text" id="workshopStudentName" name="workshopStudentName">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="workshopStudentAge">Student Age *</label>
-                                            <input type="number" id="workshopStudentAge" name="workshopStudentAge" min="1" max="99">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workshop-dates">
-                                    <label>Available Workshop Dates:</label>
-                                    <div class="workshop-date-item">
-                                        <input type="checkbox" id="workshop-sept" name="workshopDates" value="2026-01-24">
-                                        <div class="workshop-date-info">
-                                            <div class="workshop-date-header">Saturday, January 24</div>
-                                            <div class="workshop-date-time">2:00 PM - 4:00 PM</div>
-                                        </div>
-                                    </div>
-                                    <div class="workshop-date-item">
-                                        <input type="checkbox" id="workshop-sept" name="workshopDates" value="2026-02-07">
-                                        <div class="workshop-date-info">
-                                            <div class="workshop-date-header">Saturday, February 7</div>
-                                            <div class="workshop-date-time">2:00 PM - 4:00 PM</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div style="margin-top: 15px;" class="form-group">
                                 <label for="hearAbout">How did you hear about us?</label>
                                 <select id="hearAbout" name="hearAbout">
@@ -673,7 +644,10 @@
                 </div>
             </div>
 
-            <br>
+            
+                            </div>
+
+<br>
             <br>
             <br>
             <br>
@@ -726,7 +700,6 @@
                 <img class="instagram" src="images/instagram.svg" alt="instagram logo svg">
             </a>
         </footer>
-    </div>
 
     <script src="js/site.js"></script>
 

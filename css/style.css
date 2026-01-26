@@ -5600,6 +5600,14 @@ select option {
     box-shadow: 0 4px 12px rgba(4, 225, 0, 0.2);
 }
 
+.beat-builders-weeks {
+    display: flex !important;
+    flex-direction: column !important;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .week-date {
     font-size: 13px;
     color: var(--text-light);

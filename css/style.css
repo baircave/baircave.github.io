@@ -2855,6 +2855,10 @@ select option {
     .workshop-date-btn {
         padding: 14px 16px;
     }
+
+    .camp-week-buttons + p + div {
+        flex-direction: row !important;
+    }
 }
 font-face {
     font-family: 'basier';

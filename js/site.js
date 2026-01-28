@@ -416,20 +416,6 @@ const registrationForm = document.getElementById('registration-form');
 const successAlert = document.getElementById('success-alert');
 const errorAlert = document.getElementById('error-alert');
 
-// Initialize the form
-function init() {
-    // Filter past dates first
-    filterPastDates();
-    
-    // Add event listeners for date selection (only for non-past dates)
-    document.querySelectorAll('.option-btn:not(.past-date)').forEach(btn => {
-        btn.addEventListener('click', handleDateSelection);
-    });
-    
-    // Form submission
-    registrationForm.addEventListener('submit', handleSubmit);
-}
-
 // Parse a YYYY-MM-DD string to a formatted display date
 function parseAndFormatDate(dateString) {
     const [year, month, day] = dateString.split('-');
@@ -749,96 +735,6 @@ function scrollToCurrentWeek() {
     }
 }
 
-// Initialize the form when the page loads
-document.addEventListener('DOMContentLoaded', init);
-document.addEventListener('DOMContentLoaded', function() {
-	const scrollContainer = document.querySelector('.horizontal-scroll-calendar');
-	const prevButton = document.querySelector('.nav-prev');
-	const nextButton = document.querySelector('.nav-next');
-	const weekElements = document.querySelectorAll('.week');
-
-	// Flag to track if animation is in progress
-	let isScrolling = false;
-
-	// Get the current visible week index
-	function getCurrentWeekIndex() {
-		const containerRect = scrollContainer.getBoundingClientRect();
-		const containerCenter = containerRect.left + containerRect.width / 2;
-		
-		let closestIndex = 0;
-		let closestDistance = Infinity;
-		
-		weekElements.forEach((week, index) => {
-		const weekRect = week.getBoundingClientRect();
-		const weekCenter = weekRect.left + weekRect.width / 2;
-		const distance = Math.abs(containerCenter - weekCenter);
-		
-		if (distance < closestDistance) {
-			closestDistance = distance;
-			closestIndex = index;
-		}
-		});
-		
-		return closestIndex;
-	}
-
-	// Scroll to a specific week by index
-	function scrollToWeek(index) {
-		if (isScrolling) return;
-		
-		if (index < 0) index = 0;
-		if (index >= weekElements.length) index = weekElements.length - 1;
-		
-		isScrolling = true;
-		
-		const targetWeek = weekElements[index];
-		const containerRect = scrollContainer.getBoundingClientRect();
-		const targetRect = targetWeek.getBoundingClientRect();
-		
-		// Calculate the scroll position to center the target week
-		const scrollLeft = scrollContainer.scrollLeft + 
-						(targetRect.left - containerRect.left) - 
-						(containerRect.width - targetRect.width) / 2;
-		
-		scrollContainer.scrollTo({
-		left: scrollLeft,
-		behavior: 'smooth'
-		});
-		
-		// Reset the scrolling flag after animation completes
-		setTimeout(() => {
-		isScrolling = false;
-		}, 500); // Typical smooth scroll animation is ~500ms
-	}
-
-	nextButton.addEventListener('click', function() {
-		if (!isScrolling) {
-		const currentIndex = getCurrentWeekIndex();
-		scrollToWeek(currentIndex + 1);
-		}
-	});
-
-	prevButton.addEventListener('click', function() {
-		if (!isScrolling) {
-		const currentIndex = getCurrentWeekIndex();
-		scrollToWeek(currentIndex - 1);
-		}
-	});
-
-	// Also add keyboard navigation
-	document.addEventListener('keydown', function(e) {
-		if (e.key === 'ArrowRight') {
-		nextButton.click();
-		} else if (e.key === 'ArrowLeft') {
-		prevButton.click();
-		}
-	});
-
-    setTimeout(() => {
-        scrollToCurrentWeek();
-    }, 100);
-});
-
 // Newsletter signup functionality
 document.addEventListener('DOMContentLoaded', function() {
     const emailSignupForm = document.getElementById('email-signup-form');
@@ -915,168 +811,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
 });
-
-// DJ Workshop form functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const djWorkshopForm = document.getElementById('dj-workshop-form');
-    const formContainer = document.getElementById('workshop-form-container');
-
-    if (djWorkshopForm) {
-        djWorkshopForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Get alert elements at the time of submission
-            const workshopSuccessAlert = document.getElementById('workshop-success-alert');
-            const workshopErrorAlert = document.getElementById('workshop-error-alert');
-            
-            // Hide any existing alerts
-            workshopSuccessAlert.style.display = 'none';
-            workshopErrorAlert.style.display = 'none';
-            
-            // Validate the form
-            if (!validateDJWorkshopForm()) {
-                workshopErrorAlert.textContent = 'Please fill in all required fields and select at least one workshop date.';
-                workshopErrorAlert.style.display = 'block';
-                return;
-            }
-            
-            // Collect form data
-            const formData = new FormData(djWorkshopForm);
-            
-            // Convert FormData to an object
-            const workshopData = {};
-            formData.forEach((value, key) => {
-                workshopData[key] = value;
-            });
-            
-            // Submit to Google Sheet - pass the alert elements
-            submitDJWorkshopToGoogleSheet(workshopData, workshopSuccessAlert, workshopErrorAlert);
-        });
-    }
-});
-
-// Validate the DJ workshop form
-function validateDJWorkshopForm() {
-    // Check required fields
-    const requiredFields = document.querySelectorAll('#dj-workshop-form [required]');
-    for (const field of requiredFields) {
-        if (!field.value.trim()) {
-            return false;
-        }
-    }
-    
-    // Check if at least one workshop date is selected
-    const selectedDates = document.querySelectorAll('input[name="workshopDates"]:checked');
-    if (selectedDates.length === 0) {
-        return false;
-    }
-    
-    return true;
-}
-
-// Submit DJ workshop data to Google Sheet
-function submitDJWorkshopToGoogleSheet(data, successAlert, errorAlert) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz4PehhpCJoCoqFsOYZBvR3roPsWiK4CsDyhjgaRQLBzSExzyyPQW3tlTMA2gw3MQ4C/exec';
-    
-    // Show animated loading state
-    const submitBtn = document.querySelector('#dj-workshop-form .form-submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    startSubmittingAnimation(submitBtn, originalText);
-    
-    // Get selected workshop dates
-    const selectedDates = [];
-    document.querySelectorAll('input[name="workshopDates"]:checked').forEach(checkbox => {
-        selectedDates.push({
-            date: checkbox.value,
-            formattedDate: formatWorkshopDate(checkbox.value)
-        });
-    });
-    
-    // Format data for submission - match camp form structure
-    const formattedData = {
-        referrer: window.location.origin,
-        timestamp: new Date().toISOString(),
-        contactEmail: data.contactEmail,
-        participantName: data.participantName,
-        relationship: data.relationship,
-        participantAge: data.participantAge,
-        selectedDates: selectedDates,
-        formType: 'dj_workshop_rsvp'
-    };
-    
-    console.log('DJ Workshop RSVP Data:', formattedData);
-    
-    // Submit the form data with no-cors - exactly like camp form
-    fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(formattedData),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'no-cors'
-    })
-    .then(() => {
-        console.log("DJ Workshop RSVP submission complete, verifying...");
-        
-        // Wait a moment for the data to be processed by the server
-        setTimeout(() => {
-            // Create verification URL with the email and timestamp
-            const verifyUrl = `${scriptURL}?verify=true&email=${encodeURIComponent(formattedData.contactEmail)}&timestamp=${encodeURIComponent(formattedData.timestamp)}&type=dj_workshop`;
-            
-            // Make a verification request
-            fetch(verifyUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Verification failed');
-                    }
-                    return response.json();
-                })
-                .then(verification => {
-                    if (verification.verified) {
-                        console.log("DJ Workshop RSVP verified with ID:", verification.id);
-                        successAlert.textContent = "Your RSVP has been received! We'll confirm your spot via email within 24 hours.";
-                        successAlert.style.display = 'block';
-                        errorAlert.style.display = 'none';
-                        
-                        // Reset form
-                        document.getElementById('dj-workshop-form').reset();
-                        
-                    } else {
-                        console.error("DJ Workshop RSVP verification failed:", verification.reason);
-                        errorAlert.textContent = "Your RSVP may not have been received. Please try again or contact us directly.";
-                        errorAlert.style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error("DJ Workshop RSVP verification error:", error);
-                    errorAlert.textContent = "We couldn't confirm your RSVP. Please contact us to ensure your spot is reserved.";
-                    errorAlert.style.display = 'block';
-                })
-                .finally(() => {
-                    // Stop animation and reset button
-                    stopSubmittingAnimation(submitBtn, originalText);
-                });
-        }, 2000); // Wait 2 seconds before verification
-    })
-    .catch(error => {
-        console.error("DJ Workshop RSVP submission error:", error);
-        errorAlert.textContent = 'There was an error submitting your RSVP. Please try again or contact us.';
-        errorAlert.style.display = 'block';
-        
-        // Stop animation and reset button
-        stopSubmittingAnimation(submitBtn, originalText);
-    });
-}
-// Format workshop date for display
-function formatWorkshopDate(dateString) {
-    const [year, month, day] = dateString.split('-');
-    const date = new Date(year, parseInt(month) - 1, day);
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
-    return `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-}
 
 // Fall Programs form functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -1585,7 +1319,6 @@ function handleInterestChange() {
     // Remove required attributes when sections are hidden
     toggleRequiredFields('lessonsSection', lessonsChecked);
     toggleRequiredFields('afterSchoolSection', afterSchoolChecked);
-    toggleRequiredFields('workshopsSection', workshopsChecked);
 }
 
 // NEW FUNCTION: Toggle required attributes based on section visibility
@@ -1614,24 +1347,6 @@ document.getElementById('lessonsFor').addEventListener('change', function() {
     // Set required attributes
     const nameField = document.getElementById('lessonsStudentName');
     const ageField = document.getElementById('lessonsStudentAge');
-    if (isChild) {
-        nameField.setAttribute('required', '');
-        ageField.setAttribute('required', '');
-    } else {
-        nameField.removeAttribute('required');
-        ageField.removeAttribute('required');
-        nameField.value = '';
-        ageField.value = '';
-    }
-});
-
-document.getElementById('workshopFor').addEventListener('change', function() {
-    const isChild = this.value === 'child';
-    document.getElementById('workshopChildInfo').style.display = isChild ? 'block' : 'none';
-    
-    // Set required attributes
-    const nameField = document.getElementById('workshopStudentName');
-    const ageField = document.getElementById('workshopStudentAge');
     if (isChild) {
         nameField.setAttribute('required', '');
         ageField.setAttribute('required', '');
@@ -1860,22 +1575,7 @@ function collectFormData() {
             childAge: document.getElementById('childAge').value,
             schedule: document.getElementById('afterSchoolSchedule').value
         };
-    }
-    
-    if (formData.interests.includes('workshops')) {
-        const selectedDates = [];
-        document.querySelectorAll('input[name="workshopDates"]:checked').forEach(checkbox => {
-            selectedDates.push(checkbox.value);
-        });
-        
-        formData.details.workshops = {
-            forWhom: document.getElementById('workshopFor').value,
-            studentName: document.getElementById('workshopStudentName').value,
-            studentAge: document.getElementById('workshopStudentAge').value,
-            selectedDates: selectedDates
-        };
-    }
-    
+    }  
     return formData;
 }
 

@@ -843,7 +843,7 @@ h1 {
     align-self: center;
     text-align: center;
     font-family: var(--headers-font-family);
-    font-size: 34px; 
+    font-size: 40px; 
     font-weight:400;
     max-width: 70%;
     color:var(--p-color);
@@ -948,7 +948,7 @@ h4 {
 
     /*-----------------Typography-----------------*/
     h1 {
-        font-size: 28px;
+        font-size: 31px;
         min-width: 100%;
     }
 
@@ -956,9 +956,7 @@ h4 {
         font-size: 23px;
     }
 
-    #banner h1 {
-        font-size: 48px;
-    }
+
 
     .oh-graphic {
         width: 90%;
@@ -1213,7 +1211,7 @@ h4 {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
 }
 
 .nav-btn:hover {
@@ -2113,7 +2111,7 @@ input[type="number"]:focus {
 
 /* Additional styles for the expandable program cards */
 .program-card {
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
 }
 
 .program-details-content {
@@ -2340,7 +2338,7 @@ input[type="number"]:focus {
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2361,7 +2359,7 @@ input[type="number"]:focus {
     border: 1px solid var(--border);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transform: scale(0.9) translateY(20px);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     position: relative;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
@@ -2730,7 +2728,7 @@ select option {
     border-radius: 8px;
     text-decoration: none;
     color: var(--text);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     cursor: pointer;
     /* min-height: 90px; */
 }
@@ -2793,7 +2791,7 @@ select option {
     border: 2px solid var(--border);
     border-radius: 8px;
     color: var(--text);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     cursor: pointer;
     font-family: inherit;
     text-align: center;
@@ -3705,7 +3703,7 @@ h1 {
     align-self: center;
     text-align: center;
     font-family: var(--headers-font-family);
-    font-size: 34px; 
+    font-size: 45px; 
     font-weight:400;
     max-width: 70%;
     color:var(--p-color);
@@ -3810,7 +3808,7 @@ h4 {
 
     /*-----------------Typography-----------------*/
     h1 {
-        font-size: 28px;
+        font-size: 31px;
         min-width: 100%;
     }
 
@@ -3818,9 +3816,7 @@ h4 {
         font-size: 23px;
     }
 
-    #banner h1 {
-        font-size: 48px;
-    }
+
 
     .oh-graphic {
         width: 90%;
@@ -4075,7 +4071,7 @@ h4 {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
 }
 
 .nav-btn:hover {
@@ -4975,7 +4971,7 @@ input[type="number"]:focus {
 
 /* Additional styles for the expandable program cards */
 .program-card {
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
 }
 
 .program-details-content {
@@ -5202,7 +5198,7 @@ input[type="number"]:focus {
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5223,7 +5219,7 @@ input[type="number"]:focus {
     border: 1px solid var(--border);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transform: scale(0.9) translateY(20px);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     position: relative;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
@@ -5592,7 +5588,7 @@ select option {
     border-radius: 8px;
     text-decoration: none;
     color: var(--text);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     cursor: pointer;
     /* min-height: 90px; */
 }
@@ -5662,7 +5658,7 @@ select option {
     border: 2px solid var(--border);
     border-radius: 8px;
     color: var(--text);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     cursor: pointer;
     font-family: inherit;
     text-align: center;
@@ -5714,5 +5710,127 @@ select option {
     
     .workshop-date-btn {
         padding: 14px 16px;
+    }
+}
+
+
+
+}
+
+
+
+
+
+
+
+#banner {
+    margin-bottom: 40px;
+}
+
+/* Hero Video Section */
+.hero-video-section {
+    position: relative;
+    width: 75%;
+    max-width: 1200px;
+    margin: 40px auto;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 701px) {
+    .hero-video-bg {
+        height: 100%;
+    }
+}
+
+.video-overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content-overlay {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+    width: 90%;
+}
+
+
+
+.hero-content-overlay h1 {
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    margin: 0;
+    font-family: var(--headers-font-family);
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .hero-video-section {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+    #banner {
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+/* Logo - Fixed top-left corner */
+.logo-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.oh-logo {
+    width: 80px;
+    height: auto;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    transition: opacity 0.2s ease;
+}
+
+.logo-link:hover .oh-logo {
+    opacity: 0.8;
+}
+
+@media (max-width: 700px) {
+    .logo-link {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .oh-logo {
+        width: 50px;
     }
 }

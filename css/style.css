@@ -128,7 +128,7 @@ section {
 
 p {
     line-height: 24px;
-    max-width: 60%;
+    /* max-width: 60%; */
     margin: 0;
     font-family: var(--body-font-family);
 }
@@ -419,7 +419,7 @@ figcaption {
     }
 
     .show-photo {
-        max-width: 50%;
+        max-width: 50vw;
         height: auto;
         max-height: 250px;
         object-fit: cover;
@@ -438,7 +438,7 @@ figcaption {
     }
 
     .carousel-container {
-        width: 60%;
+        /* width: 60%; */
         max-width: 600px;
     }
 
@@ -481,70 +481,7 @@ figcaption {
     }
 }
 
-@media screen and (max-width: 700px) {
-    #content {
-       max-width: 95%;
-    }
-
-    .about-nick {
-        max-width: 95%;
-    }
-
-    .social-icons {
-        right: 5px;
-        bottom: 0px;
-    }
-
-    .soundcloud {
-        width: 30px;
-        margin-top: -2px;
-    }
-    
-    .spotify, .bandcamp, .instagram {
-        width: 18px;
-    }
-    
-    .tiktok {
-        width: 15px;
-    }
-    
-    .youtube {
-        width: 22px;
-    }
-
-    p {
-        max-width: 95%;
-    }
-
-    .nick-newhouse {
-        padding-bottom: 10px;
-    }
-
-    .profile {
-        flex-direction: column;
-    }
-
-    figure {
-        margin-bottom: 10px;
-    }
-
-    .show-photo {
-        width: 90%;
-        height: 250px;
-        padding: 10px;
-        border-radius: 15px;
-        object-fit: cover;
-    }
-
-    .testimonial-wrapper {
-        flex-direction: column;
-        margin-bottom: 5px;
-    }
-
-    .testimonial {
-        margin-bottom: 0px;
-    }
-
+@media screen and (max-width: 1020px) {
     nav {
         background: none;
         justify-content: flex-end;
@@ -569,100 +506,6 @@ figcaption {
         display: block;
         padding-right: 10px;
         z-index: 3;
-    }
-
-    .pricing-cards {
-        flex-direction: column;
-    }
-
-    .carousel-container {
-        width: 95%;
-    }
-
-    .registration-container {
-        flex-direction: column;
-    }
-    
-    .form-fields, .dates-cart {
-        width: 100%;
-    }
-    
-    .form-group {
-        max-width: 100%;
-    }
-
-    .registration-form {
-        margin: 0;
-        width: 90%
-    }
-
-    .nav-prev {
-        left: -15px;
-    }
-    
-    .nav-next {
-        right: -15px;
-    }
-
-    .fall-programs-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .program-card {
-        min-width: auto;
-        max-width: 100%;
-    }
-    
-    .program-header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    /* .program-subtitle {
-        align-self: flex-start;
-    } */
-
-    .program-image {
-        height: 200px;
-        width: 100%;
-    }
-
-    .fall-form-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .fall-programs-registration {
-        padding: 20px;
-        max-width: 100%;
-    }
-    
-    .program-actions {
-        flex-direction: column;
-    }
-    
-    .flyer-button {
-        min-width: auto;
-    }
-
-    .program-selection {
-        width: 95%;
-    }
-
-    .checkbox-group {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    .get-in-touch {
-        margin-top: 15px;
-        margin-bottom: 0px;
-    }
-
-    .video-wrapper {
-        flex-direction: column;
     }
 }
 
@@ -690,6 +533,7 @@ figcaption {
     display: flex;
     flex-direction: column;
     position: relative;
+    align-items: center;
 }
 
 .no-padding-top.row, .no-padding-top div {
@@ -964,6 +808,11 @@ h4 {
     .oh-graphic {
         width: 90%;
         padding-top: 20px;
+    }
+
+    .program-image {
+        height: 250px;
+        width: 100%;
     }
 }
 
@@ -1663,6 +1512,19 @@ input[type="number"]:focus {
 }
 
 /* Responsive adjustments */
+
+
+/* Tablet/iPad adjustments - 80% width for middle sections */
+@media screen and (min-width: 701px) and (max-width: 1020px) {    
+    section {
+        max-width: 90%;
+    }
+
+    .about-nick {
+        max-width: 85%;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .newsletter-form .form-group {
         flex-direction: column;
@@ -1670,6 +1532,154 @@ input[type="number"]:focus {
     
     .newsletter-form .button {
         align-self: center;
+    }
+   
+    .about-nick {
+        max-width: 95%;
+    }
+
+    .social-icons {
+        right: 5px;
+        bottom: 0px;
+    }
+
+    .soundcloud {
+        width: 30px;
+        margin-top: -2px;
+    }
+    
+    .spotify, .bandcamp, .instagram {
+        width: 18px;
+    }
+    
+    .tiktok {
+        width: 15px;
+    }
+    
+    .youtube {
+        width: 22px;
+    }
+
+    p {
+        max-width: 95%;
+    }
+
+    .nick-newhouse {
+        padding-bottom: 10px;
+    }
+
+    .profile {
+        flex-direction: column;
+    }
+
+    figure {
+        margin-bottom: 10px;
+    }
+
+    .show-photo {
+        width: 90%;
+        /* height: 250px; */
+        padding: 10px;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+    .testimonial-wrapper {
+        flex-direction: column;
+        margin-bottom: 5px;
+    }
+
+    .testimonial {
+        margin-bottom: 0px;
+    }
+
+    .pricing-cards {
+        flex-direction: column;
+    }
+
+    .carousel-container {
+        width: 95%;
+    }
+
+    .registration-container {
+        flex-direction: column;
+    }
+    
+    .form-fields, .dates-cart {
+        width: 100%;
+    }
+    
+    .form-group {
+        max-width: 100%;
+    }
+
+    .registration-form {
+        margin: 0;
+        width: 90%
+    }
+
+    .nav-prev {
+        left: -15px;
+    }
+    
+    .nav-next {
+        right: -15px;
+    }
+
+    .fall-programs-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .program-card {
+        min-width: auto;
+        max-width: 100%;
+    }
+    
+    .program-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* .program-subtitle {
+        align-self: flex-start;
+    } */
+
+    .fall-form-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .fall-programs-registration {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .program-actions {
+        flex-direction: column;
+    }
+    
+    .flyer-button {
+        min-width: auto;
+    }
+
+    .program-selection {
+        width: 95%;
+    }
+
+    .checkbox-group {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .get-in-touch {
+        margin-top: 15px;
+        margin-bottom: 0px;
+    }
+
+    .video-wrapper {
+        flex-direction: column;
     }
 }
 
@@ -2127,7 +2137,7 @@ input[type="number"]:focus {
 }
 
 .program-details-content.expanded {
-    max-height: 1500px; /* Large enough to accommodate content */
+    max-height: 3000px; /* Large enough to accommodate content */
     opacity: 1;
     visibility: visible;
     transition: max-height 0.4s ease-in, opacity 0.3s ease-in, visibility 0s;
@@ -2753,6 +2763,18 @@ select option {
     font-weight: bold;
     color: var(--primary-color);
     text-align: center;
+}
+
+/* Beat Builders - stacked and wider on desktop */
+@media (min-width: 701px) {
+    .beat-builders-weeks {
+        display: flex !important;
+        flex-direction: column !important;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 16px;
+    }
 }
 
 @media (max-width: 700px) {

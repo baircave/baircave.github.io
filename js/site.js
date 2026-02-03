@@ -156,7 +156,7 @@ function rotateCreditsWithTitle(setTitle) {
 
 function toggleMenu() {
     const menu = document.querySelector(".nav-links");
-	if (window.innerWidth < 700) {
+	if (window.innerWidth < 1020) {
 		if (menu.style.display === "flex") {
 			menu.style.display = "none";
 		} else {

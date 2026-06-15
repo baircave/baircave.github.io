@@ -3086,3 +3086,33 @@ font-face {
         max-width: 500px;
     }
 }
+
+/* ============================================================
+   Auto-deactivated sign-up buttons (date has passed)
+   Applied by the deactivatePastSignups() routine in site.js.
+   ============================================================ */
+.camp-week-btn.signup-closed,
+.workshop-date-btn.signup-closed {
+    opacity: 0.45;
+    filter: grayscale(100%);
+    cursor: not-allowed;
+    pointer-events: none;        /* blocks clicks AND hover lift effects */
+    background-color: var(--input-bg);
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
+}
+
+.camp-week-btn.signup-closed .week-label,
+.workshop-date-btn.signup-closed .workshop-date-main {
+    color: var(--text-light);
+}
+
+.signup-closed-label {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--error);
+}

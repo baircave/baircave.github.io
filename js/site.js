@@ -1603,3 +1603,88 @@ document.addEventListener('keydown', function(e) {
         closeModal();
     }
 });
+
+/* ============================================================
+   Auto-deactivate sign-up buttons once their date arrives.
+
+   - Camp week buttons (.camp-week-btn) read the start date from
+     their .week-date text (e.g. "June 15-19", "June 29-July 2").
+     A week is closed once its FIRST day has arrived ("camp has begun").
+   - Workshop buttons (.workshop-date-btn) read the date from their
+     .workshop-date-main text (e.g. "Saturday, July 25th").
+     A workshop is closed once that day has arrived.
+
+   Dates are assumed to be in the CURRENT calendar year. When you
+   refresh the dates each season, just edit the visible text as usual
+   and this keeps working — no other maintenance required.
+
+   Optional override: add data-event-date="YYYY-MM-DD" to any button to
+   pin an exact date (useful for events that cross into a new year).
+   ============================================================ */
+(function () {
+    var MONTHS = {
+        january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+        july: 6, august: 7, september: 8, october: 9, november: 10, december: 11
+    };
+
+    // Pull the first "Month Day" out of a string -> Date at local midnight.
+    function parseStartDate(text, year) {
+        if (!text) return null;
+        var m = text.match(/([A-Za-z]+)\s+(\d{1,2})/);
+        if (!m) return null;
+        var month = MONTHS[m[1].toLowerCase()];
+        if (month === undefined) return null;
+        var d = new Date(year, month, parseInt(m[2], 10));
+        d.setHours(0, 0, 0, 0);
+        return d;
+    }
+
+    function resolveDate(btn, textSelector, year) {
+        var override = btn.getAttribute('data-event-date');
+        if (override) {
+            var d = new Date(override + 'T00:00:00'); // local midnight
+            return isNaN(d.getTime()) ? null : d;
+        }
+        var el = btn.querySelector(textSelector);
+        return parseStartDate(el ? el.textContent : '', year);
+    }
+
+    function closeSignup(btn) {
+        if (btn.classList.contains('signup-closed')) return;
+        btn.classList.add('signup-closed');
+        btn.setAttribute('aria-disabled', 'true');
+        btn.setAttribute('tabindex', '-1');
+        btn.removeAttribute('target');
+        // Strip the href so the link can't be opened (keep it for reference).
+        if (btn.hasAttribute('href')) {
+            btn.setAttribute('data-disabled-href', btn.getAttribute('href'));
+            btn.removeAttribute('href');
+        }
+    }
+
+    function deactivatePastSignups() {
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        var year = today.getFullYear();
+
+        // Camp weeks: closed once the start day has arrived.
+        document.querySelectorAll('.camp-week-btn').forEach(function (btn) {
+            var start = resolveDate(btn, '.week-date', year);
+            if (start && today >= start) closeSignup(btn);
+        });
+
+        // Workshops: closed once the workshop day has arrived.
+        // (To allow same-day sign-ups instead, change `today >= date`
+        //  to `today > date` on the line below.)
+        document.querySelectorAll('.workshop-date-btn').forEach(function (btn) {
+            var date = resolveDate(btn, '.workshop-date-main', year);
+            if (date && today >= date) closeSignup(btn);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', deactivatePastSignups);
+    } else {
+        deactivatePastSignups();
+    }
+})();

@@ -458,9 +458,12 @@ figcaption {
         margin-right: 25px;
     }
 
+    .program-image-crop {
+        height: 380px;
+    }
+
     .program-image {
-        height: 410px;
-        width: 100%;
+        transform: translate(0px, -20px);
     }
     
     /* .program-subtitle {
@@ -805,9 +808,12 @@ h4 {
         padding-top: 20px;
     }
 
+    .program-image-crop {
+        height: 280px;
+    }
+
     .program-image {
-        height: 300px;
-        width: 100%;
+        transform: scale(1.45) translate(-8px, 29px);
     }
 }
 
@@ -1956,10 +1962,15 @@ input[type="number"]:focus {
     max-width: 100%;
 }
 
+.program-image-crop {
+    width: 100%;
+    clip-path: inset(0 round 10px);
+}
+
 .program-image {
-    border-radius: 10px;
-    object-fit: cover;
-    align-self: center;
+    display: block;
+    width: 100%;
+    transform-origin: center;
 }
 
 .program-list {

@@ -1902,6 +1902,7 @@ input[type="number"]:focus {
     flex: 1;
     min-width: 300px;
     max-width: 450px;
+    overflow-x: hidden;
 }
 
 .program-header {

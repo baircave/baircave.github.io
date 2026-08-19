@@ -459,8 +459,8 @@ figcaption {
     }
 
     .program-image {
-        height: 250px;
-        width: 90%;
+        height: 410px;
+        width: 100%;
     }
     
     /* .program-subtitle {
@@ -806,7 +806,7 @@ h4 {
     }
 
     .program-image {
-        height: 250px;
+        height: 300px;
         width: 100%;
     }
 }

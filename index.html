@@ -38,12 +38,12 @@
     <nav>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-links">
-            <a onclick="toggleMenu();" href="#camp">[Camps]</a>
+            <a onclick="toggleMenu();" href="#dj-classes">[Classes]</a>
             <a onclick="toggleMenu();" href="#approach">[Our Approach]</a>
             <a onclick="toggleMenu();" href="#founder">[Our Founder]</a>
             <a onclick="toggleMenu();" href="#lessons">[Lessons]</a>
             <a onclick="toggleMenu();" href="#workshops">[Workshops]</a>
-            <a onclick="toggleMenu();" href="#after-school-programs">[After School]</a>
+            <a onclick="toggleMenu();" href="#camp">[Camps]</a>
             <a onClick="toggleMenu();" href="#contact">[Contact]</a>
         </div>
     </nav> 
@@ -60,7 +60,7 @@
                 </video>
                 <div class="video-overlay-dark"></div>
                 <div class="hero-content-overlay">
-                    <h1>The electronic music school for Brooklyn's budding DJs</h1>
+                    <h1>The electronic music school for Brooklyn's breakout DJs</h1>
                 </div>
             </div>
         </header>
@@ -68,180 +68,80 @@
         <!--Main Content Area-->
         <main id="content">
 
-            <section id="camp">
-                <h2>Summer Camps</h2>
+            <section id="dj-classes">
+                <h2>Fall Classes</h2>
 
                 <div class="fall-programs-container">
-                    <!-- Sound Scavengers Camp Card -->
-                    <div class="program-card">
+                    <!-- DJ Fundamentals Card -->
+                    <div class="program-card" style="max-width: 620px;">
                         <div class="program-header">
-                            <h3 class="program-title">[Sound Scavengers]</h3>
+                            <h3 class="program-title">[DJ Fundamentals]</h3>
                         </div>
-                        <h3 class="program-subtitle">Outdoor music-making adventure!</h3>
-                        
-                        <img class="program-image" src="./images/running_photo.jpeg" alt="Sound Scavengers summer camp">
-                        
+                        <h3 class="program-subtitle">Practical skills for mixing any genre.</h3>
+
+                        <img class="program-image" src="./images/dj_class_photo.webp" alt="DJ class at Odd Harmonics" style="height: auto; object-fit: unset;">
+
+                        <div class="program-quick-info">
+                            <div class="info-circle">
+                                <div class="info-label">Price</div>
+                                <div class="info-value">$40/class</div>
+                            </div>
+                            <div class="info-circle">
+                                <div class="info-label">Sessions</div>
+                                <div class="info-value">10 classes</div>
+                            </div>
+                            <div class="info-circle">
+                                <div class="info-label">Class Size</div>
+                                <div class="info-value">Max. 5</div>
+                            </div>
+                        </div>
+
                         <!-- Condensed action buttons -->
-                        <div class="program-actions-condensed">
-                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('soundscavengers')">
+                        <div class="program-actions-condensed" style="margin-top: 0;">
+                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('djfundamentals')">
                                 <span>Learn More</span>
-                                <svg class="chevron-icon" id="soundscavengers-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="chevron-icon" id="djfundamentals-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6,9 12,15 18,9"></polyline>
                                 </svg>
                             </button>
-                            <a href="https://calendar.google.com/appointments/schedules/AcZssZ2uDcyRZMrwDUspf0jjIuUadf4Gmi8J3cSHie0p_v9JakI_7BwLqVD2S_LxCQ2nSXwaikgwYFPQ" target="_blank" class="schedule-call-btn">
-                                Schedule a Call
+                            <a href="https://app.withnoto.com/forms/e4d5e9cc-5f80-42ce-bb94-0859281f7640" target="_blank" class="schedule-call-btn">
+                                Reserve Your Spot
                             </a>
                         </div>
-                        
+
                         <!-- Expandable details content -->
-                        <div class="program-details-content" id="soundscavengers-details">
+                        <div class="program-details-content" id="djfundamentals-details">
                             <div class="program-content">
                                 <div class="program-description">
-                                    <!-- Quick info circles -->
-                                    <div class="program-quick-info">
-                                        <div class="info-circle">
-                                            <div class="info-label">Price</div>
-                                            <div class="info-value">$550/week</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Ages</div>
-                                            <div class="info-value">8-11 years</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Hours</div>
-                                            <div class="info-value">8:30AM-3:30PM</div>
-                                        </div>
-                                    </div>
-                                    <div style="margin-top: 20px; text-align: center; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                                        <a href="assets/Sound Scavengers Day 1 Schedule 2026.pdf" target="_blank"style="display: inline-block; padding: 10px 20px; background-color: var(--primary-color); color: var(--white-color); text-decoration: none; border-radius: 6px; font-weight: bold; transition: all 0.2s ease;">
-                                            View Schedule
-                                        </a>
-                                    </div>
-                                    <p style="margin-top: 20px; margin-bottom: 0px;">
-                                        Our Sound Scavengers day camp introduces kids to the world of electronic music without the use of smartphones, tablets, or computers. 
-                                        We spend each day exploring Prospect Park, engaging with our surroundings and nurturing a curiosity for sound. 
-                                        <br>
-                                        <br>
-                                        Throughout the week, we work together to find, record, and program sounds with the help of super portable Pocket Operator samplers & sequencers.
+                                    <p style="margin-top: 0px; margin-bottom: 0px;">
+                                        Over 10 sessions, you'll learn the skills you need to create clean, confident mixes. We'll cover beatmatching, EQ, loops, effects, set building, mixing in key, stems, and more. We break down every concept using simple, concrete examples for you to practice on club standard hardware. Our small class size ensures that you'll get plenty of individualized coaching. The only prerequisite is a love of music. We'll handle everything else so you can start DJing properly.
                                     </p>
-                                    
-                                    <div class="camp-weeks">
-                                        <h4 style="color: var(--primary-color); text-align: center; font-size: 20px; margin-bottom: 15px;">Enroll Today:</h4>
-                                        <div class="camp-week-buttons">
-                                            <a href="https://app.noto.nyc/forms/aa0dcdd3-6be1-453e-9be2-b5baee867a82" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 1</div>
-                                                <div class="week-date">June 15-19</div>
-                                            </a>
-                                            <a href="https://app.noto.nyc/forms/cff77e11-fd25-4791-bc59-556eeec1c12a" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 2</div>
-                                                <div class="week-date">June 22-26</div>
-                                            </a>
-                                            <a href="https://app.noto.nyc/forms/75c61342-0996-4780-93e3-9e32552d7aa5" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 3*</div>
-                                                <div class="week-date">June 29-July 2</div>
-                                            </a>
-                                            <a href="https://app.noto.nyc/forms/7a392968-63dd-4603-a701-fe7d8be4b86d" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 4</div>
-                                                <div class="week-date">July 6-10</div>
-                                            </a>
-                                            <a href="https://app.noto.nyc/forms/f57b34be-013f-4ec1-8c76-93965e352a35" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 5</div>
-                                                <div class="week-date">July 20-24</div>
-                                            </a>
-                                            <a href="https://app.noto.nyc/forms/2466011e-7c3a-4aca-b2cf-5d0189c61e91" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 6</div>
-                                                <div class="week-date">July 27-31</div>
-                                            </a>
 
+                                    <div class="camp-weeks">
+                                        <h4 style="color: var(--primary-color); text-align: center; font-size: 20px; margin-bottom: 15px;">Fall Class Schedule:</h4>
+                                        <div class="camp-week-buttons" style="grid-template-columns: repeat(2, 1fr);">
+                                            <a href="https://app.withnoto.com/forms/e4d5e9cc-5f80-42ce-bb94-0859281f7640" target="_blank" class="camp-week-btn">
+                                                <div class="week-label">Saturdays</div>
+                                                <div class="week-date">2:30 PM - 3:30 PM</div>
+                                            </a>
+                                            <a href="https://app.withnoto.com/forms/e4d5e9cc-5f80-42ce-bb94-0859281f7640" target="_blank" class="camp-week-btn">
+                                                <div class="week-label">Thursdays</div>
+                                                <div class="week-date">6:45 PM - 7:45 PM</div>
+                                            </a>
                                         </div>
-                                        <p style="font-size: 14px; margin-top: 15px; color: var(--text-muted);">
-                                            *4-day camp week (no camp July 3rd).
-                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Beat Builders Bootcamp Card -->
-                    <div class="program-card">
-                        <div class="program-header">
-                            <h3 class="program-title">[Beat Builders]</h3>
-                        </div>
-                        <h3 class="program-subtitle">Immersive music production bootcamp!</h3>
-                        
-                        <img class="program-image" src="./images/odd_harmonics_studio_4.webp" alt="Beat Builders Bootcamp">
-                        
-                        <!-- Condensed action buttons -->
-                        <div class="program-actions-condensed">
-                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('beatbuilders')">
-                                <span>Learn More</span>
-                                <svg class="chevron-icon" id="beatbuilders-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6,9 12,15 18,9"></polyline>
-                                </svg>
-                            </button>
-                            <a href="https://calendar.google.com/appointments/schedules/AcZssZ2uDcyRZMrwDUspf0jjIuUadf4Gmi8J3cSHie0p_v9JakI_7BwLqVD2S_LxCQ2nSXwaikgwYFPQ" target="_blank" class="schedule-call-btn">
-                                Schedule a Call
-                            </a>
-                        </div>
-                        
-                        <!-- Expandable details content -->
-                        <div class="program-details-content" id="beatbuilders-details">
-                            <div class="program-content">
-                                <div class="program-description">
-                                    <!-- Quick info circles -->
-                                    <div class="program-quick-info">
-                                        <div class="info-circle">
-                                            <div class="info-label">Price</div>
-                                            <div class="info-value">$750/week</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Ages</div>
-                                            <div class="info-value">10-14 years</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Hours</div>
-                                            <div class="info-value">8:30AM-4PM</div>
-                                        </div>
-                                    </div>
-                                    <div style="margin-top: 20px; text-align: center; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                                        <a href="assets/Beat Builders Day 1 Schedule 2026.pdf" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: var(--primary-color); color: var(--white-color); text-decoration: none; border-radius: 6px; font-weight: bold; transition: all 0.2s ease;">
-                                            View Schedule
-                                        </a>                                        
-                                    </div>
-                                    <p style="margin-top: 20px; margin-bottom: 0px;">
-                                        In this immersive songwriting camp, we transform our iPads into full-fledged recording studios using Logic Pro, Garageband's powerful "big brother".
-                                        <br>
-                                        <br>
-                                        Over the course of the week, we cover a range of concepts such as rhythm & groove, synthesis, sampling, automation, song arrangement, mixing, as well as introductory music theory. 
-                                    </p>
-                                    
-                                    <div class="camp-weeks">
-                                        <h4 style="color: var(--primary-color); text-align: center; font-size: 20px; margin-bottom: 15px;">Enroll Today:</h4>
-                                        <div class="camp-week-buttons beat-builders-weeks">
-                                            <a href="https://app.noto.nyc/forms/1a28e2b5-70ca-4a91-861a-cb0f867ef96d" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 1</div>
-                                                <div class="week-date">August 3-7</div>
-                                            </a>
-                                            <a href="https://app.noto.nyc/forms/35fbd34e-d5d9-47a7-aee5-59cc4e01ec11" target="_blank" class="camp-week-btn">
-                                                <div class="week-label">Week 2</div>
-                                                <div class="week-date">August 10-14</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>              
+                </div>
             </section>
 
             <section id="approach">
                 <h2>Our Approach</h2>
                 <div class="about-nick">
                     <p>
-                        At Odd Harmonics, sound is a sandbox, which means hands-on, creative experimentation first--NO EXPERTISE REQUIRED! Once we've developed an understanding of the building blocks of sound, 
+                        At Odd Harmonics, sound is a sandbox, which means hands-on, creative experimentation first--no expertise required! Once we've developed an understanding of the building blocks of sound, 
                         that's when we dive into more traditional musical concepts.
                     </p>
                     <div class="carousel-container">
@@ -289,7 +189,7 @@
                         </figure>
                         <br>
                         <p class="about-column">
-                            Like many others, Nick's music education started with piano lessons. 
+                            Like many music makers, Nick's music education started with piano lessons. 
                             But his love for making music began in earnest at Brown University where he majored in both Computer Music and Computer Science. 
                             His 10+ year music career began as a composer for ads at The Music Playground.
                             He's since released music with independent record labels such as Tiny Waves, Mad Zoo, New Dawn Collective, & Materia Music, and has performed as a DJ around the country.
@@ -319,21 +219,13 @@
                             <img class="circular-pic" src="./images/kai_bass.webp" alt="Sound scavenger Kai programs a bass line">
                             <figcaption>Kai writes his first bass line!</figcaption>
                         </figure>
-                        <p>
-                            We offer lessons in-home, outside, and at our studio location in Red Hook for <strong style="color: var(--primary-color)">$110/hour</strong>.  
-                        <br>
-                        <br>
-                            For students ages ~7-11 we use a simple, offline DJ/beat-making workflow to teach the fundamentals
-                            of electronic music.
-                            For more advanced music production concepts, we transition to the computer to teach 
-                            the same production software used by music professionals worldwide.
-                        <br>
-                        <br>
-                            Whether you want to punch up a portfolio for school applications or play your first DJ set,
-                            we'll tailor the lessons to your specific needs.
-                        </p>
+                        <div>
+                            <p>We offer lessons in-home and at our studio location in Red Hook for <strong style="color: var(--primary-color)">$110/hour</strong>.</p>
+                            <p>For our youngest students, we make beat-making and DJing as simple and accessible as possible. We also incorporate screen-free, offline devices that reduce distractions while students develop their skills. When they're ready for more advanced music production concepts, we transition students to the iPad or computer to teach the same production software used by music professionals worldwide.</p>
+                            <p>Whether you want to write & record an original song or just play your first DJ set, we'll tailor the lessons to your specific needs.</p>
+                        </div>
                     </div>
-                    <button class="button get-in-touch" onclick="openModal('lessons')">Get in touch!</button>
+                    <a href="https://app.withnoto.com/forms/a547d757-2280-464f-afa2-e86f2174645e" target="_blank" class="button get-in-touch">Get in touch!</a>
                 </div>
             </section>
 
@@ -351,321 +243,35 @@
                             plenty of time to get their hands on the decks. We take a small deposit to confirm your reservation, which we refund in full with your Google review.
                         </p>
                     </div>
-                    <p style="margin-top: 10px; margin-bottom: 10px; font-weight: bold; font-size: 20px; color: var(--primary-color); text-align: center; font-family: var(--headers-font-family);">RSVP today:</p>
-                    <div class="workshop-date-buttons">
-                        <a href="https://app.noto.nyc/forms/90456cda-1abc-4add-903c-f8f669f7247f" target="_blank" class="workshop-date-btn full">
-                            <div class="workshop-date-main">Saturday, May 9th</div>
-                            <div class="workshop-time">12:00 PM - 1:15 PM</div>
-                            <div class="workshop-audience">for adults</div>
-                        </a>
-                        <a href="https://app.noto.nyc/forms/b2330671-f9d1-473e-b14f-4f80ca3a8c9e" target="_blank" class="workshop-date-btn full">
-                            <div class="workshop-date-main">Saturday, June 13th</div>
-                            <div class="workshop-time">1:00 PM - 2:15 PM</div>
-                            <div class="workshop-audience">for kids</div>
-                        </a>
-                        <a href="https://app.withnoto.com/forms/b4f66fa1-a44d-4906-86fc-2aa5577902fd" target="_blank" class="workshop-date-btn">
-                            <div class="workshop-date-main">Saturday, July 25th</div>
-                            <div class="workshop-time">1:00 PM - 2:15 PM</div>
-                            <div class="workshop-audience">for adults</div>
-                        </a>
-                    </div>
+                    <p style="text-align: center; color: var(--text-light); font-style: italic; margin-top: 30px; margin-bottom: -30px;">Be the first to hear about upcoming workshops and events:</p>
+                    <iframe id="noto-embed" class="skip-lazy" data-skip-lazy src="https://app.withnoto.com/forms/71eb23b3-3ba2-4eab-a127-242d620331ab?theme=dark" loading="lazy" frameborder="0" onmousewheel="" width="100%" height="200" style="width: 100%; min-width: 320px; border: none; margin: 0px auto; display: block;"></iframe>
                 </div>
             </section>
 
-            <section id="after-school-programs">
-                <h2>After School Programs</h2>
-
-                <div class="fall-programs-container">
-                    <!-- SongCraft Program Card -->
-                    <div class="program-card">
-                        <div class="program-header">
-                            <h3 class="program-title">[SongCraft]</h3>
-                        </div>
-                        <h3 class="program-subtitle">Create electronic music with friends!</h3>
-                        
-                        <img class="program-image" src="./images/group_photo_under_bridge.jpeg" alt="featuring the Pocket Operators">
-                        
-                        <!-- Condensed action buttons -->
-                        <div class="program-actions-condensed">
-                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('songcraft')">
-                                <span>Learn More</span>
-                                <svg class="chevron-icon" id="songcraft-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6,9 12,15 18,9"></polyline>
-                                </svg>
-                            </button>
-                            <button type="button" class="sign-up-btn" onclick="openModal('afterschool')">Sign Up</button>
-                        </div>
-                        
-                        <!-- Expandable details content -->
-                        <div class="program-details-content" id="songcraft-details">
-                            <div class="program-content">
-                                <div class="program-description">
-                                    <ul class="program-list">
-                                        <li>Make electronic beats, starting Day 1!</li>
-                                        <li>Record drums, basses, robot voices, & more</li>
-                                        <li>Program simple, <strong style="color: var(--primary-color)">offline</strong> devices</li>
-                                    </ul>
-                                    <!-- Quick info circles -->
-                                    <div class="program-quick-info">
-                                        <div class="info-circle">
-                                            <div class="info-label">Price</div>
-                                            <div class="info-value">$48 per class</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Ages</div>
-                                            <div class="info-value">Grades 2-5</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Class Size</div>
-                                            <div class="info-value">Max. 4</div>
-                                        </div>
-                                    </div>
-                                    <div class="program-details">
-                                        <div class="detail-item">
-                                            <strong>Final Project:</strong> 
-                                            <br>
-                                            An original song featuring all students' work
-                                        </div>
-                                    </div>
-                                    <div class="program-actions">
-                                        <button type="button" class="flyer-button share-btn" onclick="shareFlyer('SongCraft', 'assets/OH_SongCraft_Flyer_Fall_25_web.webp')">
-                                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                            <polyline points="16,6 12,2 8,6"/>
-                                            <line x1="12" y1="2" x2="12" y2="15"/>
-                                        </svg>
-                                        Share
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- MixCraft Program Card -->
-                    <div class="program-card">
-                        <div class="program-header">
-                            <h3 class="program-title">[MixCraft]</h3>
-                        </div>
-                        <h3 class="program-subtitle">Get started with DJ fundamentals!</h3>
-                        
-                        <img class="program-image" src="./images/rose_DJs.jpeg" alt="Hands on DJ decks with the Rose brothers ">
-                        
-                        <!-- Condensed action buttons -->
-                        <div class="program-actions-condensed">
-                            <button type="button" class="learn-more-btn" onclick="toggleProgramDetails('mixcraft')">
-                                <span>Learn More</span>
-                                <svg class="chevron-icon" id="mixcraft-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6,9 12,15 18,9"></polyline>
-                                </svg>
-                            </button>
-                            <button type="button" class="sign-up-btn" onclick="openModal('afterschool')">Sign Up</button>
-                        </div>
-                        
-                        <!-- Expandable details content -->
-                        <div class="program-details-content" id="mixcraft-details">
-                            <div class="program-content">
-                                <div class="program-description">
-                                    <ul class="program-list">
-                                        <li>Master how to mix between songs</li>
-                                        <li>Learn all about different genres of music</li>
-                                        <li>DJ a dance party for family & friends!</li>
-                                    </ul>
-                                    <!-- Quick info circles -->
-                                    <div class="program-quick-info">
-                                        <div class="info-circle">
-                                            <div class="info-label">Price</div>
-                                            <div class="info-value">$48 per class</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Ages</div>
-                                            <div class="info-value">Grades 2-5</div>
-                                        </div>
-                                        <div class="info-circle">
-                                            <div class="info-label">Class Size</div>
-                                            <div class="info-value">Max. 4</div>
-                                        </div>
-                                    </div>
-                                    <div class="program-details">
-                                        <div class="detail-item">
-                                            <strong>Final Project:</strong> 
-                                            <br>
-                                            DJ showcase for family & friends
-                                        </div>
-                                    </div>
-                                    <div class="program-actions">
-                                        <button type="button" class="flyer-button share-btn" onclick="shareFlyer('MixCraft', 'assets/OH_MixCraft_Flyer_Fall_25_web.webp')">
-                                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                            <polyline points="16,6 12,2 8,6"/>
-                                            <line x1="12" y1="2" x2="12" y2="15"/>
-                                        </svg>
-                                        Share
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>              
+            <section id="camp">
+                <h2 style="margin-top: -50px;">Summer Camps</h2>
+                <div class="about-nick">
+                    <img src="./images/running_photo.jpeg" alt="Sound Scavengers campers exploring Prospect Park" style="width: 100%; max-width: 560px; border-radius: 8px; display: block; margin: 0 auto 20px;">
+                    <p>
+                        Each summer, we run two day camp programs for kids. <strong style="color: var(--primary-color)">Sound Scavengers</strong> (ages 8–10) is a screenless outdoor adventure where campers explore Prospect Park and create music using portable Pocket Operator samplers. <strong style="color: var(--primary-color)">Beat Builders</strong> (ages 10–12) is an immersive music production bootcamp where students record, arrange, and mix original tracks using Logic Pro on iPad.
+                    </p>
+                    <br>
+                    <p>To learn more about our classes, lessons, workshops, camps, and events, reach out below!</p>
+                </div>
             </section>
-            
+
             <section id="contact">
-                <h2>Contact</h2>
-                <address class="address">
-                    Located In: TI Art Studios <br>
-                    183 Lorraine St. <br>
-                    Brooklyn, NY 11231 <br>
-                    e: <a href="mailto:nick@oddharmonics.studio">nick@oddharmonics.studio</a><br>
-                    t: <a href="tel:+19177408336">(917) 740-8336</a>
-                </address>
+                <div class="about-nick" style="align-items: center; text-align: center;">
+                    <a href="https://app.withnoto.com/forms/a547d757-2280-464f-afa2-e86f2174645e" target="_blank" class="button get-in-touch">Get in Touch</a>
+                    <address class="address" style="width: max-content; margin: 0 auto;">
+                        183 Lorraine St.<br>Brooklyn, NY 11231<br>
+                        <span style="white-space: nowrap;">e: <a href="mailto:nick@oddharmonics.studio">nick@oddharmonics.studio</a></span><br>
+                        <span style="white-space: nowrap;">t: <a href="tel:+19177408336">(917) 740-8336</a></span>
+                    </address>
+                </div>
             </section>
 
-            <div class="modal-overlay" id="contactModal">
-                <div class="modal">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="modalTitle">Get in Touch</h2>
-                        <button class="close-btn" onclick="closeModal()">&times;</button>
-                    </div>
-                    
-                    <div class="modal-content">
-                        <div class="alert success" id="successAlert"></div>
-                        <div class="alert error" id="errorAlert"></div>
-                        
-                        <form id="unifiedContactForm">
-                            <!-- Basic Information -->
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fullName">Your Name *</label>
-                                    <input type="text" id="fullName" name="fullName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="zipCode">Zip Code *</label>
-                                    <input type="text" id="zipCode" name="zipCode" maxlength="5" required>
-                                </div>
-                            </div>
-
-                            <!-- Interest Selection -->
-                            <div class="interest-section">
-                                <h3>I'm interested in: *</h3>
-                                <div class="interest-options">
-                                    <div class="interest-option">
-                                        <input type="checkbox" id="intLessons" name="interests" value="lessons">
-                                        <label for="intLessons">Private Lessons</label>
-                                    </div>
-                                    <div class="interest-option">
-                                        <input type="checkbox" id="intAfterSchool" name="interests" value="afterschool">
-                                        <label for="intAfterSchool">After School Programs</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- Lessons Section -->
-                            <div class="conditional-section" id="lessonsSection">
-                                <h4 style="color: var(--primary-color); margin: 0 0 15px 0;">Private Lessons</h4>
-                                <div class="form-group">
-                                    <label for="lessonsFor">Lessons are for: *</label>
-                                    <select id="lessonsFor" name="lessonsFor" data-required>
-                                        <option value="">Select an option</option>
-                                        <option value="self">Myself</option>
-                                        <option value="child">My Child</option>
-                                    </select>
-                                </div>
-                                <div id="lessonsChildInfo" style="display: none;">
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="lessonsStudentName">Student Name *</label>
-                                            <input type="text" id="lessonsStudentName" name="lessonsStudentName">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="lessonsStudentAge">Student Age *</label>
-                                            <input type="number" id="lessonsStudentAge" name="lessonsStudentAge" min="1" max="99">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group" style="margin-top: 15px;">
-                                    <label for="lessonsSchedule">Preferred days/times for lessons</label>
-                                    <textarea id="lessonsSchedule" name="lessonsSchedule" 
-                                        placeholder="e.g., Weekday afternoons after 4pm, Saturday mornings, flexible schedule, etc."
-                                        style="width: 100%; height: 80px; padding: 12px; border: 1px solid var(--border); border-radius: 6px; background-color: var(--input-bg); color: var(--text); font-size: 16px; box-sizing: border-box; resize: vertical; font-family: inherit;"></textarea>
-                                </div>
-                            </div>
-
-                            <!-- After School Section -->
-                            <div class="conditional-section" id="afterSchoolSection">
-                                <h4 style="color: var(--primary-color); margin: 0 0 15px 0;">After School Programs</h4>
-                                <p style="margin: 0 0 15px 0; color: var(--text-light); font-size: 14px;">
-                                    Select a program:
-                                </p>
-                                <div class="program-selection">
-                                    <div class="interest-option">
-                                        <input type="checkbox" id="mixcraft" name="afterSchoolPrograms" value="mixcraft">
-                                        <label for="mixcraft">MixCraft (Learn to DJ)</label>
-                                    </div>
-                                    <div class="interest-option">
-                                        <input type="checkbox" id="songcraft" name="afterSchoolPrograms" value="songcraft">
-                                        <label for="songcraft">SongCraft (Make Beats)</label>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-top: 20px;">
-                                    <div class="form-group">
-                                        <label for="childName">Student's Name *</label>
-                                        <input type="text" id="childName" name="childName" data-required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="childAge">Student's Age *</label>
-                                        <input type="number" id="childAge" name="childAge" min="1" max="99" data-required>
-                                    </div>
-                                </div>
-                                <div class="form-group" style="margin-top: 15px;">
-                                    <label for="afterSchoolSchedule">Which days are best for you?</label>
-                                    <textarea id="afterSchoolSchedule" name="afterSchoolSchedule" 
-                                        placeholder="e.g., Mondays and Wednesdays, any weekday, etc."
-                                        style="width: 100%; height: 80px; padding: 12px; border: 1px solid var(--border); border-radius: 6px; background-color: var(--input-bg); color: var(--text); font-size: 16px; box-sizing: border-box; resize: vertical; font-family: inherit;"></textarea>
-                                </div>
-                            </div>
-                            <div style="margin-top: 15px;" class="form-group">
-                                <label for="hearAbout">How did you hear about us?</label>
-                                <select id="hearAbout" name="hearAbout">
-                                    <option value="">Select an option</option>
-                                    <option value="google">Google Search</option>
-                                    <option value="instagram">Instagram</option>
-                                    <option value="facebook">Facebook</option>
-                                    <option value="friend">Friend/Word of Mouth</option>
-                                    <option value="flyer">Flyer</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-
-                            <!-- Newsletter Signup -->
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="newsletter" name="newsletter" checked>
-                                <label for="newsletter">Sign me up to hear about upcoming workshops and events</label>
-                            </div>
-
-                            <button type="submit" class="submit-btn">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            
-                            </div>
-
-<br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </main></main>
+        </main>
 
         <video playsinline autoplay muted loop class="bg-video">
             <source src="images/looping_smoke_waveformed.mp4" type="video/mp4">
@@ -715,6 +321,7 @@
         </footer>
 
     <script src="js/site.js"></script>
+    <script>!function(){function e(n){try{if("iframe"!==n.data.source)return;if("resize"===n.data.type&&n.data.height)t.style.height=n.data.height+80+"px";else if("redirect"===n.data.type&&n.data.url&&/^https?:\/\//i.test(n.data.url))window.location.href=n.data.url}catch(e){console.error("Error handling message:",e)}}var t;document.addEventListener("DOMContentLoaded",function(){t=document.getElementById("noto-embed"),window.addEventListener("message",e)})}();</script>
 
 </body>
 </html>
